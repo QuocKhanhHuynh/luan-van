@@ -1,0 +1,1033 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\FreelancerPlatform.Client.bundle.scp.css",
+      "PackagePath": "staticwebassets\\FreelancerPlatform.Client.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\Image\\CTULove.jpg",
+      "PackagePath": "staticwebassets\\Image\\CTULove.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\Image\\finance.jpg",
+      "PackagePath": "staticwebassets\\Image\\finance.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\Image\\it.jpg",
+      "PackagePath": "staticwebassets\\Image\\it.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\Image\\marketing.jpg",
+      "PackagePath": "staticwebassets\\Image\\marketing.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\Image\\z5752658371787_c29ea3bc4447cd7237eed7cb19928a91.jpg",
+      "PackagePath": "staticwebassets\\Image\\z5752658371787_c29ea3bc4447cd7237eed7cb19928a91.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\css\\notification.css",
+      "PackagePath": "staticwebassets\\css\\notification.css"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\css\\style.css",
+      "PackagePath": "staticwebassets\\css\\style.css"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\css\\style.css.map",
+      "PackagePath": "staticwebassets\\css\\style.css.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\freelancer-icon.png",
+      "PackagePath": "staticwebassets\\freelancer-icon.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\BannerFreelancer.jpg",
+      "PackagePath": "staticwebassets\\images\\BannerFreelancer.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\MainLogo.jpg",
+      "PackagePath": "staticwebassets\\images\\MainLogo.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\banner\\banner1.jpg",
+      "PackagePath": "staticwebassets\\images\\banner\\banner1.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\banner\\banner2.jpg",
+      "PackagePath": "staticwebassets\\images\\banner\\banner2.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\banner\\banner3.jpg",
+      "PackagePath": "staticwebassets\\images\\banner\\banner3.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\clients\\client1.png",
+      "PackagePath": "staticwebassets\\images\\clients\\client1.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\clients\\client2.png",
+      "PackagePath": "staticwebassets\\images\\clients\\client2.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\clients\\client3.png",
+      "PackagePath": "staticwebassets\\images\\clients\\client3.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\clients\\client4.png",
+      "PackagePath": "staticwebassets\\images\\clients\\client4.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\clients\\client5.png",
+      "PackagePath": "staticwebassets\\images\\clients\\client5.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\clients\\client6.png",
+      "PackagePath": "staticwebassets\\images\\clients\\client6.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\clients\\testimonial1.png",
+      "PackagePath": "staticwebassets\\images\\clients\\testimonial1.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\clients\\testimonial2.png",
+      "PackagePath": "staticwebassets\\images\\clients\\testimonial2.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\clients\\testimonial3.png",
+      "PackagePath": "staticwebassets\\images\\clients\\testimonial3.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\crossword.png",
+      "PackagePath": "staticwebassets\\images\\crossword.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\default-avatar.jpg",
+      "PackagePath": "staticwebassets\\images\\default-avatar.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\favicon.png",
+      "PackagePath": "staticwebassets\\images\\favicon.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\footer-logo.png",
+      "PackagePath": "staticwebassets\\images\\footer-logo.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\icon-image\\fact1.png",
+      "PackagePath": "staticwebassets\\images\\icon-image\\fact1.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\icon-image\\fact2.png",
+      "PackagePath": "staticwebassets\\images\\icon-image\\fact2.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\icon-image\\fact3.png",
+      "PackagePath": "staticwebassets\\images\\icon-image\\fact3.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\icon-image\\fact4.png",
+      "PackagePath": "staticwebassets\\images\\icon-image\\fact4.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\icon-image\\service-icon1.png",
+      "PackagePath": "staticwebassets\\images\\icon-image\\service-icon1.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\icon-image\\service-icon2.png",
+      "PackagePath": "staticwebassets\\images\\icon-image\\service-icon2.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\icon-image\\service-icon3.png",
+      "PackagePath": "staticwebassets\\images\\icon-image\\service-icon3.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\icon-image\\service-icon4.png",
+      "PackagePath": "staticwebassets\\images\\icon-image\\service-icon4.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\icon-image\\service-icon5.png",
+      "PackagePath": "staticwebassets\\images\\icon-image\\service-icon5.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\icon-image\\service-icon6.png",
+      "PackagePath": "staticwebassets\\images\\icon-image\\service-icon6.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\logo.jpg",
+      "PackagePath": "staticwebassets\\images\\logo.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\marker.png",
+      "PackagePath": "staticwebassets\\images\\marker.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\news\\avator1.png",
+      "PackagePath": "staticwebassets\\images\\news\\avator1.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\news\\avator2.png",
+      "PackagePath": "staticwebassets\\images\\news\\avator2.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\news\\avator3.png",
+      "PackagePath": "staticwebassets\\images\\news\\avator3.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\news\\news1.jpg",
+      "PackagePath": "staticwebassets\\images\\news\\news1.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\news\\news2.jpg",
+      "PackagePath": "staticwebassets\\images\\news\\news2.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\news\\news3.jpg",
+      "PackagePath": "staticwebassets\\images\\news\\news3.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\parallax1.jpg",
+      "PackagePath": "staticwebassets\\images\\parallax1.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\projects\\parallax1.jpg",
+      "PackagePath": "staticwebassets\\images\\projects\\parallax1.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\projects\\project1.jpg",
+      "PackagePath": "staticwebassets\\images\\projects\\project1.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\projects\\project2.jpg",
+      "PackagePath": "staticwebassets\\images\\projects\\project2.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\projects\\project3.jpg",
+      "PackagePath": "staticwebassets\\images\\projects\\project3.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\projects\\project4.jpg",
+      "PackagePath": "staticwebassets\\images\\projects\\project4.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\projects\\project5.jpg",
+      "PackagePath": "staticwebassets\\images\\projects\\project5.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\projects\\project6.jpg",
+      "PackagePath": "staticwebassets\\images\\projects\\project6.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\services\\service-center.jpg",
+      "PackagePath": "staticwebassets\\images\\services\\service-center.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\services\\service1.jpg",
+      "PackagePath": "staticwebassets\\images\\services\\service1.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\services\\service2.jpg",
+      "PackagePath": "staticwebassets\\images\\services\\service2.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\services\\service3.jpg",
+      "PackagePath": "staticwebassets\\images\\services\\service3.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\services\\service4.jpg",
+      "PackagePath": "staticwebassets\\images\\services\\service4.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\services\\service5.jpg",
+      "PackagePath": "staticwebassets\\images\\services\\service5.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\services\\service6.jpg",
+      "PackagePath": "staticwebassets\\images\\services\\service6.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\slider-main\\bg1.jpg",
+      "PackagePath": "staticwebassets\\images\\slider-main\\bg1.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\slider-main\\bg2.jpg",
+      "PackagePath": "staticwebassets\\images\\slider-main\\bg2.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\slider-main\\bg3.jpg",
+      "PackagePath": "staticwebassets\\images\\slider-main\\bg3.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\slider-main\\bg4.jpg",
+      "PackagePath": "staticwebassets\\images\\slider-main\\bg4.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\slider-main\\bg5.jpg",
+      "PackagePath": "staticwebassets\\images\\slider-main\\bg5.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\slider-pages\\slide-page1.jpg",
+      "PackagePath": "staticwebassets\\images\\slider-pages\\slide-page1.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\slider-pages\\slide-page2.jpg",
+      "PackagePath": "staticwebassets\\images\\slider-pages\\slide-page2.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\slider-pages\\slide-page3.jpg",
+      "PackagePath": "staticwebassets\\images\\slider-pages\\slide-page3.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\team\\team1.jpg",
+      "PackagePath": "staticwebassets\\images\\team\\team1.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\team\\team2.jpg",
+      "PackagePath": "staticwebassets\\images\\team\\team2.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\team\\team3.jpg",
+      "PackagePath": "staticwebassets\\images\\team\\team3.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\team\\team4.jpg",
+      "PackagePath": "staticwebassets\\images\\team\\team4.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\team\\team5.jpg",
+      "PackagePath": "staticwebassets\\images\\team\\team5.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\team\\team6.jpg",
+      "PackagePath": "staticwebassets\\images\\team\\team6.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\js\\formatMoney.js",
+      "PackagePath": "staticwebassets\\js\\formatMoney.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\js\\notification.js",
+      "PackagePath": "staticwebassets\\js\\notification.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\js\\script.js",
+      "PackagePath": "staticwebassets\\js\\script.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\README.md",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\README.md"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\browser\\signalr.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\browser\\signalr.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\browser\\signalr.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\browser\\signalr.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\browser\\signalr.min.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\browser\\signalr.min.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\browser\\signalr.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\browser\\signalr.min.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\AbortController.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\AbortController.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\AbortController.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\AbortController.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\Errors.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\Errors.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\Errors.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\Errors.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\HandshakeProtocol.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\HandshakeProtocol.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\HandshakeProtocol.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\HandshakeProtocol.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\HttpClient.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\HttpClient.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\HttpClient.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\HttpClient.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\HttpConnection.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\HttpConnection.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\HttpConnection.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\HttpConnection.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\HubConnection.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\HubConnection.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\HubConnection.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\HubConnection.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\HubConnectionBuilder.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\HubConnectionBuilder.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\HubConnectionBuilder.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\HubConnectionBuilder.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\IConnection.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\IConnection.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\IConnection.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\IConnection.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\IHttpConnectionOptions.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\IHttpConnectionOptions.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\IHttpConnectionOptions.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\IHttpConnectionOptions.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\IHubProtocol.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\IHubProtocol.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\IHubProtocol.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\IHubProtocol.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\ILogger.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\ILogger.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\ILogger.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\ILogger.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\ITransport.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\ITransport.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\ITransport.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\ITransport.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\JsonHubProtocol.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\JsonHubProtocol.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\JsonHubProtocol.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\JsonHubProtocol.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\Loggers.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\Loggers.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\Loggers.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\Loggers.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\LongPollingTransport.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\LongPollingTransport.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\LongPollingTransport.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\LongPollingTransport.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\ServerSentEventsTransport.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\ServerSentEventsTransport.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\ServerSentEventsTransport.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\ServerSentEventsTransport.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\Stream.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\Stream.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\Stream.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\Stream.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\TextMessageFormat.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\TextMessageFormat.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\TextMessageFormat.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\TextMessageFormat.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\Utils.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\Utils.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\Utils.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\Utils.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\WebSocketTransport.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\WebSocketTransport.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\WebSocketTransport.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\WebSocketTransport.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\browser-index.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\browser-index.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\browser-index.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\browser-index.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\index.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\index.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\cjs\\index.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\cjs\\index.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\AbortController.d.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\AbortController.d.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\AbortController.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\AbortController.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\AbortController.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\AbortController.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\Errors.d.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\Errors.d.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\Errors.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\Errors.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\Errors.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\Errors.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\HandshakeProtocol.d.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\HandshakeProtocol.d.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\HandshakeProtocol.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\HandshakeProtocol.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\HandshakeProtocol.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\HandshakeProtocol.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\HttpClient.d.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\HttpClient.d.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\HttpClient.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\HttpClient.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\HttpClient.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\HttpClient.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\HttpConnection.d.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\HttpConnection.d.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\HttpConnection.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\HttpConnection.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\HttpConnection.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\HttpConnection.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\HubConnection.d.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\HubConnection.d.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\HubConnection.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\HubConnection.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\HubConnection.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\HubConnection.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\HubConnectionBuilder.d.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\HubConnectionBuilder.d.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\HubConnectionBuilder.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\HubConnectionBuilder.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\HubConnectionBuilder.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\HubConnectionBuilder.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\IConnection.d.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\IConnection.d.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\IConnection.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\IConnection.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\IConnection.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\IConnection.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\IHttpConnectionOptions.d.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\IHttpConnectionOptions.d.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\IHttpConnectionOptions.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\IHttpConnectionOptions.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\IHttpConnectionOptions.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\IHttpConnectionOptions.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\IHubProtocol.d.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\IHubProtocol.d.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\IHubProtocol.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\IHubProtocol.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\IHubProtocol.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\IHubProtocol.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\ILogger.d.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\ILogger.d.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\ILogger.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\ILogger.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\ILogger.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\ILogger.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\ITransport.d.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\ITransport.d.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\ITransport.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\ITransport.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\ITransport.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\ITransport.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\JsonHubProtocol.d.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\JsonHubProtocol.d.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\JsonHubProtocol.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\JsonHubProtocol.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\JsonHubProtocol.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\JsonHubProtocol.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\Loggers.d.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\Loggers.d.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\Loggers.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\Loggers.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\Loggers.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\Loggers.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\LongPollingTransport.d.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\LongPollingTransport.d.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\LongPollingTransport.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\LongPollingTransport.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\LongPollingTransport.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\LongPollingTransport.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\ServerSentEventsTransport.d.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\ServerSentEventsTransport.d.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\ServerSentEventsTransport.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\ServerSentEventsTransport.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\ServerSentEventsTransport.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\ServerSentEventsTransport.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\Stream.d.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\Stream.d.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\Stream.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\Stream.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\Stream.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\Stream.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\TextMessageFormat.d.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\TextMessageFormat.d.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\TextMessageFormat.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\TextMessageFormat.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\TextMessageFormat.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\TextMessageFormat.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\Utils.d.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\Utils.d.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\Utils.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\Utils.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\Utils.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\Utils.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\WebSocketTransport.d.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\WebSocketTransport.d.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\WebSocketTransport.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\WebSocketTransport.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\WebSocketTransport.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\WebSocketTransport.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\browser-index.d.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\browser-index.d.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\browser-index.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\browser-index.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\browser-index.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\browser-index.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\index.d.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\index.d.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\index.js",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\index.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\dist\\esm\\index.js.map",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\dist\\esm\\index.js.map"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\package.json",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\package.json"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\src\\AbortController.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\src\\AbortController.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\src\\Errors.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\src\\Errors.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\src\\HandshakeProtocol.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\src\\HandshakeProtocol.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\src\\HttpClient.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\src\\HttpClient.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\src\\HttpConnection.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\src\\HttpConnection.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\src\\HubConnection.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\src\\HubConnection.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\src\\HubConnectionBuilder.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\src\\HubConnectionBuilder.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\src\\IConnection.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\src\\IConnection.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\src\\IHttpConnectionOptions.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\src\\IHttpConnectionOptions.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\src\\IHubProtocol.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\src\\IHubProtocol.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\src\\ILogger.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\src\\ILogger.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\src\\ITransport.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\src\\ITransport.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\src\\JsonHubProtocol.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\src\\JsonHubProtocol.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\src\\Loggers.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\src\\Loggers.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\src\\LongPollingTransport.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\src\\LongPollingTransport.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\src\\ServerSentEventsTransport.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\src\\ServerSentEventsTransport.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\src\\Stream.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\src\\Stream.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\src\\TextMessageFormat.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\src\\TextMessageFormat.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\src\\Utils.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\src\\Utils.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\src\\WebSocketTransport.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\src\\WebSocketTransport.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\src\\browser-index.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\src\\browser-index.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\src\\index.ts",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\src\\index.ts"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\src\\third-party-notices.txt",
+      "PackagePath": "staticwebassets\\lib\\aspnet\\signalr\\src\\third-party-notices.txt"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\animate-css\\animate.css",
+      "PackagePath": "staticwebassets\\plugins\\animate-css\\animate.css"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\plugins\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\bootstrap\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\plugins\\bootstrap\\bootstrap.min.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\colorbox\\colorbox.css",
+      "PackagePath": "staticwebassets\\plugins\\colorbox\\colorbox.css"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\colorbox\\controls.png",
+      "PackagePath": "staticwebassets\\plugins\\colorbox\\controls.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\colorbox\\jquery.colorbox.js",
+      "PackagePath": "staticwebassets\\plugins\\colorbox\\jquery.colorbox.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\fontawesome\\css\\all.css",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome\\css\\all.css"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\fontawesome\\css\\all.min.css",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome\\css\\all.min.css"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\fontawesome\\webfonts\\fa-brands-400.eot",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome\\webfonts\\fa-brands-400.eot"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\fontawesome\\webfonts\\fa-brands-400.svg",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome\\webfonts\\fa-brands-400.svg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\fontawesome\\webfonts\\fa-brands-400.ttf",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome\\webfonts\\fa-brands-400.ttf"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\fontawesome\\webfonts\\fa-brands-400.woff",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome\\webfonts\\fa-brands-400.woff"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\fontawesome\\webfonts\\fa-brands-400.woff2",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome\\webfonts\\fa-brands-400.woff2"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\fontawesome\\webfonts\\fa-regular-400.eot",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome\\webfonts\\fa-regular-400.eot"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\fontawesome\\webfonts\\fa-regular-400.svg",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome\\webfonts\\fa-regular-400.svg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\fontawesome\\webfonts\\fa-regular-400.ttf",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome\\webfonts\\fa-regular-400.ttf"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\fontawesome\\webfonts\\fa-regular-400.woff",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome\\webfonts\\fa-regular-400.woff"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\fontawesome\\webfonts\\fa-regular-400.woff2",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome\\webfonts\\fa-regular-400.woff2"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\fontawesome\\webfonts\\fa-solid-900.eot",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome\\webfonts\\fa-solid-900.eot"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\fontawesome\\webfonts\\fa-solid-900.svg",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome\\webfonts\\fa-solid-900.svg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\fontawesome\\webfonts\\fa-solid-900.ttf",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome\\webfonts\\fa-solid-900.ttf"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\fontawesome\\webfonts\\fa-solid-900.woff",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome\\webfonts\\fa-solid-900.woff"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\fontawesome\\webfonts\\fa-solid-900.woff2",
+      "PackagePath": "staticwebassets\\plugins\\fontawesome\\webfonts\\fa-solid-900.woff2"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\google-map\\map.js",
+      "PackagePath": "staticwebassets\\plugins\\google-map\\map.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\jQuery\\jquery.min.js",
+      "PackagePath": "staticwebassets\\plugins\\jQuery\\jquery.min.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\shuffle\\shuffle.min.js",
+      "PackagePath": "staticwebassets\\plugins\\shuffle\\shuffle.min.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\slick\\README.markdown",
+      "PackagePath": "staticwebassets\\plugins\\slick\\README.markdown"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\slick\\ajax-loader.gif",
+      "PackagePath": "staticwebassets\\plugins\\slick\\ajax-loader.gif"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\slick\\fonts\\slick.eot",
+      "PackagePath": "staticwebassets\\plugins\\slick\\fonts\\slick.eot"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\slick\\fonts\\slick.svg",
+      "PackagePath": "staticwebassets\\plugins\\slick\\fonts\\slick.svg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\slick\\fonts\\slick.ttf",
+      "PackagePath": "staticwebassets\\plugins\\slick\\fonts\\slick.ttf"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\slick\\fonts\\slick.woff",
+      "PackagePath": "staticwebassets\\plugins\\slick\\fonts\\slick.woff"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\slick\\slick-animation.min.js",
+      "PackagePath": "staticwebassets\\plugins\\slick\\slick-animation.min.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\slick\\slick-theme.css",
+      "PackagePath": "staticwebassets\\plugins\\slick\\slick-theme.css"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\slick\\slick.css",
+      "PackagePath": "staticwebassets\\plugins\\slick\\slick.css"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\plugins\\slick\\slick.min.js",
+      "PackagePath": "staticwebassets\\plugins\\slick\\slick.min.js"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.FreelancerPlatform.Client.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.FreelancerPlatform.Client.props",
+      "PackagePath": "build\\FreelancerPlatform.Client.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.FreelancerPlatform.Client.props",
+      "PackagePath": "buildMultiTargeting\\FreelancerPlatform.Client.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.FreelancerPlatform.Client.props",
+      "PackagePath": "buildTransitive\\FreelancerPlatform.Client.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
