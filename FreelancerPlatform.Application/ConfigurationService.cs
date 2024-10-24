@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using FreelancerPlatform.Application.Abstraction;
 using FreelancerPlatform.Application.Abstraction.Service;
 using FreelancerPlatform.Application.ServiceImplementions;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,6 +27,15 @@ namespace FreelancerPlatform.Application
             services.AddTransient<IApplyService, ApplyService>();
             services.AddTransient<IOfferService, OfferService>();
             services.AddTransient<IChatService, ChatService>();
+            services.AddTransient<IContractService, ContractService>();
+            services.AddTransient<IReportService, ReportService>();
+            services.AddTransient<INotificationService, NotificationService>();
+            services.AddTransient<ITransactionService, TransactionService>();
+            services.AddTransient<IPostService, PostService>();
+            services.AddTransient<ICommentService, CommentService>();
+            services.AddTransient<ISavePostService, SavePostService>();
+            services.AddTransient<ILikePostService, LikePostService>();
+            services.AddTransient<ISystemManagementService, SystemManagementService>();
             /*services.AddTransient<IProjectService, ProjectService>();
             services.AddTransient<IApplyService, ApplyService>();
             services.AddTransient<ICategoryService, CategoryService>();

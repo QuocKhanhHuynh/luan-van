@@ -226,11 +226,18 @@ namespace FreelancerPlatform.Client.Controllers
             var jobs = await _jobService.GetAllJobsAsync();
             var relatedJobs = jobs.Where(x => x.Category.Id == jobDetail.Category.Id && x.Id != jobDetail.Id);
             var applyOfJob = await _applyService.GetApplyOfJobAsync(id);
-           
+            ViewBag.IsOffer = false;
+            if (User.Identity.IsAuthenticated)
+            {
+                var isOffer = await _offerService.CheckIsOffer(id, User.GetUserId());
+                ViewBag.IsOffer = isOffer;
+            }
 
             ViewBag.Freelancer = freelancer;
             ViewBag.RelatedJob = relatedJobs;
             ViewBag.ApplyOfJob = applyOfJob;
+            ViewBag.CreateUserName = $"{freelancer.LastName} + {freelancer.FirstName}";
+           
 
 
             return View(jobDetail);

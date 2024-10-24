@@ -23,6 +23,9 @@ namespace FreelancerPlatform.Domain.Entity
         [Column("gioi_thieu")]
         public string? Introduction { get; set; }
 
+        [Column("duoc_moi")]
+        [Required]
+        public bool IsOffer { get; set; } = false;
 
 		public Freelancer Freelancer { get; set; }
         public int FreelancerId { get; set; }

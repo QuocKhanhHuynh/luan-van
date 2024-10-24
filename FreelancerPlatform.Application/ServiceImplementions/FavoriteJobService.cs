@@ -25,9 +25,10 @@ namespace FreelancerPlatform.Application.ServiceImplementions
         private readonly IJobRepository _jobRepository;
         private readonly ICategoryRepository _categoryRepository;
         private readonly IJobSkillRepository _jobSkillRepository;
-        private readonly ISkillRepository _skillRepository; 
-     
-        public FavoriteJobService(IUnitOfWork unitOfWork, IMapper mapper, ILogger<FavoriteJob> logger, IFavoriteJobRepository favoriteJobRepository,
+        private readonly ISkillRepository _skillRepository;
+        private readonly IContractRepository _contractRepository;
+
+        public FavoriteJobService(IUnitOfWork unitOfWork, IMapper mapper, ILogger<FavoriteJob> logger, IFavoriteJobRepository favoriteJobRepository, IContractRepository contractRepository,
             IJobRepository jobRepository, ICategoryRepository categoryRepository, IJobSkillRepository jobSkillRepository, ISkillRepository skillRepository
             ) : base(unitOfWork, mapper, logger)
 		{
@@ -36,6 +37,7 @@ namespace FreelancerPlatform.Application.ServiceImplementions
             _categoryRepository = categoryRepository;
             _skillRepository = skillRepository;
             _jobSkillRepository = jobSkillRepository;
+            _contractRepository = contractRepository;
 		}
 
         public async Task<ServiceResult> CreateFavoriteJobAsync(FavoriteJobCreateRequest request)
@@ -128,6 +130,9 @@ namespace FreelancerPlatform.Application.ServiceImplementions
             var skills = await _skillRepository.GetAllAsync();
             var favoriteJobOfFreelancer = (await _favoriteJobRepository.GetAllAsync()).Where(x => x.FreelancerId == id);
 
+            var contracts = await _contractRepository.GetAllAsync();
+            var jobContract = contracts.Select(x => x.ProjectId).ToList();
+
             var query = from j in jobs
                         join c in categories on j.CategoryId equals c.Id
                         join f in favoriteJobOfFreelancer on j.Id equals f.JobId
@@ -152,6 +157,7 @@ namespace FreelancerPlatform.Application.ServiceImplementions
                 JobType = x.j.JobType,
                 SalaryType = x.j.SalaryType,
                 IsHiden = x.j.IsHiden,
+                InContract = jobContract.Contains(x.j.Id) ? true : false,
                 Skills = queryJobSkill.Where(y => y.j.JobId == x.j.Id).Select(y => new SkillQuickViewModel()
                 {
                     Id = y.s.Id,

@@ -13,6 +13,8 @@ namespace FreelancerPlatform.Application.Abstraction.Service
     {
         Task<ServiceResult> CreateOfferAsync(OfferCreateRequest request);
         Task<ServiceResult> DeleteOfferAsync(int id);
-        
+        Task<List<OfferQuicckViewModel>> GetAllOffer();
+        Task<bool> CheckIsOffer(int jobId, int freelancerId);
+
     }
 }

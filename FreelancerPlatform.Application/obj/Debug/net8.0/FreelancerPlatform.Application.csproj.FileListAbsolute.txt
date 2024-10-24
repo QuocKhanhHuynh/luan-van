@@ -29,3 +29,4 @@ D:\Luan van\src1\FreelancerPlatform\FreelancerPlatform.Application\obj\Debug\net
 D:\Luan van\src1\FreelancerPlatform\FreelancerPlatform.Application\obj\Debug\net8.0\refint\FreelancerPlatform.Application.dll
 D:\Luan van\src1\FreelancerPlatform\FreelancerPlatform.Application\obj\Debug\net8.0\FreelancerPlatform.Application.pdb
 D:\Luan van\src1\FreelancerPlatform\FreelancerPlatform.Application\obj\Debug\net8.0\ref\FreelancerPlatform.Application.dll
+D:\Luan van\src1\FreelancerPlatform\FreelancerPlatform.Application\obj\Debug\net8.0\FreelancerPlatform.Application.sourcelink.json

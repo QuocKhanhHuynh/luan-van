@@ -36,8 +36,9 @@ namespace FreelancerPlatform.Application.ServiceImplementions
         private readonly ICategoryRepository _categoryRepository;
         private readonly ISkillRepository _skillRepository;
         private readonly IFreelancerSkilRepository _freelancerSkilRepository;
+        private readonly IContractRepository _contractRepository;
 		public FreelancerService(IUnitOfWork unitOfWork, IMapper mapper, ILogger<Freelancer> logger,
-            IFreelancerRepository freelancerRepository, IFreelancerCategoryRepository freelancerCategoryRepository, 
+            IFreelancerRepository freelancerRepository, IFreelancerCategoryRepository freelancerCategoryRepository, IContractRepository contractRepository,
             ICategoryRepository categoryRepository, ISkillRepository skillRepository, IFreelancerSkilRepository freelancerSkilRepository) : base(unitOfWork, mapper, logger)
         {
             _freelancerRepository = freelancerRepository;
@@ -46,6 +47,7 @@ namespace FreelancerPlatform.Application.ServiceImplementions
             _categoryRepository = categoryRepository;
             _skillRepository = skillRepository;
             _freelancerSkilRepository = freelancerSkilRepository;
+            _contractRepository = contractRepository;
         }
 
         public async Task<List<FreelancerQuickViewModel>> GetAllFreelancerAsync()
@@ -54,6 +56,7 @@ namespace FreelancerPlatform.Application.ServiceImplementions
             var categories = await _categoryRepository.GetAllAsync();
             var freelancerSkills = await _freelancerSkilRepository.GetAllAsync();
             var skills = await _skillRepository.GetAllAsync();
+            var contracts = await _contractRepository.GetAllAsync();
 
             var categoryOfFreelancer = from fc in freelancerCategories
                                        join c in categories on fc.CategoryId equals c.Id
@@ -69,7 +72,7 @@ namespace FreelancerPlatform.Application.ServiceImplementions
                         join s in skillOfFreelancer on f.Id equals s.fk.FreelancerId
                         select new { f, c, s };
             query = query.DistinctBy(x => x.f.Id).OrderBy(x => x.f.CreateDay);
-            
+
             return query.Select(x => new FreelancerQuickViewModel()
             {
                 About = x.f.About,
@@ -78,8 +81,11 @@ namespace FreelancerPlatform.Application.ServiceImplementions
                 ImageUrl = x.f.ImageUrl,
                 RateHour = x.f.RateHour,
                 LastName = x.f.LastName,
-                Categories = categoryOfFreelancer.Where(y => y.fc.FreelancerId == x.f.Id).Select(y => new CategoryQuickViewModel() { Id = y.c.Id, ImageUrl= y.c.ImageUrl, Name = y.c.Name, }).ToList(),
-                Skills = skillOfFreelancer.Where(y => y.fk.FreelancerId == x.f.Id).Select(y => new SkillQuickViewModel() { Id = y.s.Id, Name = y.s.Name}).ToList(),
+                Categories = categoryOfFreelancer.Where(y => y.fc.FreelancerId == x.f.Id).Select(y => new CategoryQuickViewModel() { Id = y.c.Id, ImageUrl = y.c.ImageUrl, Name = y.c.Name, }).ToList(),
+                Skills = skillOfFreelancer.Where(y => y.fk.FreelancerId == x.f.Id).Select(y => new SkillQuickViewModel() { Id = y.s.Id, Name = y.s.Name }).ToList(),
+                Point = (contracts.Where(y => y.Partner == x.f.Id && y.PartnerPoints != null).Sum(y => y.PartnerPoints).GetValueOrDefault() > 0? contracts.Where(y => y.Partner == x.f.Id && y.PartnerPoints != null).Sum(y => y.PartnerPoints).GetValueOrDefault() / contracts.Where(y => y.Partner == x.f.Id && y.PartnerPoints != null).Count() : 0),
+                ReviewQuanlity = contracts.Where(y => y.Partner == x.f.Id && y.PartnerPoints != null).Count(),
+                ContractQuanlity = contracts.Where(y => y.Partner == x.f.Id).Count()
             }).ToList();
         }
 
@@ -91,6 +97,8 @@ namespace FreelancerPlatform.Application.ServiceImplementions
            var categories = await _categoryRepository.GetAllAsync();
            var freelancerSkills = await _freelancerSkilRepository.GetAllAsync();
            var skills = await _skillRepository.GetAllAsync();
+            var contracts = (await _contractRepository.GetAllAsync()).Where(x => x.Partner == freelancer.Id && x.PartnerPoints != null);
+            var contractQuanlity = (await _contractRepository.GetAllAsync()).Where(x => x.Partner == freelancer.Id).Count();
 
             var categoryOfFreelancer = from fc in freelancerCategories
                                            join c in categories on fc.CategoryId equals c.Id
@@ -114,7 +122,10 @@ namespace FreelancerPlatform.Application.ServiceImplementions
                 LastName = freelancer.LastName,
                 PaymentVerification = freelancer.PaymentVerification,
                 RateHour = freelancer.RateHour,
-                Skills = skillOfFreelancer.Select(x => new SkillQuickViewModel() { Id = x.Id, Name = x.Name }).ToList()
+                Skills = skillOfFreelancer.Select(x => new SkillQuickViewModel() { Id = x.Id, Name = x.Name }).ToList(),
+                Point = (contracts.Sum(y => y.PartnerPoints).GetValueOrDefault() > 0 ? contracts.Sum(y => y.PartnerPoints).GetValueOrDefault() / contracts.Count() : 0),
+                ReviewQuanlity = contracts.Count(),
+                ContractQuanlity = contractQuanlity
             };
         }
 

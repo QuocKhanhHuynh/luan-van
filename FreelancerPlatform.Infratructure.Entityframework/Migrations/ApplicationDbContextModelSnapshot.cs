@@ -54,6 +54,10 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("gioi_thieu");
 
+                    b.Property<bool>("IsOffer")
+                        .HasColumnType("bit")
+                        .HasColumnName("duoc_moi");
+
                     b.Property<int>("JobId")
                         .HasColumnType("int");
 
@@ -133,6 +137,112 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                     b.HasIndex("HubChatId");
 
                     b.ToTable("tin_nhan");
+                });
+
+            modelBuilder.Entity("FreelancerPlatform.Domain.Entity.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("ma_binh_luan");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("noi_dung_binh_luan");
+
+                    b.Property<DateTime>("CreateDay")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("ngay_tao");
+
+                    b.Property<DateTime?>("CreateUpdate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("ngay_cap_nhat");
+
+                    b.Property<int>("FreelancerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LikeNumber")
+                        .HasColumnType("int")
+                        .HasColumnName("luot_thich");
+
+                    b.Property<int?>("Parent")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PostId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Reply")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FreelancerId");
+
+                    b.HasIndex("PostId");
+
+                    b.ToTable("binh_luan");
+                });
+
+            modelBuilder.Entity("FreelancerPlatform.Domain.Entity.Contract", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("ma_hop_dong");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AcceptStatus")
+                        .HasColumnType("int")
+                        .HasColumnName("trang_thai_chap_nhan");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("noi_dung_hop_dong");
+
+                    b.Property<bool>("ContractStatus")
+                        .HasColumnType("bit")
+                        .HasColumnName("trang_thai_hop_dong");
+
+                    b.Property<DateTime>("CreateDay")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("ngay_tao");
+
+                    b.Property<DateTime?>("CreateUpdate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("ngay_cap_nhat");
+
+                    b.Property<int>("CreateUser")
+                        .HasColumnType("int")
+                        .HasColumnName("nguoi_tao");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ten_hop_dong");
+
+                    b.Property<int>("Partner")
+                        .HasColumnType("int")
+                        .HasColumnName("doi_tac");
+
+                    b.Property<int?>("PartnerPoints")
+                        .HasColumnType("int")
+                        .HasColumnName("diem_doi_tac");
+
+                    b.Property<string>("PartnerReview")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("danh_gia_doi_tac");
+
+                    b.Property<int?>("ProjectId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("hop_dong");
                 });
 
             modelBuilder.Entity("FreelancerPlatform.Domain.Entity.FavoriteJob", b =>
@@ -222,12 +332,7 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                         .HasColumnType("int")
                         .HasColumnName("luong_mot_gio");
 
-                    b.Property<int?>("SystemManagementId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("SystemManagementId");
 
                     b.ToTable("ung_vien");
                 });
@@ -284,6 +389,12 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
 
                     b.Property<int>("FreelancerB")
                         .HasColumnType("int");
+
+                    b.Property<bool>("SeenStatusA")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("SeenStatusB")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -347,16 +458,11 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                         .HasColumnType("int")
                         .HasColumnName("loai_luong");
 
-                    b.Property<int?>("SystemManagementId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
                     b.HasIndex("FreelancerId");
-
-                    b.HasIndex("SystemManagementId");
 
                     b.ToTable("cong_viec");
                 });
@@ -374,6 +480,73 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                     b.HasIndex("SkillId");
 
                     b.ToTable("JobSkill");
+                });
+
+            modelBuilder.Entity("FreelancerPlatform.Domain.Entity.LikePost", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreateDay")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("ngay_tao");
+
+                    b.Property<DateTime?>("CreateUpdate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("ngay_cap_nhat");
+
+                    b.Property<int>("FreelancerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PostId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FreelancerId");
+
+                    b.HasIndex("PostId");
+
+                    b.ToTable("LikePosts");
+                });
+
+            modelBuilder.Entity("FreelancerPlatform.Domain.Entity.Notification", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("ma_thong_bao");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("noi_dung_thong_bao");
+
+                    b.Property<DateTime>("CreateDay")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("ngay_tao");
+
+                    b.Property<DateTime?>("CreateUpdate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("ngay_cap_nhat");
+
+                    b.Property<int>("FreelancerId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("SeenStatus")
+                        .HasColumnType("bit")
+                        .HasColumnName("trang_thai_da_xem");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FreelancerId");
+
+                    b.ToTable("thong_bao");
                 });
 
             modelBuilder.Entity("FreelancerPlatform.Domain.Entity.Offer", b =>
@@ -440,6 +613,55 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                     b.ToTable("quyen");
                 });
 
+            modelBuilder.Entity("FreelancerPlatform.Domain.Entity.Post", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("ma_bai_dang");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("ApproveStatus")
+                        .HasColumnType("bit")
+                        .HasColumnName("trang_thai_duyet");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("noi_dung");
+
+                    b.Property<DateTime>("CreateDay")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("ngay_tao");
+
+                    b.Property<DateTime?>("CreateUpdate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("ngay_cap_nhat");
+
+                    b.Property<int>("FreelancerId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("duong_dan_anh");
+
+                    b.Property<int>("LikeNumber")
+                        .HasColumnType("int")
+                        .HasColumnName("luot_thich");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ten_bai_dang");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FreelancerId");
+
+                    b.ToTable("bai_dang");
+                });
+
             modelBuilder.Entity("FreelancerPlatform.Domain.Entity.PotentialFreelancer", b =>
                 {
                     b.Property<int>("Id")
@@ -495,9 +717,8 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                     b.Property<int>("FreelancerId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ReportType")
-                        .HasColumnType("int")
-                        .HasColumnName("loai_bao_cao");
+                    b.Property<int>("UserReport")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -619,6 +840,37 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                     b.ToTable("ky_nang");
                 });
 
+            modelBuilder.Entity("FreelancerPlatform.Domain.Entity.SavePost", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreateDay")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("ngay_tao");
+
+                    b.Property<DateTime?>("CreateUpdate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("ngay_cap_nhat");
+
+                    b.Property<int>("FreelancerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PostId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FreelancerId");
+
+                    b.HasIndex("PostId");
+
+                    b.ToTable("bai_dang_luu");
+                });
+
             modelBuilder.Entity("FreelancerPlatform.Domain.Entity.ServiceForFreelancer", b =>
                 {
                     b.Property<int>("Id")
@@ -667,14 +919,6 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("ngay_cap_nhat");
 
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("Email");
-
-                    b.Property<string>("FullName")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("ho_ten");
-
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
@@ -686,7 +930,7 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit")
-                        .HasColumnName("trang_thai_hoat_dong");
+                        .HasColumnName("trang_thai_khoa");
 
                     b.Property<string>("UserName")
                         .IsRequired()
@@ -735,8 +979,12 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                         .HasColumnName("so_tien");
 
                     b.Property<string>("Content")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("noi_dung");
+
+                    b.Property<int>("ContractId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreateDay")
                         .HasColumnType("datetime2")
@@ -746,7 +994,18 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("ngay_cap_nhat");
 
+                    b.Property<int>("FreelancerId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit")
+                        .HasColumnName("trang_thai_giao_dich");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ContractId");
+
+                    b.HasIndex("FreelancerId");
 
                     b.ToTable("ma_giao_dich");
                 });
@@ -789,6 +1048,25 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                     b.Navigation("HubChat");
                 });
 
+            modelBuilder.Entity("FreelancerPlatform.Domain.Entity.Comment", b =>
+                {
+                    b.HasOne("FreelancerPlatform.Domain.Entity.Freelancer", "Freelancer")
+                        .WithMany("Comments")
+                        .HasForeignKey("FreelancerId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("FreelancerPlatform.Domain.Entity.Post", "Post")
+                        .WithMany("Comments")
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Freelancer");
+
+                    b.Navigation("Post");
+                });
+
             modelBuilder.Entity("FreelancerPlatform.Domain.Entity.FavoriteJob", b =>
                 {
                     b.HasOne("FreelancerPlatform.Domain.Entity.Freelancer", "Freelancer")
@@ -806,13 +1084,6 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                     b.Navigation("Freelancer");
 
                     b.Navigation("Job");
-                });
-
-            modelBuilder.Entity("FreelancerPlatform.Domain.Entity.Freelancer", b =>
-                {
-                    b.HasOne("FreelancerPlatform.Domain.Entity.SystemManagement", null)
-                        .WithMany("Freelancers")
-                        .HasForeignKey("SystemManagementId");
                 });
 
             modelBuilder.Entity("FreelancerPlatform.Domain.Entity.FreelancerCategory", b =>
@@ -867,10 +1138,6 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("FreelancerPlatform.Domain.Entity.SystemManagement", null)
-                        .WithMany("Jobs")
-                        .HasForeignKey("SystemManagementId");
-
                     b.Navigation("Category");
 
                     b.Navigation("Freelancer");
@@ -895,6 +1162,36 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                     b.Navigation("SKill");
                 });
 
+            modelBuilder.Entity("FreelancerPlatform.Domain.Entity.LikePost", b =>
+                {
+                    b.HasOne("FreelancerPlatform.Domain.Entity.Freelancer", "Freelancer")
+                        .WithMany()
+                        .HasForeignKey("FreelancerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FreelancerPlatform.Domain.Entity.Post", "Post")
+                        .WithMany()
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Freelancer");
+
+                    b.Navigation("Post");
+                });
+
+            modelBuilder.Entity("FreelancerPlatform.Domain.Entity.Notification", b =>
+                {
+                    b.HasOne("FreelancerPlatform.Domain.Entity.Freelancer", "Freelancer")
+                        .WithMany("Notifications")
+                        .HasForeignKey("FreelancerId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Freelancer");
+                });
+
             modelBuilder.Entity("FreelancerPlatform.Domain.Entity.Offer", b =>
                 {
                     b.HasOne("FreelancerPlatform.Domain.Entity.Freelancer", "Freelancer")
@@ -912,6 +1209,17 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                     b.Navigation("Freelancer");
 
                     b.Navigation("Job");
+                });
+
+            modelBuilder.Entity("FreelancerPlatform.Domain.Entity.Post", b =>
+                {
+                    b.HasOne("FreelancerPlatform.Domain.Entity.Freelancer", "Freelancer")
+                        .WithMany("Posts")
+                        .HasForeignKey("FreelancerId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Freelancer");
                 });
 
             modelBuilder.Entity("FreelancerPlatform.Domain.Entity.PotentialFreelancer", b =>
@@ -974,6 +1282,25 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                     b.Navigation("Role");
                 });
 
+            modelBuilder.Entity("FreelancerPlatform.Domain.Entity.SavePost", b =>
+                {
+                    b.HasOne("FreelancerPlatform.Domain.Entity.Freelancer", "Freelancer")
+                        .WithMany("SavePosts")
+                        .HasForeignKey("FreelancerId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("FreelancerPlatform.Domain.Entity.Post", "Post")
+                        .WithMany("SavePosts")
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Freelancer");
+
+                    b.Navigation("Post");
+                });
+
             modelBuilder.Entity("FreelancerPlatform.Domain.Entity.SystemManagementRole", b =>
                 {
                     b.HasOne("FreelancerPlatform.Domain.Entity.Role", "Role")
@@ -983,14 +1310,33 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                         .IsRequired();
 
                     b.HasOne("FreelancerPlatform.Domain.Entity.SystemManagement", "SystemManagement")
-                        .WithMany("SystemManagementRoles")
+                        .WithMany()
                         .HasForeignKey("SystemManagementId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Role");
 
                     b.Navigation("SystemManagement");
+                });
+
+            modelBuilder.Entity("FreelancerPlatform.Domain.Entity.Transaction", b =>
+                {
+                    b.HasOne("FreelancerPlatform.Domain.Entity.Contract", "Contract")
+                        .WithMany("Transactions")
+                        .HasForeignKey("ContractId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("FreelancerPlatform.Domain.Entity.Freelancer", "Freelancer")
+                        .WithMany("Transactions")
+                        .HasForeignKey("FreelancerId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Contract");
+
+                    b.Navigation("Freelancer");
                 });
 
             modelBuilder.Entity("FreelancerPlatform.Domain.Entity.Category", b =>
@@ -1000,11 +1346,18 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                     b.Navigation("Jobs");
                 });
 
+            modelBuilder.Entity("FreelancerPlatform.Domain.Entity.Contract", b =>
+                {
+                    b.Navigation("Transactions");
+                });
+
             modelBuilder.Entity("FreelancerPlatform.Domain.Entity.Freelancer", b =>
                 {
                     b.Navigation("Applies");
 
                     b.Navigation("Chats");
+
+                    b.Navigation("Comments");
 
                     b.Navigation("FavoriteJobs");
 
@@ -1012,13 +1365,21 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
 
                     b.Navigation("FreelancerSkills");
 
+                    b.Navigation("Notifications");
+
                     b.Navigation("Offers");
+
+                    b.Navigation("Posts");
 
                     b.Navigation("PotentialFreelancers");
 
                     b.Navigation("Reports");
 
                     b.Navigation("RequirementServiceByFreelancers");
+
+                    b.Navigation("SavePosts");
+
+                    b.Navigation("Transactions");
                 });
 
             modelBuilder.Entity("FreelancerPlatform.Domain.Entity.HubChat", b =>
@@ -1042,6 +1403,13 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                     b.Navigation("RolePermissions");
                 });
 
+            modelBuilder.Entity("FreelancerPlatform.Domain.Entity.Post", b =>
+                {
+                    b.Navigation("Comments");
+
+                    b.Navigation("SavePosts");
+                });
+
             modelBuilder.Entity("FreelancerPlatform.Domain.Entity.Role", b =>
                 {
                     b.Navigation("RolePermissions");
@@ -1059,15 +1427,6 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
             modelBuilder.Entity("FreelancerPlatform.Domain.Entity.ServiceForFreelancer", b =>
                 {
                     b.Navigation("RequirementServiceByFreelancers");
-                });
-
-            modelBuilder.Entity("FreelancerPlatform.Domain.Entity.SystemManagement", b =>
-                {
-                    b.Navigation("Freelancers");
-
-                    b.Navigation("Jobs");
-
-                    b.Navigation("SystemManagementRoles");
                 });
 #pragma warning restore 612, 618
         }

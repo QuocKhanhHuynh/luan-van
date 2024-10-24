@@ -13,6 +13,9 @@ namespace FreelancerPlatform.Application.Abstraction.Service
         Task<ServiceResult> CreateChat(ChatCreateRequest request);
         Task<ServiceResult> CheckAndCreateHubChat(HubChatCreateViewModel request);
         Task<ServiceResult> RecallInbox(int id);
+        Task<ServiceResult> UpdateSeenStatus(int id, int freelancerId);
+        Task<ServiceResult> UpdateAllSeenStatus(int id);
+        Task<int> CountChatUnSeen(int freelancerId);
         Task<Dictionary<KeyChatViewModel, List<ChatViewModel>>> GetAllChat(int freelancerId);
     }
 }

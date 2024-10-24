@@ -65,6 +65,33 @@ namespace FreelancerPlatform.Application.ServiceImplementions
             }
         }
 
+        public async Task<int> CountChatUnSeen(int freelancerId)
+        {
+            var count = 0;
+            var hubChats = await _hubChatRepository.GetAllAsync();
+            foreach (var hubChat in hubChats)
+            {
+                if (hubChat.FreelancerA == freelancerId || hubChat.FreelancerB == freelancerId)
+                {
+                    if (hubChat.FreelancerA == freelancerId)
+                    {
+                        if (hubChat.SeenStatusA == false)
+                        {
+                            count++;
+                        }
+                    }
+                    else
+                    {
+                        if (hubChat.SeenStatusB == false)
+                        {
+                            count++;
+                        }
+                    }
+                }
+            }
+            return count;
+        }
+
         public async Task<ServiceResult> CreateChat(ChatCreateRequest request)
         {
             try
@@ -90,7 +117,9 @@ namespace FreelancerPlatform.Application.ServiceImplementions
                 };
                 await _chatRepository.CreateAsync(chat);
                 await _unitOfWork.SaveChangeAsync();
-               
+
+                this.UpdateSeenStatus(hubChat.Id, request.FreelancerId);
+
 
                 return new ServiceResultInt()
                 {
@@ -139,6 +168,12 @@ namespace FreelancerPlatform.Application.ServiceImplementions
                 key.FirstNameB = freelanerB.FirstName;
                 key.LastNameB = freelanerB.LastName;
                 key.FreelancerB = hub.FreelancerB;
+
+                key.ImageUrlA = freelanerA.ImageUrl;
+                key.ImageUrlB = freelanerB.ImageUrl;
+
+                key.SeenFreelancerA = hub.SeenStatusA;
+                key.SeenFreelancerB = hub.SeenStatusB;
 
                 var chats = new List<ChatViewModel>();
                 foreach(var i  in chatHub)
@@ -194,6 +229,75 @@ namespace FreelancerPlatform.Application.ServiceImplementions
                 return new ServiceResult()
                 {
                     Message = "Thu hồi tin thành công",
+                    Status = StatusResult.Success,
+                };
+            }
+            catch (Exception ex)
+            {
+                _unitOfWork.Cancel();
+                _logger.LogError(ex.InnerException.Message);
+
+                return new ServiceResultInt()
+                {
+                    Message = $"Lỗi hệ thống, ({ex.InnerException.Message})",
+                    Status = StatusResult.SystemError
+                };
+            }
+        }
+
+        public async Task<ServiceResult> UpdateAllSeenStatus(int id)
+        {
+            try
+            {
+                var hubChat = await _hubChatRepository.GetByIdAsync(id);
+               
+                hubChat.SeenStatusA = true;
+                hubChat.SeenStatusB = true;
+                
+                _hubChatRepository.Update(hubChat);
+                await _unitOfWork.SaveChangeAsync();
+
+                return new ServiceResult()
+                {
+                    Message = "Cập nhật trạng thái xem thành công",
+                    Status = StatusResult.Success,
+                };
+            }
+            catch (Exception ex)
+            {
+                _unitOfWork.Cancel();
+                _logger.LogError(ex.InnerException.Message);
+
+                return new ServiceResultInt()
+                {
+                    Message = $"Lỗi hệ thống, ({ex.InnerException.Message})",
+                    Status = StatusResult.SystemError
+                };
+            }
+        }
+
+        public async Task<ServiceResult> UpdateSeenStatus(int id, int freelancerId)
+        {
+
+            try
+            {
+                var hubChat = await _hubChatRepository.GetByIdAsync(id);
+                if (hubChat.FreelancerA == freelancerId)
+                {
+                    hubChat.SeenStatusA = true;
+                    hubChat.SeenStatusB = false;
+                }
+                else
+                {
+                    hubChat.SeenStatusB = true;
+                    hubChat.SeenStatusA = false;
+                }
+                _hubChatRepository.Update(hubChat);
+                await _unitOfWork.SaveChangeAsync();
+
+                return new ServiceResult()
+                {
+                    Message = "Cập nhật trạng thái xem thành công",
                     Status = StatusResult.Success,
                 };
             }

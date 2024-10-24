@@ -23,7 +23,11 @@ namespace FreelancerPlatform.Application.Dtos.Freelancer
         public string About { get; set; }
         public int? RateHour { get; set; }
         public bool PaymentVerification { get; set; }
+        public double Point {  get; set; }
+        public int ReviewQuanlity { get; set; }
+        public int ContractQuanlity { set; get; }
         public List<CategoryQuickViewModel> Categories { get; set; }
         public List<SkillQuickViewModel> Skills { get; set; }
     }
 }
+

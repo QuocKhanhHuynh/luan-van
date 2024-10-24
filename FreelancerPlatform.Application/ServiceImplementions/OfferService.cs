@@ -7,6 +7,7 @@ using FreelancerPlatform.Application.Dtos.Common;
 using FreelancerPlatform.Application.Dtos.Freelancer;
 using FreelancerPlatform.Application.Dtos.Job;
 using FreelancerPlatform.Application.Dtos.Offer;
+using FreelancerPlatform.Application.Dtos.Skill;
 using FreelancerPlatform.Application.ServiceImplementions.Base;
 using FreelancerPlatform.Domain.Constans;
 using FreelancerPlatform.Domain.Entity;
@@ -29,10 +30,13 @@ namespace FreelancerPlatform.Application.ServiceImplementions
 		private readonly ICategoryRepository _categoryRepository;
         private readonly IJobRepository _jobRepository;
         private readonly IApplyRepository _applyRepository;
-		public OfferService(IUnitOfWork unitOfWork, IMapper mapper, ILogger<Offer> logger, IOfferRepository offerRepository, IFreelancerRepository freelancerRepository
-            , IFreelancerCategoryRepository freelancerCategoryRepository ,
+        private readonly IJobSkillRepository _jobSkillRepository;
+        private readonly ISkillRepository _skillRepository;
+        private readonly IContractRepository _contractRepository;
+        public OfferService(IUnitOfWork unitOfWork, IMapper mapper, ILogger<Offer> logger, IOfferRepository offerRepository, IFreelancerRepository freelancerRepository
+            , IFreelancerCategoryRepository freelancerCategoryRepository , IContractRepository contractRepository,
 			ITransactionRepository transactionRepository, ICategoryRepository categoryRepository, IJobRepository jobRepository,
-            IApplyRepository applyRepository) : base(unitOfWork, mapper, logger)
+            IApplyRepository applyRepository, IJobSkillRepository jobSkillRepository, ISkillRepository skillRepository) : base(unitOfWork, mapper, logger)
         {
             _offerRepository = offerRepository;
             _freelancerRepository = freelancerRepository;
@@ -41,13 +45,22 @@ namespace FreelancerPlatform.Application.ServiceImplementions
             _categoryRepository = categoryRepository;
             _jobRepository = jobRepository;
             _applyRepository = applyRepository;
+            _jobSkillRepository = jobSkillRepository;
+            _skillRepository = skillRepository;
+            _contractRepository = contractRepository;
+        }
+
+        public async Task<bool> CheckIsOffer(int jobId, int freelancerId)
+        {
+            var isOffer = (await _offerRepository.GetAllAsync()).Where(x => x.JobId == jobId && x.FreelancerOfferId == freelancerId).Any();
+            return isOffer;
         }
 
         public async Task<ServiceResult> CreateOfferAsync(OfferCreateRequest request)
         {
             try
             {
-                var offer = (await _offerRepository.GetAllAsync()).FirstOrDefault(x => x.FreelancerOfferId == request.FreelancerOfferId && x.JobId == request.JobId && x.FreelancerId == request.FreelancerId );
+                var offer = (await _offerRepository.GetAllAsync()).FirstOrDefault(x => x.FreelancerOfferId == request.FreelancerOfferId && x.JobId == request.JobId );
                 if (offer != null)
                 {
                     return new ServiceResult()
@@ -85,9 +98,90 @@ namespace FreelancerPlatform.Application.ServiceImplementions
             }
         }
 
-        public Task<ServiceResult> DeleteOfferAsync(int id)
+        public async Task<ServiceResult> DeleteOfferAsync(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Offer entity = (await _offerRepository.GetAllAsync()).FirstOrDefault(x => x.Id == id);
+                if (entity == null)
+                {
+                    return new ServiceResult()
+                    {
+                        Message = "Không tìm thấy thônng tin",
+                        Status = StatusResult.ClientError
+                    };
+                }
+                _offerRepository.Delete(entity);
+                await _unitOfWork.SaveChangeAsync();
+
+                return new ServiceResult()
+                {
+                    Message = "Xoá tin thành công",
+                    Status = StatusResult.Success
+                };
+            }
+            catch (Exception ex)
+            {
+                _unitOfWork.Cancel();
+                _logger.LogError(ex.InnerException.Message);
+
+                return new ServiceResult()
+                {
+                    Message = $"Lỗi hệ thống, ({ex.InnerException.Message})",
+                    Status = StatusResult.SystemError
+                };
+            }
+        }
+
+        public async Task<List<OfferQuicckViewModel>> GetAllOffer()
+        {
+            var offers = (await _offerRepository.GetAllAsync());
+            var jobs = (await _jobRepository.GetAllAsync());
+            var categories = (await _categoryRepository.GetAllAsync());
+            var jobSkills = await _jobSkillRepository.GetAllAsync();
+            var skills = await _skillRepository.GetAllAsync();
+            var freelancers = await _freelancerRepository.GetAllAsync();
+            var contracts = await _contractRepository.GetAllAsync();
+            var jobContract = contracts.Select(x => x.ProjectId).ToList();
+
+
+            var query = from j in jobs
+                        join c in categories on j.CategoryId equals c.Id
+                        join o in offers on j.Id equals o.JobId
+                        join f in freelancers on o.FreelancerOfferId equals f.Id
+                        select new { j, c, o, f };
+
+            var queryJobSkill = from j in jobSkills
+                                join s in skills on j.SkillId equals s.Id
+                                select new { j, s };
+
+            return query.Select(x => new OfferQuicckViewModel
+            {
+                Id = x.j.Id,
+                Category = new CategoryQuickViewModel() { Id = x.c.Id, Name = x.c.Name },
+
+                CreateDay = x.j.CreateDay,
+                FreelancerId = x.f.Id,
+                MaxDeal = x.j.MaxDeal.GetValueOrDefault(),
+                MinDeal = x.j.MinDeal,
+                Name = x.j.Name,
+                Priority = x.j.Priority,
+                Description = x.j.Description,
+                JobType = x.j.JobType,
+                SalaryType = x.j.SalaryType,
+                IsHiden = x.j.IsHiden,
+                FirstName = x.f.FirstName,
+                ImageUrl = x.f.ImageUrl,
+                LastName = x.f.LastName,
+                RecruiterId = x.o.FreelancerId,
+                OfferId = x.o.Id,
+                InContract = jobContract.Contains(x.j.Id) ? true : false,
+                Skills = queryJobSkill.Where(y => y.j.JobId == x.j.Id).Select(y => new SkillQuickViewModel()
+                {
+                    Id = y.s.Id,
+                    Name = y.s.Name
+                }).ToList()
+            }).ToList();
         }
 
         /*public async Task<ServiceResult> CreateOfferAsync(OfferCreateRequest request)

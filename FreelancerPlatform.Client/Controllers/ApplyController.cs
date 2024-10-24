@@ -3,6 +3,7 @@ using FreelancerPlatform.Application.Abstraction.Service;
 using FreelancerPlatform.Application.Dtos.Apply;
 using FreelancerPlatform.Application.Dtos.Common;
 using FreelancerPlatform.Application.Extendsions;
+using FreelancerPlatform.Application.ServiceImplementions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -51,6 +52,17 @@ namespace FreelancerPlatform.Client.Controllers
             }
             var applyOfFreelancer = await _applyService.GetApplyAsync(response.Result);
             return Ok(applyOfFreelancer);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteApply(int id)
+        {
+            var response = await _applyService.DeleteApplyAsync(id);
+            if (response.Status != StatusResult.Success)
+            {
+                return BadRequest();
+            }
+            return Ok();
         }
     }
 }

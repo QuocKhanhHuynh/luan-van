@@ -16,11 +16,9 @@ namespace FreelancerPlatform.Domain.Entity
         [Column("noi_dung")]
         public string Content { get; set; }
 
-        [Required]
-        [Column("loai_bao_cao")]
-        public int ReportType { get; set; }
-
         public Freelancer Freelancer { get; set; }
         public int FreelancerId { get; set; }
+
+        public int UserReport { get; set; }
     }
 }

@@ -1,6 +1,35 @@
 ﻿@{
-    ViewData["Title"] = "Private Chat";
+    ViewData["Title"] = "Transaction";
 }
+
+<form asp-controller="Transaction" asp-action="CreateTransaction" method="post">
+
+    <button id="checkout">Thanh toán</button>
+
+</form>
+
+@section script {
+    <script>
+        /*$(document).ready(function () {
+            $(document).on('click', '#checkout', function () {
+                $.ajax({
+                    url: '/Transaction/CreateTransaction',
+                    type: 'POST',
+                    success: function (response) {
+                        // Xử lý phản hồi thành công
+                    },
+                    error: function (xhr, status, error) {
+                        // Xử lý lỗi
+                    }
+                });
+            });
+        });*/
+    </script>
+}
+
+<!--
+
+
 
 <h2>Private Chat</h2>
 
@@ -48,3 +77,6 @@
         event.preventDefault();
     });
 </script>
+
+
+-->

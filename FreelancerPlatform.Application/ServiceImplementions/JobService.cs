@@ -31,10 +31,11 @@ namespace FreelancerPlatform.Application.ServiceImplementions
         private readonly IApplyRepository _applyRepository;
         private readonly IJobSkillRepository _jobSkillRepository;
         private readonly ISkillRepository _skillRepository;
-        
-       
+        private readonly IContractRepository _contractRepository;
+
+
         public JobService(IUnitOfWork unitOfWork, IMapper mapper, ILogger<Job> logger, IJobRepository jobRepository, 
-            IFavoriteJobRepository favoriteJobRepository 
+            IFavoriteJobRepository favoriteJobRepository, IContractRepository contractRepository
             , ITransactionRepository transactionRepository, ICategoryRepository categoryRepository, ISkillRepository skillRepository,
             IApplyRepository applyRepository, IJobSkillRepository jobSkillRepository) : base(unitOfWork, mapper, logger)
         {
@@ -46,6 +47,7 @@ namespace FreelancerPlatform.Application.ServiceImplementions
             _applyRepository = applyRepository;
             _jobSkillRepository = jobSkillRepository;
             _skillRepository = skillRepository;
+            _contractRepository = contractRepository;
         }
 
 
@@ -142,6 +144,9 @@ namespace FreelancerPlatform.Application.ServiceImplementions
             var jobSkills =  await _jobSkillRepository.GetAllAsync();
             var skills = await _skillRepository.GetAllAsync();
 
+            var contracts = await _contractRepository.GetAllAsync();
+            var jobContract = contracts.Select(x => x.ProjectId).ToList();
+
             var query = from j in jobs 
                         join c in categories on j.CategoryId equals c.Id
                         select new {j, c};
@@ -165,6 +170,7 @@ namespace FreelancerPlatform.Application.ServiceImplementions
                 JobType = x.j.JobType,
                 SalaryType = x.j.SalaryType,
                 IsHiden =  x.j.IsHiden,
+                InContract = jobContract.Contains(x.j.Id) ? true : false,
                 Skills = queryJobSkill.Where(y => y.j.JobId == x.j.Id).Select(y => new SkillQuickViewModel()
                 {
                     Id = y.s.Id,

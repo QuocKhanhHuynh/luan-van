@@ -81,12 +81,19 @@
                                         <div style="display: flex; justify-content: space-between; align-items: center;">
                                             <div>
                                                 <h4 style="margin: 0; font-size: 16px;">@i.LastName @i.FirstName</h4>
-                                                <div style="color: gold; font-size: 16px; display: inline-block;">★★★★★</div>
-                                                <div style="font-size: 12px; display: inline-block; margin-left: 5px;">100 <i class="fa fa-pen"></i></div>
+                                                <div style="color: gold; font-size: 16px; display: inline-block;">
+                                            @{
+                                                for(var s = 1; s<= (int)i.Point; s++)
+                                                {
+                                                    <span>★</span>
+                                                }
+                                            }
+                                                </div>
+                                                <div style="font-size: 12px; display: inline-block; margin-left: 5px;">@i.ReviewQuanlity <i class="fa fa-pen"></i></div>
 
                                                 <!-- New fields for contracts and rating points -->
-                                                <div style="font-size: 12px; display: inline-block; margin-left: 10px;">| 50  <i class="fa fa-file"></i></div>
-                                                <div style="font-size: 12px; display: inline-block; margin-left: 10px;">| 4.9 <i class="fa fa-star"></i></div>
+                                                <div style="font-size: 12px; display: inline-block; margin-left: 10px;">| @i.ContractQuanlity  <i class="fa fa-file"></i></div>
+                                        <div style="font-size: 12px; display: inline-block; margin-left: 10px;">| @i.Point <i class="fa fa-star"></i></div>
 
                                                 <p style="font-size: 14px; margin: 5px 0;">@(string.Join(" - ", i.Categories.Select(x => x.Name).ToList()))</p>
                                             </div>
@@ -133,7 +140,7 @@
 
 
                                 <div style="display: flex; flex-direction: row; gap: 10px; position: absolute; bottom: 15px; right: 15px;">
-                                    <button style="padding: 8px 15px; background-color: #fff; color: #0078D4; border: solid;  border-width: 1px; border-radius: 5px; border-color: #0078D4; cursor: pointer;">Liên hệ</button>
+                            <button style="padding: 8px 15px; background-color: #fff; color: #0078D4; border: solid;  border-width: 1px; border-radius: 5px; border-color: #0078D4; cursor: pointer;"><a href="~/tin-nhan?freelancerB=@i.Id">Liên hệ</a></button>
                                      <button style="padding: 8px 15px; background-color: #0078D4; color: #fff; border: none; border-radius: 5px; cursor: pointer;"><a href="~/chi-tiet-freelancer/@i.Id">Chi tiết</a></button>
                                 </div>
                             </div>

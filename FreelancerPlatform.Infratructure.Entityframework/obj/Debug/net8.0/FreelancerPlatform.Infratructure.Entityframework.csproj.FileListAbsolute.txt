@@ -37,3 +37,4 @@ D:\Luan van\src1\FreelancerPlatform\FreelancerPlatform.Infratructure.Entityframe
 D:\Luan van\src1\FreelancerPlatform\FreelancerPlatform.Infratructure.Entityframework\obj\Debug\net8.0\FreelancerPlatform.Infratructure.Entityframework.pdb
 D:\Luan van\src1\FreelancerPlatform\FreelancerPlatform.Infratructure.Entityframework\obj\Debug\net8.0\FreelancerPlatform.Infratructure.Entityframework.genruntimeconfig.cache
 D:\Luan van\src1\FreelancerPlatform\FreelancerPlatform.Infratructure.Entityframework\obj\Debug\net8.0\ref\FreelancerPlatform.Infratructure.Entityframework.dll
+D:\Luan van\src1\FreelancerPlatform\FreelancerPlatform.Infratructure.Entityframework\obj\Debug\net8.0\FreelancerPlatform.Infratructure.Entityframework.sourcelink.json

@@ -26,8 +26,13 @@ namespace FreelancerPlatform.Client.Controllers
         private readonly IJobService _jobService;
         private readonly IFavoriteJobService _favoriteJobService;
         private readonly IApplyService _applyService;
+        private readonly IOfferService _offerService;
+        private readonly IContractService _contractService;
+        private readonly IPostService _postService;
+       
         public FreelancerController(IFreelancerService freelancerService, ICategoryService categoryService, ISkillService skillService, IStorageService storageService,
-            IPotientSerivice petientSerivice, IJobService jobService, IFavoriteJobService favoriteJobService, IApplyService applyService)
+            IPotientSerivice petientSerivice, IJobService jobService, IFavoriteJobService favoriteJobService, IApplyService applyService, IOfferService offerService
+            , IContractService contractService, IPostService postService)
         {
             _freelancerService = freelancerService;
             _categoryService = categoryService;
@@ -37,12 +42,17 @@ namespace FreelancerPlatform.Client.Controllers
             _jobService = jobService;
             _favoriteJobService = favoriteJobService;
             _applyService = applyService;
+            _offerService = offerService;
+            _contractService = contractService;
+            _postService = postService;
         }
 
         [Authorize]
         public async Task<IActionResult> Profile()
         {
             var freelancer = await _freelancerService.GetFreelancerAsync(User.GetUserId());
+            var reviewOfFreelancer = await _contractService.GetReviewOfFreelancer(User.GetUserId());
+            ViewBag.ReviewOfFreelancer = reviewOfFreelancer;
             return View(freelancer);
         }
 
@@ -74,7 +84,11 @@ namespace FreelancerPlatform.Client.Controllers
            
             var potients = await _petientSerivice.GetAllPotientFreelancerAsync(User.GetUserId());//.Where(x => x.Id != User.GetUserId()).ToList();
             var jobPosts = (await _jobService.GetAllJobsAsync()).Where(x => x.FreelancerId == User.GetUserId()).ToList();
-            var navigateHires = new NavigateHireViewModel() { Potients = potients, JobPosts = jobPosts };
+            var offers = (await _offerService.GetAllOffer()).Where(x => x.RecruiterId == User.GetUserId()).ToList();
+            var contracts = await _contractService.GetContractOfRecruiter(User.GetUserId());
+
+
+            var navigateHires = new NavigateHireViewModel() { Potients = potients, JobPosts = jobPosts, OfferJobs = offers, Contracts = contracts };
             
             
 
@@ -87,7 +101,12 @@ namespace FreelancerPlatform.Client.Controllers
 
             var favoriteJobs = await _favoriteJobService.GetFavoriteJobOfFreelancerSecondAsync(User.GetUserId());
             var jobApplies = (await _applyService.GetApplyByFreelancerAsync(User.GetUserId()));
-            var navigateFreelancers = new NavigateFreelancerViewModel() { FavoriteJobs = favoriteJobs, JobApplies = jobApplies };
+            var offers = (await _offerService.GetAllOffer()).Where(x => x.FreelancerId == User.GetUserId()).ToList();
+            var contracts = await _contractService.GetContractOfFreelancer(User.GetUserId());
+            var posts = await _postService.GetPostByFreelancerId(User.GetUserId());
+            var savePost = await _postService.GetSavePostByFreelancerId(User.GetUserId());
+
+            var navigateFreelancers = new NavigateFreelancerViewModel() { FavoriteJobs = favoriteJobs, JobApplies = jobApplies, OfferJobs = offers, Contracts = contracts, Posts = posts, SavePosts = savePost };
             var FavoriteJobOfFreelancers = await _favoriteJobService.GetFavoriteJobOfFreelancerAsync(User.GetUserId());
             ViewBag.FavoriteJobOfFreelancers = FavoriteJobOfFreelancers;
 
@@ -149,12 +168,25 @@ namespace FreelancerPlatform.Client.Controllers
             return Ok();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> DeleteOffer(int id)
+        {
+            var response = await _offerService.DeleteOfferAsync(id);
+            if (response.Status != StatusResult.Success)
+            {
+                return BadRequest();
+            }
+            return Ok();
+        }
+
         public async Task<IActionResult> GetFreelancerDetail(int id)
         {
             var freelancer = await _freelancerService.GetFreelancerAsync(id);
 
             var jobs = await _jobService.GetAllJobsAsync();
             var JobOffFreelancer = jobs.Where(x => x.FreelancerId == User.GetUserId());
+            var reviewOfFreelancer = await _contractService.GetReviewOfFreelancer(id);
+            ViewBag.ReviewOfFreelancer = reviewOfFreelancer;
             ViewBag.JobOfFreelancer = JobOffFreelancer;
             ViewBag.PotientOfFreelancer = new List<int>();
             if (User.Identity.IsAuthenticated)

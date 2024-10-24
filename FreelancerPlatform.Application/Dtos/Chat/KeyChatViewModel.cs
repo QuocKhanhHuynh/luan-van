@@ -15,5 +15,9 @@ namespace FreelancerPlatform.Application.Dtos.Chat
         public int FreelancerB { get; set; }
         public string LastNameB { get; set; }
         public string FirstNameB { get; set; }
+        public string ImageUrlA { get; set; }
+        public string ImageUrlB { get; set; }
+        public bool SeenFreelancerA { get; set; }
+        public bool SeenFreelancerB { get; set; }
     }
 }

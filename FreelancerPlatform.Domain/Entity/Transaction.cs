@@ -17,6 +17,15 @@ namespace FreelancerPlatform.Domain.Entity
         public int Amount { get; set; }
 
         [Column("noi_dung")]
-        public string? Content { get; set; }
+        public string Content { get; set; }
+
+        [Column("trang_thai_giao_dich")]
+        public bool Status { get; set; } = false;
+
+        public int FreelancerId { get; set; }
+        public Freelancer Freelancer { get; set; }
+
+        public int ContractId { get; set; }
+        public Contract Contract { get; set; }
     }
 }

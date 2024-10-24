@@ -28,7 +28,7 @@ body {
 
 body,
 p {
-  font-family: "Open Sans", sans-serif;
+  /*font-family: "Open Sans", sans-serif;*/
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased !important;
   line-height: 26px;
@@ -43,7 +43,7 @@ h5,
 h6 {
   color: #212121;
   font-weight: 700;
-  font-family: "Montserrat", sans-serif;
+  /*font-family: "Montserrat", sans-serif;*/
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased !important;
 }
@@ -406,7 +406,7 @@ blockquote.text-right:before {
 }
 blockquote:before {
   content: "\f10d";
-  font-family: "Font Awesome 5 Free";
+  /*font-family: "Font Awesome 5 Free";*/
   position: absolute;
   font-size: 28px;
   color: #E5E5E5;
@@ -445,7 +445,7 @@ cite {
 }
 
 .list-round li:before {
-  font-family: "Font Awesome 5 Free";
+  /*font-family: "Font Awesome 5 Free";*/
   content: "\f138";
   margin-right: 10px;
   color: #0078D4; /* #ffb600;*/
@@ -457,7 +457,7 @@ cite {
 }
 
 ul.list-arrow li:before {
-  font-family: "Font Awesome 5 Free";
+  /*font-family: "Font Awesome 5 Free";*/
   content: "\f105";
   margin-right: 10px;
   color: #0078D4; /* #ffb600;*/
@@ -466,7 +466,7 @@ ul.list-arrow li:before {
 }
 
 ul.list-check li:before {
-  font-family: "Font Awesome 5 Free";
+  /*font-family: "Font Awesome 5 Free";*/
   content: "\f00c";
   margin-right: 10px;
   color: #0078D4; /* #ffb600;*/
@@ -509,7 +509,7 @@ a[href^=tel] {
   font-weight: 700;
   text-transform: uppercase;
   color: #fff;
-  font-family: "Montserrat", sans-serif;
+  /*font-family: "Montserrat", sans-serif;*/
   transition: 350ms;
   font-size: 14px;
 }
@@ -806,7 +806,7 @@ ul.top-info-box li .info-box span.info-icon {
 
 ul.top-info-box li .info-box .info-box-content {
   display: inline-block;
-  font-family: "Montserrat", sans-serif;
+  /*font-family: "Montserrat", sans-serif;*/
   flex-direction: column;
 }
 
@@ -947,7 +947,7 @@ ul.navbar-nav > li > a:after {
 }
 
 ul.navbar-nav > li > a {
-  font-family: "Montserrat", sans-serif;
+  /*font-family: "Montserrat", sans-serif;*/
   color: #fff !important;
   text-rendering: optimizeLegibility;
   font-weight: 700 !important;
@@ -980,7 +980,7 @@ ul.navbar-nav > li > a {
 .dropdown-submenu > a:after {
   display: block;
   content: "\f105";
-  font-family: "Font Awesome 5 Free";
+  /*font-family: "Font Awesome 5 Free";*/
   float: right;
   margin-top: 0;
   margin-right: -5px;
@@ -1032,7 +1032,7 @@ ul.navbar-nav > li > a {
 }
 
 .dropdown-menu li a {
-  font-family: "Montserrat", sans-serif;
+  /*font-family: "Montserrat", sans-serif;*/
   display: block;
   font-size: 12px;
   text-transform: uppercase;
@@ -1550,7 +1550,7 @@ ul.navbar-nav > li.header-get-a-quote:hover > a:after {
 }
 
 .featured-tab .nav-tabs > li > a {
-  font-family: "Roboto Slab", serif;
+ /* font-family: "Roboto Slab", serif;*/
   background: #272d33;
   color: #fff;
   text-shadow: none;
@@ -2072,7 +2072,7 @@ ul.navbar-nav > li.header-get-a-quote:hover > a:after {
   padding-bottom: 10px;
 }
 .accordion-group .card-header .btn:before {
-  font-family: "Font Awesome 5 Free";
+  /*font-family: "Font Awesome 5 Free";*/
   position: absolute;
   z-index: 0;
   font-size: 14px;
@@ -2150,7 +2150,7 @@ ul.navbar-nav > li.header-get-a-quote:hover > a:after {
 
 .quote-item .quote-text:before {
   content: "\f10d";
-  font-family: "Font Awesome 5 Free";
+  /*font-family: "Font Awesome 5 Free";*/
   position: absolute;
   font-size: 30px;
   left: 0;

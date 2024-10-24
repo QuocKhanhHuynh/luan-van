@@ -43,8 +43,8 @@ namespace FreelancerPlatform.Domain.Entity
         [Column("an_cong_viec")]
         public bool IsHiden { get; set; } = false;
 
-       
 
+        //public List<Contract> Contracts { get; set; }
         public List<Apply> Applies { get; set; }
         public List<FavoriteJob> FavoriteJobs { get; set; }
         public List<Offer> Offers { get; set; }

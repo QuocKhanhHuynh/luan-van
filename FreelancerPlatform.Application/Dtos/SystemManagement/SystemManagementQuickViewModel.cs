@@ -12,6 +12,8 @@ namespace FreelancerPlatform.Application.Dtos.SystemManagement
     {
         public int Id { get; set; }
         public string UserName { get; set; }
-        public bool Status { get; set; }   
+        public string PhoneNumber { get; set; }
+        public DateTime CreateDay { get; set; }   
+        public bool Status { get; set; }
     }
 }

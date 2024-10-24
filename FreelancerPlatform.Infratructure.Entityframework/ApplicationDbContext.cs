@@ -54,7 +54,7 @@ namespace FreelancerPlatform.Infratructure.Entityframework
 
 
             builder.Entity<SystemManagementRole>().HasKey(x => new {x.SystemManagementId, x.RoleId});
-            builder.Entity<SystemManagementRole>().HasOne(x => x.SystemManagement).WithMany(x => x.SystemManagementRoles).HasForeignKey(x => x.SystemManagementId).OnDelete(DeleteBehavior.NoAction);
+          //  builder.Entity<SystemManagementRole>().HasOne(x => x.SystemManagement).WithMany(x => x.SystemManagementRoles).HasForeignKey(x => x.SystemManagementId).OnDelete(DeleteBehavior.NoAction);
             builder.Entity<SystemManagementRole>().HasOne(x => x.Role).WithMany(x => x.SystemManagementRoles).HasForeignKey(x => x.RoleId).OnDelete(DeleteBehavior.NoAction);
 
 			builder.Entity<FreelancerSkill>().HasKey(x => new { x.FreelancerId, x.SkillId });
@@ -63,6 +63,21 @@ namespace FreelancerPlatform.Infratructure.Entityframework
 
             builder.Entity<Chat>().HasOne(x => x.HubChat).WithMany(x => x.Chats).HasForeignKey(x => x.HubChatId).OnDelete(DeleteBehavior.NoAction);
             builder.Entity<Chat>().HasOne(x => x.Freelancer).WithMany(x => x.Chats).HasForeignKey(x => x.FreelancerId).OnDelete(DeleteBehavior.NoAction);
+
+            builder.Entity<Notification>().HasOne(x => x.Freelancer).WithMany(x => x.Notifications).HasForeignKey(x => x.FreelancerId).OnDelete(DeleteBehavior.NoAction);
+
+            builder.Entity<Transaction>().HasOne(x => x.Contract).WithMany(x => x.Transactions).HasForeignKey(x => x.ContractId).OnDelete(DeleteBehavior.NoAction);
+            builder.Entity<Transaction>().HasOne(x => x.Freelancer).WithMany(x => x.Transactions).HasForeignKey(x => x.FreelancerId).OnDelete(DeleteBehavior.NoAction);
+
+            builder.Entity<Post>().HasOne(x => x.Freelancer).WithMany(x => x.Posts).HasForeignKey(x => x.FreelancerId).OnDelete(DeleteBehavior.NoAction);
+
+            builder.Entity<Comment>().HasOne(x => x.Freelancer).WithMany(x => x.Comments).HasForeignKey(x => x.FreelancerId).OnDelete(DeleteBehavior.NoAction);
+            builder.Entity<Comment>().HasOne(x => x.Post).WithMany(x => x.Comments).HasForeignKey(x => x.PostId).OnDelete(DeleteBehavior.NoAction);
+
+            builder.Entity<SavePost>().HasOne(x => x.Post).WithMany(x => x.SavePosts).HasForeignKey(x => x.PostId).OnDelete(DeleteBehavior.NoAction);
+            builder.Entity<SavePost>().HasOne(x => x.Freelancer).WithMany(x => x.SavePosts).HasForeignKey(x => x.FreelancerId).OnDelete(DeleteBehavior.NoAction);
+
+            // builder.Entity<Contract>().HasOne(x => x.Job).WithMany(x => x.Contracts).HasForeignKey(x => x.JobId).OnDelete(DeleteBehavior.NoAction);
 
 
             base.OnModelCreating(builder);
@@ -84,5 +99,11 @@ namespace FreelancerPlatform.Infratructure.Entityframework
         public DbSet<ServiceForFreelancer> ServiceForFreelancers { get; set; }
         public DbSet<SystemManagement> SystemManagements { get; set; }
 		public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<Contract> Contracts { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<SavePost> SavePosts { get; set; }
+        public DbSet<LikePost> LikePosts { get; set; }
     }
 }

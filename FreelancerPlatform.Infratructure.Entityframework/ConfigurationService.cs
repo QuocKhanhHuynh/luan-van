@@ -46,6 +46,12 @@ namespace FreelancerPlatform.Infratructure.Entityframework
             services.AddTransient<IJobSkillRepository, JobSkillRepository>();
             services.AddTransient<IChatRepository, ChatRepository>();
             services.AddTransient<IHubChatRepository, HubChatRepository>();
+            services.AddTransient<IContractRepository, ContractRepository>();
+            services.AddTransient<INotificationRepository, NotificationRepository>();
+            services.AddTransient<ICommentRepository, CommentRepository>();
+            services.AddTransient<IPostRepository, PostRepository>();
+            services.AddTransient<ISavePostRepository, SavePostRepository>();
+            services.AddTransient<ILikePostRepository, LikePostRepository>();
 
             return services;
         }

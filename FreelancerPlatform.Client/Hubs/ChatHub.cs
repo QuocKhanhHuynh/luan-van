@@ -4,10 +4,22 @@ using System.Threading.Tasks;
 public class ChatHub : Hub
 {
     // Phương thức gửi tin nhắn đến một người dùng cụ thể
-    public async Task SendMessageToUser(string userId, string hubChatId, string message)
+    /*public async Task SendMessageToUser(string userId, string hubChatId, string message)
     {
         await Clients.User(userId).SendAsync("ReceiveMessage", userId, hubChatId, message, DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
        
+    }*/
+
+    public async Task SendMessageToUser(string userId, string hubChatId, string message, string imageUrl, string lastName, string firstName)
+    {
+        //await Clients.User(userId).SendAsync("ReceiveChatCount", userId);
+        await Clients.User(userId).SendAsync("ReceiveMessage", userId, hubChatId, message, DateTime.Now.ToString("yyyy-MM-dd HH:mm"), imageUrl, lastName, firstName);
+        await Clients.User(userId).SendAsync("ReceiveChatCount", userId);
+    }
+
+    public async Task SendNotifyToUser(string userId, string content)
+    {
+        await Clients.User(userId).SendAsync("ReceiveNotify", content, DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
     }
 
     public async Task SendMessage(string message)

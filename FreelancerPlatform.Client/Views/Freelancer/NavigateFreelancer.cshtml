@@ -55,8 +55,8 @@
                     </li>
                     <li style="margin-bottom: 10px;">
 
-                        <span style="color: #000;"><i class="fa fa-paper-plane"></i></span>
-                        <a id="invite-mode" href="#" style="color: #000; text-decoration: none;">Dự án được mời</a>
+                        <span id="span-offer-job-mode-router" style="color: #000;"><i class="fa fa-paper-plane"></i></span>
+                        <a id="offer-job-mode-router" href="#" style="color: #000; text-decoration: none;">Dự án được mời</a>
                     </li>
                 </ul>
             </div>
@@ -71,8 +71,24 @@
                     </li>
                     <li style="margin-bottom: 10px;">
 
-                        <span style="color: #000;"><i class="fa fa-briefcase"></i></span>
-                        <a id="contract-mode" href="#" style="color: #000; text-decoration: none;">Hợp đồng</a>
+                        <span id="span-contract-mode-router" style="color: #000;"><i class="fa fa-briefcase"></i></span>
+                        <a id="contract-mode-router" href="#" style="color: #000; text-decoration: none;">Hợp đồng</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <div style="font-size: 14px; font-weight: bold; margin-bottom: 10px;">Cộng đồng</div>
+                <ul style="list-style-type: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px;">
+
+                        <span id="span-community-post-create-mode-router" style="color: #000;"><i class="fa fa-plus"></i></span>
+                        <a id="community-post-create-mode-router" href="#" style="color: #000; text-decoration: none;">Bài đăng</a>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+
+                        <span id="span-community-save-post-mode-router" style="color: #000;"><i class="fa fa-bookmark"></i></span>
+                        <a id="community-save-post-mode-router" href="#" style="color: #000; text-decoration: none;">Bài dăng đã lưu</a>
                     </li>
                 </ul>
             </div>
@@ -94,15 +110,23 @@
                                             <div style="display: flex; align-items: center;">
                                                 <h4 style="margin: 0; font-size: 16px;">@i.Name</h4>
                                                 @{
-                                                    if (i.IsHiden)
+                                                    if (!i.InContract)
                                                     {
-                                                        <span style="font-size: 12px; color: gray; margin-left: 10px;">Đã ẩn</span>
+                                                        if (i.IsHiden)
+                                                        {
+                                                            <span style="font-size: 12px; color: gray; margin-left: 10px;">Đã ẩn</span>
 
+                                                        }
+                                                        else
+                                                        {
+                                                            <span style="font-size: 12px; color: gray; margin-left: 10px;">@((int)((DateTime.Now - i.CreateDay)).TotalDays) ngày trước</span>
+                                                        }
                                                     }
                                                     else
                                                     {
-                                                        <span style="font-size: 12px; color: gray; margin-left: 10px;">@((int)((DateTime.Now - i.CreateDay)).TotalDays) ngày trước</span>
+                                                        <span style="font-size: 12px; color: gray; margin-left: 10px;">Dự án đã đóng</span>
                                                     }
+
                                                 }
                                             </div>
                                             <div style="font-size: 12px; display: inline-block; margin-left: 10px;">@i.Category.Name</div>
@@ -175,14 +199,21 @@
                                             <div style="display: flex; align-items: center;">
                                                 <h4 style="margin: 0; font-size: 16px;">@i.Name</h4>
                                                 @{
-                                                    if (i.IsHiden)
+                                                    if (!i.InContract)
                                                     {
-                                                        <span style="font-size: 12px; color: gray; margin-left: 10px;">Đã ẩn</span>
+                                                        if (i.IsHiden)
+                                                        {
+                                                            <span style="font-size: 12px; color: gray; margin-left: 10px;">Đã ẩn</span>
 
+                                                        }
+                                                        else
+                                                        {
+                                                            <span style="font-size: 12px; color: gray; margin-left: 10px;">@((int)((DateTime.Now - i.CreateDay)).TotalDays) ngày trước</span>
+                                                        }
                                                     }
                                                     else
                                                     {
-                                                        <span style="font-size: 12px; color: gray; margin-left: 10px;">@((int)((DateTime.Now - i.CreateDay)).TotalDays) ngày trước</span>
+                                                        <span style="font-size: 12px; color: gray; margin-left: 10px;">Dự án đã đóng</span>
                                                     }
                                                 }
                                             </div>
@@ -253,6 +284,217 @@
                     }
                 }
             </div>
+
+            <div id="offer-job-mode">
+                @{
+                    foreach (var i in Model.OfferJobs)
+                    {
+                        <div data-job-type="@i.JobType" data-salary-type="@i.SalaryType" data-keyword="@(i.Name))" data-min-salary="@i.MinDeal" data-max-salary="@i.MaxDeal" class="freelancer-item" data-skill="@string.Join(",", i.Skills.Select(x => x.Id).ToList())" data-category="@i.Category.Id" style="display: flex; justify-content: space-between; border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 5px; background-color: #fff; position: relative;">
+                            <div style="display: flex; flex: 1;">
+
+                                <div style="max-width: 600px; position: relative;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <div>
+                                            <div style="display: flex; align-items: center;">
+                                                <h4 style="margin: 0; font-size: 16px;">@i.Name</h4>
+                                                @{
+                                                    if (!i.InContract)
+                                                    {
+                                                        if (i.IsHiden)
+                                                        {
+                                                            <span style="font-size: 12px; color: gray; margin-left: 10px;">Đã ẩn</span>
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <span style="font-size: 12px; color: gray; margin-left: 10px;">@((int)((DateTime.Now - i.CreateDay)).TotalDays) ngày trước</span>
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        <span style="font-size: 12px; color: gray; margin-left: 10px;">Dự án đã đóng</span>
+                                                    }
+                                                   
+                                                }
+                                            </div>
+                                            <div style="font-size: 12px; display: inline-block; margin-left: 10px;">@i.Category.Name</div>
+                                            <div style="font-size: 12px; display: inline-block; margin-left: 10px;">| <i class="fa fa-calendar"></i> @(i.JobType == 1 ? "Ngắn hạn" : "Hằng ngày")</div>
+                                            <div style="font-size: 12px; display: inline-block; margin-left: 10px;">| <i class="fa fa-money-bill"></i> @(i.SalaryType == 1 ? "Lương theo giờ" : "Lương một lần")</div>
+
+
+                                        </div>
+                                    </div>
+                                    <p style="font-size: 16px; margin: 10px 0;">@(Helper.CutString(i.Description))</p>
+                                    <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+
+                                        @{
+                                            foreach (var j in i.Skills)
+                                            {
+                                                <span style="border-radius: 15px; padding: 5px 10px; background-color: #0078D4; color: #fff; font-size: 12px;">@j.Name</span>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div id="container-btn-favorite-job-@i.Id" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; border-radius: 5px;">
+                               @{
+                                    if (!ViewBag.FavoriteJobOfFreelancers.Contains(i.Id))
+                                    {
+                                        <button data-favorite-job="@i.Id" style="background: none; border: none; cursor: pointer;" title="Thêm yêu thích" class="gallery-icon add-favorite-job">
+
+                                            <i class="fa fa-heart" style="font-size: 24px; color: #0078D4; margin: 0 10px;"></i>
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button data-favorite-job="@i.Id" style="background: none; border: none; cursor: pointer;" title="Đã thêm yêu thích" class="gallery-icon remove-favorite-job">
+
+                                            <i class="fa fa-heart" style="font-size: 24px; color: red; margin: 0 10px;"></i>
+                                        </button>
+                                    }
+                               }
+
+                            </div>
+
+
+                            @{
+                                if (i.MaxDeal > 0)
+                                {
+                                    <div style="position: absolute; top: 15px; right: 15px; font-size: 20px; color: #555;">
+                                        @($"{i.MinDeal:N0} - {i.MaxDeal:N0}")
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div style="position: absolute; top: 15px; right: 15px; font-size: 20px; color: #555;">
+                                        @($"{i.MinDeal:N0}")
+                                    </div>
+                                }
+                            }
+
+
+                            <div style="display: flex; flex-direction: row; gap: 10px; position: absolute; bottom: 15px; right: 15px;">
+                                <button style="padding: 8px 15px; background-color: #fff; color: #0078D4; border: solid;  border-width: 1px; border-radius: 5px; border-color: #0078D4; cursor: pointer;">Liên hệ</button>
+                                <button style="padding: 8px 15px; background-color: #0078D4; color: #fff; border: none; border-radius: 5px; cursor: pointer;"><a href="~/chi-tiet-du-an/@i.Id">Chi tiết</a></button>
+                            </div>
+                        </div>
+
+                    }
+                }
+
+
+            </div>
+            <div id="contract-mode">
+                @{
+                    foreach (var i in Model.Contracts)
+                    {
+                        <div data-contract="@i.Id" class="freelancer-item" style="display: flex; justify-content: space-between; border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 5px; background-color: #fff; position: relative;">
+                            <div style="display: flex; flex: 1;">
+
+                                <div style="max-width: 600px; position: relative;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <div>
+                                            <div>
+                                                <h4 style="margin: 0; font-size: 16px;">@i.Name</h4>
+                                                <div style="font-size: 12px; display: inline-block; margin-left: 10px;">@i.CreateDay.ToString("dd/MM/yyyy")</div>
+                                            </div>
+                                               
+
+                                        </div>
+                                    </div>
+                                    <p style="font-size: 16px; margin: 5px 0;">@(Helper.CutString(i.Content))</p>
+                                    <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+
+                                       <p></p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div style="position: absolute; top: 15px; right: 15px; font-size: 20px; color: #555;">
+                                @(i.ContractStatus == true ? "Đang diễn ra" : "Đã kết thúc")
+                            </div>
+
+
+                            <div style="display: flex; flex-direction: row; gap: 10px; position: absolute; bottom: 15px; right: 15px;">
+                                <button style="padding: 8px 15px; background-color: #0078D4; color: #fff; border: none; border-radius: 5px; cursor: pointer;"><a href="~/chi-tiet-hop-dong/@i.Id">Chi tiết</a></button>
+                            </div>
+                        </div>
+
+                    }
+                }
+
+
+            </div>
+
+            <div id="community-post-create-post-mode">
+                @{
+                    foreach (var i in Model.Posts)
+                    {
+                        <div class="freelancer-item" style="display: flex; justify-content: space-between; border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 5px; background-color: #fff; position: relative;">
+                            <div style="display: flex; flex: 1;">
+
+                                <div style="max-width: 600px; position: relative;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <div>
+                                            <div style="display: flex; align-items: center;">
+                                                <h4 style="margin: 0; font-size: 16px;">@i.Title</h4>
+                                                <span style="font-size: 12px; color: gray; margin-left: 10px;">@((int)((DateTime.Now - i.CreateDay)).TotalDays) ngày trước</span>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                    <p style="font-size: 16px; margin: 10px 0;">@(Helper.CutString(i.Content))</p>
+                                    <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="display: flex; flex-direction: row; gap: 10px; position: absolute; bottom: 15px; right: 15px;">
+                                <button style="padding: 8px 15px; background-color: #0078D4; color: #fff; border: none; border-radius: 5px; cursor: pointer;"><a href="~/chi-tiet-bai-dang/@i.Id">Chi tiết</a></button>
+                            </div>
+                        </div>
+
+                    }
+                }
+            </div>
+
+            <div id="community-save-post-create-post-mode">
+                @{
+                    foreach (var i in Model.SavePosts)
+                    {
+                        <div class="freelancer-item" style="display: flex; justify-content: space-between; border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 5px; background-color: #fff; position: relative; min-height: 150px;">
+
+                            <div style="display: flex; flex: 1;">
+
+                                <div style="max-width: 600px; position: relative;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <div>
+                                            <div style="display: flex; align-items: center;">
+                                                <h4 style="margin: 0; font-size: 16px;">@i.Title</h4>
+                                                <span style="font-size: 12px; color: gray; margin-left: 10px;">@((int)((DateTime.Now - i.CreateDay)).TotalDays) ngày trước</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p style="font-size: 16px; margin: 10px 0;">@(Helper.CutString(i.Content))</p>
+                                </div>
+                            </div>
+
+                            <div style="display: flex; flex-direction: row; gap: 10px; position: absolute; bottom: 15px; right: 15px;">
+                                <button style="padding: 8px 15px; background-color: #0078D4; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
+                                    <a href="~/chi-tiet-bai-dang/@i.Id" style="color: white;">Chi tiết</a>
+                                </button>
+                            </div>
+                        </div>
+
+
+                    }
+                }
+            </div>
         </div>
 
     </div>
@@ -268,6 +510,10 @@
             function initial() {
                 $('#favorite-mode').show();
                 $('#job-post-mode').hide();
+                $('#offer-job-mode').hide();
+                $('#contract-mode').hide();
+                $('#community-post-create-post-mode').hide();
+                $('#community-save-post-create-post-mode').hide();
             }
 
             $('#sortBy').on('change', function () {
@@ -397,31 +643,235 @@
 
             $('#job-post-mode-router').on('click', function () {
                 $('#favorite-mode').hide();
+                $('#offer-job-mode').hide();
                 $('#job-post-mode').show();
+                $('#contract-mode').hide();
+                $('#community-post-create-post-mode').hide();
+                $('#community-save-post-create-post-mode').hide();
+
                 var favoriteMode = document.getElementById(`favorite-mode-router`);
                 favoriteMode.style.color = "#000"; //0078D4
                 var spanFavoriteMode = document.getElementById(`span-favorite-mode-router`);
                 spanFavoriteMode.style.color = "#000"; //0078D4
 
+                var offerJobMode = document.getElementById(`offer-job-mode-router`);
+                offerJobMode.style.color = "#000"; //0078D4
+                var spanOfferJobMode = document.getElementById(`span-offer-job-mode-router`);
+                spanOfferJobMode.style.color = "#000"; //0078D4
+
                 var postJobMode = document.getElementById(`job-post-mode-router`);
                 postJobMode.style.color = "#0078D4"; //0078D4
                 var spanPostJobMode = document.getElementById(`span-job-post-mode-router`);
                 spanPostJobMode.style.color = "#0078D4"; //0078D4
+
+                var contractMode = document.getElementById(`contract-mode-router`);
+                contractMode.style.color = "#000"; //0078D4
+                var spanContractMode = document.getElementById(`span-contract-mode-router`);
+                spanContractMode.style.color = "#000"; //0078D4
+
+                var communityPostCreatePostMode = document.getElementById(`community-post-create-mode-router`);
+                communityPostCreatePostMode.style.color = "#000"; //0078D4
+                var spanCommunityPostCreatePostMode = document.getElementById(`span-community-post-create-mode-router`);
+                spanCommunityPostCreatePostMode.style.color = "#000"; //0078D4
+
+                var communitySavePostCreatePostMode = document.getElementById(`community-save-post-create-mode-router`);
+                communitySavePostCreatePostMode.style.color = "#000"; //0078D4
+                var spanCommunitySavePostCreatePostMode = document.getElementById(`span-community-save-post-create-mode-router`);
+                spanCommunitySavePostCreatePostMode.style.color = "#000"; //0078D4
             });
 
             $('#favorite-mode-router').on('click', function () {
                 $('#favorite-mode').show();
+                $('#offer-job-mode').hide();
                 $('#job-post-mode').hide();
+                $('#contract-mode').hide();
+                $('#community-post-create-post-mode').hide();
+                $('#community-save-post-create-post-mode').hide();
 
                 var favoriteMode = document.getElementById(`favorite-mode-router`);
                 favoriteMode.style.color = "#0078D4"; //0078D4
                 var spanFavoriteMode = document.getElementById(`span-favorite-mode-router`);
                 spanFavoriteMode.style.color = "#0078D4"; //0078D4
 
+                var offerJobMode = document.getElementById(`offer-job-mode-router`);
+                offerJobMode.style.color = "#000"; //0078D4
+                var spanOfferJobMode = document.getElementById(`span-offer-job-mode-router`);
+                spanOfferJobMode.style.color = "#000"; //0078D4
+
                 var postJobMode = document.getElementById(`job-post-mode-router`);
                 postJobMode.style.color = "#000"; //0078D4
                 var spanPostJobMode = document.getElementById(`span-job-post-mode-router`);
                 spanPostJobMode.style.color = "#000"; //0078D4
+
+                var contractMode = document.getElementById(`contract-mode-router`);
+                contractMode.style.color = "#000"; //0078D4
+                var spanContractMode = document.getElementById(`span-contract-mode-router`);
+                spanContractMode.style.color = "#000"; //0078D4
+
+                var communityPostCreatePostMode = document.getElementById(`community-post-create-mode-router`);
+                communityPostCreatePostMode.style.color = "#000"; //0078D4
+                var spanCommunityPostCreatePostMode = document.getElementById(`span-community-post-create-mode-router`);
+                spanCommunityPostCreatePostMode.style.color = "#000"; //0078D4
+
+                var communitySavePostCreatePostMode = document.getElementById(`community-save-post-create-mode-router`);
+                communitySavePostCreatePostMode.style.color = "#000"; //0078D4
+                var spanCommunitySavePostCreatePostMode = document.getElementById(`span-community-save-post-create-mode-router`);
+                spanCommunitySavePostCreatePostMode.style.color = "#000"; //0078D4
+            });
+            $('#offer-job-mode-router').on('click', function () {
+                $('#favorite-mode').hide();
+                $('#offer-job-mode').show();
+                $('#job-post-mode').hide();
+                $('#contract-mode').hide();
+                $('#community-post-create-post-mode').hide();
+                $('#community-save-post-create-post-mode').hide();
+
+                var favoriteMode = document.getElementById(`favorite-mode-router`);
+                favoriteMode.style.color = "#000"; //0078D4
+                var spanFavoriteMode = document.getElementById(`span-favorite-mode-router`);
+                spanFavoriteMode.style.color = "#000"; //0078D4
+
+                var offerJobMode = document.getElementById(`offer-job-mode-router`);
+                offerJobMode.style.color = "#0078D4"; //0078D4
+                var spanOfferJobMode = document.getElementById(`span-offer-job-mode-router`);
+                spanOfferJobMode.style.color = "#0078D4"; //0078D4
+
+                var postJobMode = document.getElementById(`job-post-mode-router`);
+                postJobMode.style.color = "#000"; //0078D4
+                var spanPostJobMode = document.getElementById(`span-job-post-mode-router`);
+                spanPostJobMode.style.color = "#000"; //0078D4
+
+                var contractMode = document.getElementById(`contract-mode-router`);
+                contractMode.style.color = "#000"; //0078D4
+                var spanContractMode = document.getElementById(`span-contract-mode-router`);
+                spanContractMode.style.color = "#000"; //0078D4
+
+                var communityPostCreatePostMode = document.getElementById(`community-post-create-mode-router`);
+                communityPostCreatePostMode.style.color = "#000"; //0078D4
+                var spanCommunityPostCreatePostMode = document.getElementById(`span-community-post-create-mode-router`);
+                spanCommunityPostCreatePostMode.style.color = "#000"; //0078D4
+
+                var communitySavePostCreatePostMode = document.getElementById(`community-save-post-create-mode-router`);
+                communitySavePostCreatePostMode.style.color = "#000"; //0078D4
+                var spanCommunitySavePostCreatePostMode = document.getElementById(`span-community-save-post-create-mode-router`);
+                spanCommunitySavePostCreatePostMode.style.color = "#000"; //0078D4
+            });
+
+            $('#contract-mode-router').on('click', function () {
+                $('#favorite-mode').hide();
+                $('#offer-job-mode').hide();
+                $('#job-post-mode').hide();
+                $('#contract-mode').show();
+                $('#community-post-create-post-mode').hide();
+                $('#community-save-post-create-post-mode').hide();
+
+                var favoriteMode = document.getElementById(`favorite-mode-router`);
+                favoriteMode.style.color = "#000"; //0078D4
+                var spanFavoriteMode = document.getElementById(`span-favorite-mode-router`);
+                spanFavoriteMode.style.color = "#000"; //0078D4
+
+                var offerJobMode = document.getElementById(`offer-job-mode-router`);
+                offerJobMode.style.color = "#000"; //0078D4
+                var spanOfferJobMode = document.getElementById(`span-offer-job-mode-router`);
+                spanOfferJobMode.style.color = "#000"; //0078D4
+
+                var postJobMode = document.getElementById(`job-post-mode-router`);
+                postJobMode.style.color = "#000"; //0078D4
+                var spanPostJobMode = document.getElementById(`span-job-post-mode-router`);
+                spanPostJobMode.style.color = "#000"; //0078D4
+
+                var contractMode = document.getElementById(`contract-mode-router`);
+                contractMode.style.color = "#0078D4"; //0078D4
+                var spanContractMode = document.getElementById(`span-contract-mode-router`);
+                spanContractMode.style.color = "#0078D4"; //0078D4
+
+                var communityPostCreatePostMode = document.getElementById(`community-post-create-mode-router`);
+                communityPostCreatePostMode.style.color = "#000"; //0078D4
+                var spanCommunityPostCreatePostMode = document.getElementById(`span-community-post-create-mode-router`);
+                spanCommunityPostCreatePostMode.style.color = "#000"; //0078D4
+
+                var communitySavePostCreatePostMode = document.getElementById(`community-save-post-create-mode-router`);
+                communitySavePostCreatePostMode.style.color = "#000"; //0078D4
+                var spanCommunitySavePostCreatePostMode = document.getElementById(`span-community-save-post-create-mode-router`);
+                spanCommunitySavePostCreatePostMode.style.color = "#000"; //0078D4
+            });
+
+            $('#community-post-create-mode-router').on('click', function () {
+                $('#favorite-mode').hide();
+                $('#offer-job-mode').hide();
+                $('#job-post-mode').hide();
+                $('#contract-mode').hide();
+                $('#community-post-create-post-mode').show();
+                $('#community-save-post-create-post-mode').hide();
+
+                var favoriteMode = document.getElementById(`favorite-mode-router`);
+                favoriteMode.style.color = "#000"; //0078D4
+                var spanFavoriteMode = document.getElementById(`span-favorite-mode-router`);
+                spanFavoriteMode.style.color = "#000"; //0078D4
+
+                var offerJobMode = document.getElementById(`offer-job-mode-router`);
+                offerJobMode.style.color = "#000"; //0078D4
+                var spanOfferJobMode = document.getElementById(`span-offer-job-mode-router`);
+                spanOfferJobMode.style.color = "#000"; //0078D4
+
+                var postJobMode = document.getElementById(`job-post-mode-router`);
+                postJobMode.style.color = "#000"; //0078D4
+                var spanPostJobMode = document.getElementById(`span-job-post-mode-router`);
+                spanPostJobMode.style.color = "#000"; //0078D4
+
+                var contractMode = document.getElementById(`contract-mode-router`);
+                contractMode.style.color = "#000"; //0078D4
+                var spanContractMode = document.getElementById(`span-contract-mode-router`);
+                spanContractMode.style.color = "#000"; //0078D4
+
+                var communityPostCreatePostMode = document.getElementById(`community-post-create-mode-router`);
+                communityPostCreatePostMode.style.color = "#0078D4"; //0078D4
+                var spanCommunityPostCreatePostMode = document.getElementById(`span-community-post-create-mode-router`);
+                spanCommunityPostCreatePostMode.style.color = "#0078D4"; //0078D4
+
+                var communitySavePostCreatePostMode = document.getElementById(`community-save-post-create-mode-router`);
+                communitySavePostCreatePostMode.style.color = "#000"; //0078D4
+                var spanCommunitySavePostCreatePostMode = document.getElementById(`span-community-save-post-create-mode-router`);
+                spanCommunitySavePostCreatePostMode.style.color = "#000"; //0078D4
+            });
+
+            $('#community-save-post-mode-router').on('click', function () {
+                $('#favorite-mode').hide();
+                $('#offer-job-mode').hide();
+                $('#job-post-mode').hide();
+                $('#contract-mode').hide();
+                $('#community-post-create-post-mode').hide();
+                $('#community-save-post-create-post-mode').show();
+
+                var favoriteMode = document.getElementById(`favorite-mode-router`);
+                favoriteMode.style.color = "#000"; //0078D4
+                var spanFavoriteMode = document.getElementById(`span-favorite-mode-router`);
+                spanFavoriteMode.style.color = "#000"; //0078D4
+
+                var offerJobMode = document.getElementById(`offer-job-mode-router`);
+                offerJobMode.style.color = "#000"; //0078D4
+                var spanOfferJobMode = document.getElementById(`span-offer-job-mode-router`);
+                spanOfferJobMode.style.color = "#000"; //0078D4
+
+                var postJobMode = document.getElementById(`job-post-mode-router`);
+                postJobMode.style.color = "#000"; //0078D4
+                var spanPostJobMode = document.getElementById(`span-job-post-mode-router`);
+                spanPostJobMode.style.color = "#000"; //0078D4
+
+                var contractMode = document.getElementById(`contract-mode-router`);
+                contractMode.style.color = "#000"; //0078D4
+                var spanContractMode = document.getElementById(`span-contract-mode-router`);
+                spanContractMode.style.color = "#000"; //0078D4
+
+                var communityPostCreatePostMode = document.getElementById(`community-post-create-mode-router`);
+                communityPostCreatePostMode.style.color = "#000"; //0078D4
+                var spanCommunityPostCreatePostMode = document.getElementById(`span-community-post-create-mode-router`);
+                spanCommunityPostCreatePostMode.style.color = "#000"; //0078D4
+
+                var communitySavePostCreatePostMode = document.getElementById(`community-save-post-mode-router`);
+                communitySavePostCreatePostMode.style.color = "#0078D4"; //0078D4
+                var spanCommunitySavePostCreatePostMode = document.getElementById(`span-community-save-post-mode-router`);
+                spanCommunitySavePostCreatePostMode.style.color = "#0078D4"; //0078D4
             });
 
         });

@@ -5,12 +5,44 @@
       "PackagePath": "staticwebassets\\FreelancerPlatform.Client.bundle.scp.css"
     },
     {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\Image\\382651ec2f79b8ca93072ce056850c89.jpg",
+      "PackagePath": "staticwebassets\\Image\\382651ec2f79b8ca93072ce056850c89.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\Image\\435-4352364_left-arrow-icon-transparent-png-download-left-arro.png",
+      "PackagePath": "staticwebassets\\Image\\435-4352364_left-arrow-icon-transparent-png-download-left-arro.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\Image\\515-5158464_right-blue-arrow-png-transparent-icon-portable-network.png",
+      "PackagePath": "staticwebassets\\Image\\515-5158464_right-blue-arrow-png-transparent-icon-portable-network.png"
+    },
+    {
       "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\Image\\CTULove.jpg",
       "PackagePath": "staticwebassets\\Image\\CTULove.jpg"
     },
     {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\Image\\back.png",
+      "PackagePath": "staticwebassets\\Image\\back.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\Image\\combined2.png",
+      "PackagePath": "staticwebassets\\Image\\combined2.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\Image\\disassemble.png",
+      "PackagePath": "staticwebassets\\Image\\disassemble.png"
+    },
+    {
       "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\Image\\finance.jpg",
       "PackagePath": "staticwebassets\\Image\\finance.jpg"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\Image\\forward.png",
+      "PackagePath": "staticwebassets\\Image\\forward.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\Image\\glue.png",
+      "PackagePath": "staticwebassets\\Image\\glue.png"
     },
     {
       "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\Image\\it.jpg",
@@ -39,6 +71,10 @@
     {
       "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\freelancer-icon.png",
       "PackagePath": "staticwebassets\\freelancer-icon.png"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\grey-arrow-left-115501332954alwuglcse.png",
+      "PackagePath": "staticwebassets\\grey-arrow-left-115501332954alwuglcse.png"
     },
     {
       "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\images\\BannerFreelancer.jpg",
@@ -311,6 +347,10 @@
     {
       "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\js\\script.js",
       "PackagePath": "staticwebassets\\js\\script.js"
+    },
+    {
+      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\left-right-arrow-button-png-left-arrow-icon-sv-11562991530uuomzdoifr.png",
+      "PackagePath": "staticwebassets\\left-right-arrow-button-png-left-arrow-icon-sv-11562991530uuomzdoifr.png"
     },
     {
       "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\lib\\aspnet\\signalr\\README.md",

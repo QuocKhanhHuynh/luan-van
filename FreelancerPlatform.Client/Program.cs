@@ -9,6 +9,21 @@ using System.Reflection.Metadata;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("https://sandbox.vnpayment.vn")
+                          .AllowAnyMethod()
+                                .AllowAnyHeader();
+                      });
+});
+
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddApplicationService();
 builder.Services.AddPresentService();
@@ -25,6 +40,7 @@ builder.Host.UseSerilog((context, config) =>
 
 var app = builder.Build();
 
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -35,6 +51,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseRouting();
 
@@ -152,6 +170,53 @@ app.MapControllerRoute(
     defaults: new { controller = "Inbox", action = "GetInbox" }
 );
 
+app.MapControllerRoute(
+    name: "contract",
+    pattern: "tao-hop-dong/{createUser}/{partner}",
+    defaults: new { controller = "Contract", action = "CreateContract" }
+);
+
+app.MapControllerRoute(
+    name: "contract",
+    pattern: "chi-tiet-hop-dong/{id}",
+    defaults: new { controller = "Contract", action = "GetContract" }
+);
+
+app.MapControllerRoute(
+    name: "updateContract",
+    pattern: "cap-nhat-hop-dong/{id}",
+    defaults: new { controller = "Contract", action = "UpdateContract" }
+);
+
+app.MapControllerRoute(
+    name: "paymentCallback",
+    pattern: "thanh-toan-tra-ve",
+    defaults: new { controller = "Transaction", action = "PaymentCallback" }
+);
+
+app.MapControllerRoute(
+    name: "community",
+    pattern: "cong-dong",
+    defaults: new { controller = "Community", action = "Index" }
+);
+
+app.MapControllerRoute(
+    name: "createPost",
+    pattern: "dang-bai",
+    defaults: new { controller = "Community", action = "CreatePost" }
+);
+
+app.MapControllerRoute(
+    name: "postDetai;",
+    pattern: "chi-tiet-bai-dang/{id}",
+    defaults: new { controller = "Community", action = "GetPost" }
+);
+
+app.MapControllerRoute(
+    name: "editPosts",
+    pattern: "chinh-bai-dang/{id}",
+    defaults: new { controller = "Community", action = "UpdatePost" }
+);
 
 
 

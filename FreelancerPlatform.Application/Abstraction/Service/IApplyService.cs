@@ -15,6 +15,7 @@ namespace FreelancerPlatform.Application.Abstraction.Service
         Task<List<ApplyOfJobQuickViewModel>> GetApplyOfJobAsync(int jobId);
         Task<ApplyOfJobQuickViewModel> GetApplyAsync(int id);
         Task<List<JobQuickViewModel>> GetApplyByFreelancerAsync(int id);
+        Task<ServiceResult> DeleteApplyAsync(int id);
         //Task<List<Apply>> CheckApplyOfFreelancer(int freelancerId);
         /*Task<ServiceResult> CreateApplyAsync(ApplyCreateRequest request);
         Task<ServiceResult> UpdateApplyAsync(int id, ApplyUpdateRequest request);

@@ -64,6 +64,12 @@ namespace FreelancerPlatform.Domain.Entity
         public List<Report> Reports { get; set; }
         public List<FreelancerSkill> FreelancerSkills { get; set; }
         public List<Chat> Chats { get; set; }
+        public List<Notification> Notifications { get; set; }
+        public List<Transaction> Transactions { get; set; }
+
+        public List<Post> Posts { get; set; }
+        public List<Comment> Comments { get; set; }
+        public List<SavePost> SavePosts { get; set; }
 
     }
 }

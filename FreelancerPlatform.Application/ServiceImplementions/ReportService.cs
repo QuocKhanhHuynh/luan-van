@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace FreelancerPlatform.Application.ServiceImplementions
 {
-    public class ReportService : BaseService<Report>//, IReportService
+    public class ReportService : BaseService<Report>, IReportService
     {
         private readonly IReportRepository _reportRepository;
         public ReportService(IUnitOfWork unitOfWork, IMapper mapper, ILogger<Report> logge, IReportRepository reportRepository) : base(unitOfWork, mapper, logge)
@@ -27,13 +27,27 @@ namespace FreelancerPlatform.Application.ServiceImplementions
         {
             try
             {
-                var entity = _mapper.Map<Report>(request);
-                await _reportRepository.CreateAsync(entity);
+               var reportExist = (await _reportRepository.GetAllAsync()).Where(x => x.FreelancerId == request.FreelancerId && x.UserReport == request.UserReport);
+                if (reportExist.Count() > 0)
+                {
+                    return new ServiceResult()
+                    {
+                        Message = "Bạn đã thực hiện báo cáo người dùng này",
+                        Status = StatusResult.ClientError
+                    };
+                }
+                var report = new Report()
+                {
+                    Content = request.Content,
+                    FreelancerId = request.FreelancerId,
+                    UserReport = request.UserReport
+                };
+                await _reportRepository.CreateAsync(report);
                 await _unitOfWork.SaveChangeAsync();
 
                 return new ServiceResult()
                 {
-                    Message = "Tạo thông tin thành công",
+                    Message = "Tạo báo cáo thành công",
                     Status = StatusResult.Success
                 };
             }
@@ -49,29 +63,5 @@ namespace FreelancerPlatform.Application.ServiceImplementions
                 };
             }
         }
-
-        public async Task<Pagination<ReportQuickViewModel>> GetAllReportAsync(int pageIndex, int pageTake, int? keyword)
-        {
-            var query = (await _reportRepository.GetAllAsync());
-            if (keyword != null)
-            {
-                query = query.Where(x => x.ReportType.Equals(keyword.Value));
-            }
-            var pagination = new Pagination<ReportQuickViewModel>();
-            pagination.PageIndex = pageIndex;
-            pagination.PageSize = pageTake;
-            pagination.TotalRecords = query.Count();
-
-            var items = query.Skip((pageIndex - 1) * pageTake).Take(pageTake).Select(x => _mapper.Map<ReportQuickViewModel>(x)).ToList();
-            pagination.Items = items;
-
-            return pagination;
-        }
-
-        /*public async Task<ReportViewModel> GetReportAsync(int id)
-        {
-            Report entity = await _reportRepository.GetByIdAsync(id);
-            return entity.IsDeleted == false ? _mapper.Map<ReportViewModel>(entity) : new ReportViewModel();
-        }*/
     }
 }

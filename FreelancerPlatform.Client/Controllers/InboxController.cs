@@ -11,9 +11,11 @@ namespace FreelancerPlatform.Client.Controllers
     public class InboxController : Controller
     {
         private readonly IChatService _chatService;
-        public InboxController(IChatService chatService)
+        private readonly IFreelancerService _freelancerService;
+        public InboxController(IChatService chatService, IFreelancerService freelancerService)
         {
             _chatService = chatService;
+            _freelancerService = freelancerService;
         }
         public async Task<IActionResult> GetInbox(int freelancerB = 0)
         {
@@ -26,8 +28,12 @@ namespace FreelancerPlatform.Client.Controllers
                 });
             }
             var chats = await _chatService.GetAllChat(User.GetUserId());
+            var Freelancer = await _freelancerService.GetFreelancerAsync(User.GetUserId());
             ViewBag.FreelancerA = User.GetUserId();
             ViewBag.FreelancerB = freelancerB;
+            ViewBag.ImageUrl = Freelancer.ImageUrl;
+            ViewBag.LastName = Freelancer.LastName;
+            ViewBag.FirstName = Freelancer.FirstName;
             return View(chats);
         }
 
@@ -45,13 +51,36 @@ namespace FreelancerPlatform.Client.Controllers
         }
 
         [HttpPost]
+        public async Task<IActionResult> UpdateSeenStatus(int id, int freelancerId)
+        {
+            var response = await _chatService.UpdateSeenStatus(id, freelancerId);
+            if (response.Status != StatusResult.Success)
+            {
+                return BadRequest();
+            }
+            return Ok();
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateAllSeenStatus(int id)
+        {
+            var response = await _chatService.UpdateAllSeenStatus(id);
+            if (response.Status != StatusResult.Success)
+            {
+                return BadRequest();
+            }
+            return Ok();
+        }
+
+        [HttpPost]
         public async Task<IActionResult> ReloadChat()
         {
             var chats = await _chatService.GetAllChat(User.GetUserId());
             var chatHandle = new Dictionary<string, List<ChatViewModel>>();
             foreach(var i in chats)
             {
-                var key = $"{i.Key.HubChatId}-{i.Key.FreelancerA}-{i.Key.LastNameA}-{i.Key.FirstNameA}-{i.Key.FreelancerB}-{i.Key.LastNameB}-{i.Key.FirstNameB}";
+                var key = $"{i.Key.HubChatId}-{i.Key.FreelancerA}-{i.Key.LastNameA}-{i.Key.FirstNameA}-{i.Key.FreelancerB}-{i.Key.LastNameB}-{i.Key.FirstNameB}-{i.Key.ImageUrlA}-{i.Key.ImageUrlB}-{i.Key.SeenFreelancerA}-{i.Key.SeenFreelancerB}";
                 chatHandle[key] = i.Value;
             }
             //var chatJson = JsonConvert.SerializeObject(chats);
@@ -70,6 +99,13 @@ namespace FreelancerPlatform.Client.Controllers
             }
 
             return Ok();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CheckChatCountUnSeen(int id)
+        {
+            var result = await _chatService.CountChatUnSeen(id);
+            return Ok(result);
         }
     }
 }

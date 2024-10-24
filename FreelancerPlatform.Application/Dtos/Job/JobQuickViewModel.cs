@@ -23,5 +23,7 @@ namespace FreelancerPlatform.Application.Dtos.Job
         public int SalaryType { get; set; }
         public List<SkillQuickViewModel> Skills { get; set; }
         public bool IsHiden { get; set; }
+
+        public bool InContract { get; set; }
     }
 }

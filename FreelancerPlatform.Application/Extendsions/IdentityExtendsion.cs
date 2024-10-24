@@ -14,7 +14,7 @@ namespace FreelancerPlatform.Application.Extendsions
 			var claim = ((ClaimsIdentity)claimsPrincipal.Identity)
 				.Claims
 				.SingleOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
-			return int.Parse(claim.Value);
+			return int.Parse(claim?.Value);
 		}
 
 

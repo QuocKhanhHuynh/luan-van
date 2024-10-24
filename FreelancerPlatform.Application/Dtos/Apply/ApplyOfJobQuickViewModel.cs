@@ -16,5 +16,7 @@ namespace FreelancerPlatform.Application.Dtos.Apply
 		public string LastName { get; set; }
         public string FirstName { get; set; }
         public string ImageUrl { get; set; }
+		public int FreelancerId { get; set; }
+		public bool IsOffer { get; set; }
 	}
 }

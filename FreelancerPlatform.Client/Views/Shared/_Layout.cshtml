@@ -67,64 +67,116 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li>
-                                        <div class="info-box">
-                                            <div class="info-box-content">
-                                                <p class="info-box-title">Email </p>
-                                                <p class="info-box-subtitle">freelancer-plaftform.com</p>
-                                            </div>
-                                        </div>
-                                    </li>
+                                    @{
+                                        if (User.Identity.IsAuthenticated)
+                                        {
+                                                    <li>
+                                                        <div class="info-box">
+                                                            <div class="info-box-content" style="text-align: center;">
+                                                                <p class="info-box-title">Thông báo</p>
+                                                                <div class="info-box-subtitle" style="position: relative; display: inline-block;">
+                                                                    <button id="notificationButton" style="border: none; background: none; cursor: pointer; padding: 0;">
+                                                                        <i class="fas fa-bell" style="color: #333; font-size: 25px;"></i>
+                                                                    </button>
+                                                                    <span id="container-quanlity-notify">
+                                                                        @await Component.InvokeAsync("NotifyQuanlity")
+                                                                    </span>
+
+                                                                    <!-- Dropdown notification list -->
+                                                                    <div id="container-list-notify">
+                                                                        @await Component.InvokeAsync("NotifyList")
+                                                                    </div>
+
+
+                                                                    <script>
+                                                                        var isOpen = false; // Track the open/close state of the dropdown
+
+                                                                        // Toggle the display of the notification list when clicking the bell icon
+                                                                        document.getElementById("notificationButton").addEventListener("click", function (event) {
+                                                                            event.preventDefault(); // Ngăn hành động mặc định của nút (nếu có)
+                                                                            var notificationList = document.getElementById("notificationList");
+
+                                                                            // Toggle the state: show if hidden, hide if shown
+                                                                            isOpen = !isOpen;
+                                                                            notificationList.style.display = isOpen ? "block" : "none"; // Hiển thị hoặc ẩn danh sách thông báo
+                                                                            if (isOpen) {
+                                                                                $.ajax({
+                                                                                    url: '/Notification/UpdateSeenStatus',
+                                                                                    type: 'POST',
+                                                                                    success: function (response) {
+                                                                                        var containerQuanlityNotify = document.getElementById('container-quanlity-notify');
+                                                                                        containerQuanlityNotify.innerHTML = ``;
+                                                                                        // $('#chat-count').text(response);
+                                                                                    },
+                                                                                    error: function (xhr, status, error) {
+                                                                                        console.error('Lỗi hệ thống khi gửi tin, vui lòng thử lại!');
+                                                                                    }
+                                                                                });
+                                                                            }
+                                                                        });
+                                                                    </script>
+                                                                </div>
+                                                            </div>
+
+
+
+
+
+
+                                                        </div>
+                                                    </li>
+                                        }
+                                    }
                                     @{
                                         if (!User.Identity.IsAuthenticated)
                                         {
-                                                    <li class="header-get-a-quote">
-                                                        <a class="btn btn-primary" href="~/dang-nhap">Đăng nhập</a>
-                                                        <a class="btn btn-primary" href="~/dang-ky">Đăng ký</a>
-                                                    </li>
+                                                                    <li class="header-get-a-quote">
+                                                                        <a class="btn btn-primary" href="~/dang-nhap">Đăng nhập</a>
+                                                                        <a class="btn btn-primary" href="~/dang-ky">Đăng ký</a>
+                                                                    </li>
                                         }
                                         else
                                         {
-                                                    <li class="header-get-a-quote dropdown" style="position: relative;">
-                                                        <a class="btn btn-primary" href="#" style="display: flex; align-items: center;">
-                                                            <img src="/images/default-avatar.jpg" alt="Avatar" style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
-                                                            <span>
-                                                                @User.GetFirstName()
-                                                                <br />
-                                                                200,000đ
-                                                            </span>
-                                                            <i class="fa fa-angle-down" style="margin-left: 10px;"></i>
-                                                        </a>
+                                                                    <li class="header-get-a-quote dropdown" style="position: relative;">
+                                                                        <a class="btn btn-primary" href="#" style="display: flex; align-items: center;">
+                                                                            <img src="/images/default-avatar.jpg" alt="Avatar" style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
+                                                                            <span>
+                                                                                @User.GetFirstName()
+                                                                                <br />
+                                                                                200,000đ
+                                                                            </span>
+                                                                            <i class="fa fa-angle-down" style="margin-left: 10px;"></i>
+                                                                        </a>
 
-                                                        <ul class="dropdown-menu" role="menu" style="position: absolute; top: 100%; display: none; background-color: white; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); padding: 0; list-style: none; border-radius: 4px; min-width: 150px;">
-                                                            <div style="padding: 10px 20px;">
-                                                                <a href="~/ho-so" style="color: black; text-decoration: none;">Hồ sơ</a>
-                                                            </div>
-                                                            <div style="padding: 10px 20px;">
-                                                                <a href="~/chinh-ho-so" style="color: black; text-decoration: none;">Cập nhật hồ sơ</a>
-                                                            </div>
-                                                            <div style="padding: 10px 20px;">
-                                                                <a href="~/chinh-thong-tin-thanh-toan" style="color: black; text-decoration: none;">Cập nhật thông tin thanh toán</a>
-                                                            </div>
-                                                            <div style="border-bottom: 1px solid #ddd; padding: 10px 20px;">
-                                                                <a href="~/chinh-mat-khau" style="color: black; text-decoration: none;">Cập nhật mật khẩu</a>
-                                                            </div>
+                                                                        <ul class="dropdown-menu" role="menu" style="position: absolute; top: 100%; display: none; background-color: white; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); padding: 0; list-style: none; border-radius: 4px; min-width: 150px;">
+                                                                            <div style="padding: 10px 20px;">
+                                                                                <a href="~/ho-so" style="color: black; text-decoration: none;">Hồ sơ</a>
+                                                                            </div>
+                                                                            <div style="padding: 10px 20px;">
+                                                                                <a href="~/chinh-ho-so" style="color: black; text-decoration: none;">Cập nhật hồ sơ</a>
+                                                                            </div>
+                                                                            <div style="padding: 10px 20px;">
+                                                                                <a href="~/chinh-thong-tin-thanh-toan" style="color: black; text-decoration: none;">Cập nhật thông tin thanh toán</a>
+                                                                            </div>
+                                                                            <div style="border-bottom: 1px solid #ddd; padding: 10px 20px;">
+                                                                                <a href="~/chinh-mat-khau" style="color: black; text-decoration: none;">Cập nhật mật khẩu</a>
+                                                                            </div>
 
-                                                            <div style="padding: 10px 20px;">
-                                                                <a href="~/dang-xuat" style="color: black; text-decoration: none;">Đăng xuất</a>
-                                                            </div>
-                                                        </ul>
-                                                    </li>
+                                                                            <div style="padding: 10px 20px;">
+                                                                                <a href="~/dang-xuat" style="color: black; text-decoration: none;">Đăng xuất</a>
+                                                                            </div>
+                                                                        </ul>
+                                                                    </li>
 
-                                                    <script>
-                                                        document.querySelector('.header-get-a-quote').addEventListener('mouseenter', function () {
-                                                            this.querySelector('.dropdown-menu').style.display = 'block';
-                                                        });
+                                                                    <script>
+                                                                        document.querySelector('.header-get-a-quote').addEventListener('mouseenter', function () {
+                                                                            this.querySelector('.dropdown-menu').style.display = 'block';
+                                                                        });
 
-                                                        document.querySelector('.header-get-a-quote').addEventListener('mouseleave', function () {
-                                                            this.querySelector('.dropdown-menu').style.display = 'none';
-                                                        });
-                                                    </script>
+                                                                        document.querySelector('.header-get-a-quote').addEventListener('mouseleave', function () {
+                                                                            this.querySelector('.dropdown-menu').style.display = 'none';
+                                                                        });
+                                                                    </script>
 
 
                                         }
@@ -223,43 +275,55 @@
                                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Tìm dự án <i class="fa fa-angle-down"></i></a>
                                             <ul class="dropdown-menu" role="menu">
                                                 <li><a href="~/tim-du-an">Tìm tất cả </a></li>
-                                                <li><a href="projects-single.html">Tìm qua kỹ năng </a></li>
-                                                <li><a href="projects-single.html">Tìm qua lĩnh vực </a></li>
-                                                <li><a href="projects-single.html">Tìm qua loại hình công việc </a></li>
+                                                <li><a href="projects-single.html" id="skill-serach-job-dropdown-toggle">Tìm qua kỹ năng </a></li>
+                                                <li><a href="projects-single.html" id="category-search-job-dropdown-toggle">Tìm qua lĩnh vực </a></li>
+                                                <li><a href="projects-single.html" id="job-type-search-job-dropdown-toggle">Tìm qua loại hình công việc </a></li>
                                                 <li><a href="projects-single.html">Tìm qua hình thức trả luơng </a></li>
                                             </ul>
                                         </li>
+                                        <div id="skills-list-search-job" style="display: none; position: absolute; background: white; border: 1px solid #ccc; z-index: 1000; padding: 10px; width: 550px;">
+                                            @await Component.InvokeAsync("SkillSearchJob")
+                                        </div>
+                                        <div id="categories-list-search-job" style="display: none; position: absolute; background: white; border: 1px solid #ccc; z-index: 1000; padding: 10px; width: 550px;">
+
+                                            @await Component.InvokeAsync("CategorySearchJob")
+                                        </div>
 
                                         @{
                                             if (User.Identity.IsAuthenticated)
                                             {
-                                                        <li class="nav-item dropdown @RenderSection("employerActive", false)">
-                                                            <a href="~/nguoi-thue" class="nav-link">Người thuê</a>
-                                                        </li>
-                                                        <li class="nav-item dropdown @RenderSection("inforOfFreelancerActive", false)">
-                                                            <a href="~/thong-tin-cua-freelancer" class="nav-link">Freelancer</a>
-                                                        </li>
-                                                        <li class="nav-item dropdown @RenderSection("inboxActive",false)">
-                                                            <a href="~/tin-nhan" class="nav-link dropdown-toggle">Tin nhắn </a>
+                                                                        <li class="nav-item dropdown @RenderSection("employerActive", false)">
+                                                                            <a href="~/nguoi-thue" class="nav-link">Người thuê</a>
+                                                                        </li>
+                                                                        <li class="nav-item dropdown @RenderSection("inforOfFreelancerActive", false)">
+                                                                            <a href="~/thong-tin-cua-freelancer" class="nav-link">Freelancer</a>
+                                                                        </li>
+                                                                        <li class="nav-item dropdown @RenderSection("inboxActive",false)">
+                                                                            <a href="~/tin-nhan" class="nav-link dropdown-toggle">
+                                                                                Tin nhắn
+                                                                               <span id="container-chat-count">
+                                                                    @await Component.InvokeAsync("ChatCountUnSeen")
+                                                                               </span>
 
-                                                        </li>
-                                                        <li class="nav-item dropdown @RenderSection("transactionActive",false)">
-                                                            <a href="~/giao-dich" class="nav-link dropdown-toggle">Giao dịch </a>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="nav-item dropdown @RenderSection("transactionActive",false)">
+                                                                            <a href="~/cong-dong" class="nav-link dropdown-toggle">Cộng đồng </a>
 
-                                                        </li>
-                                                        <li class="nav-item dropdown">
-                                                    
+                                                                        </li>
+                                                                        <li class="nav-item dropdown">
+                                                                    
 
-                                                        </li>
-                                                        <li class="nav-item dropdown">
-                                                            <div data-animation-in="slideInLeft">
-                                                                <a href="~/dang-du-an" class="slider btn btn-primary">Đăng dự án</a>
-                                                               
-                                                            </div>
-                                                            <!--
-                                                    <a href="#" style="margin-top: 12px; width: 10rem; height: 3rem; line-height: 3rem;" class="btn btn-primary">Đăng dự án</a>
-                                                            -->
-                                                        </li>
+                                                                        </li>
+                                                                        <li class="nav-item dropdown">
+                                                                            <div data-animation-in="slideInLeft">
+                                                                                <a href="~/dang-du-an" class="slider btn btn-primary">Đăng dự án</a>
+                                                                               
+                                                                            </div>
+                                                                            <!--
+                                                                    <a href="#" style="margin-top: 12px; width: 10rem; height: 3rem; line-height: 3rem;" class="btn btn-primary">Đăng dự án</a>
+                                                                            -->
+                                                                        </li>
                                             }
                                         }
 
@@ -301,102 +365,7 @@
             </div>
 
         </header>
-        @RenderBody()
-
-        <footer id="footer" class="footer bg-overlay">
-            <div class="footer-main">
-                <div class="container">
-                    <div class="row justify-content-between">
-                        <div class="col-lg-4 col-md-6 footer-widget footer-about">
-                            <h3 class="widget-title">About Us</h3>
-                            <img loading="lazy" width="200px" class="footer-logo" src="/images/footer-logo.png" alt="Constra">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor inci done idunt ut
-                                labore et dolore magna aliqua.
-                            </p>
-                            <div class="footer-social">
-                                <ul>
-                                    <li>
-                                        <a href="https://facebook.com/themefisher" aria-label="Facebook">
-                                            <i class="fab fa-facebook-f"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://twitter.com/themefisher" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="https://instagram.com/themefisher" aria-label="Instagram">
-                                            <i class="fab fa-instagram"></i>
-                                        </a>
-                                    </li>
-                                    <li><a href="https://github.com/themefisher" aria-label="Github"><i class="fab fa-github"></i></a></li>
-                                </ul>
-                            </div><!-- Footer social end -->
-                        </div><!-- Col end -->
-
-                        <div class="col-lg-4 col-md-6 footer-widget mt-5 mt-md-0">
-                            <h3 class="widget-title">Working Hours</h3>
-                            <div class="working-hours">
-                                We work 7 days a week, every day excluding major holidays. Contact us if you have an emergency, with our
-                                Hotline and Contact form.
-                                <br><br> Monday - Friday: <span class="text-right">10:00 - 16:00 </span>
-                                <br> Saturday: <span class="text-right">12:00 - 15:00</span>
-                                <br> Sunday and holidays: <span class="text-right">09:00 - 12:00</span>
-                            </div>
-                        </div><!-- Col end -->
-
-                        <div class="col-lg-3 col-md-6 mt-5 mt-lg-0 footer-widget">
-                            <h3 class="widget-title">Services</h3>
-                            <ul class="list-arrow">
-                                <li><a href="service-single.html">Pre-Construction</a></li>
-                                <li><a href="service-single.html">General Contracting</a></li>
-                                <li><a href="service-single.html">Construction Management</a></li>
-                                <li><a href="service-single.html">Design and Build</a></li>
-                                <li><a href="service-single.html">Self-Perform Construction</a></li>
-                            </ul>
-                        </div><!-- Col end -->
-                    </div><!-- Row end -->
-                </div><!-- Container end -->
-            </div><!-- Footer main end -->
-
-            <div class="copyright">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-md-6">
-                            <div class="copyright-info">
-                                <span>
-                                    Copyright &copy; <script>
-                                                         document.write(new Date().getFullYear())
-                                    </script>, Developed by KhanhHuynhCtu
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="footer-menu text-center text-md-right">
-                                <ul class="list-unstyled">
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="team.html">Our people</a></li>
-                                    <li><a href="faq.html">Faq</a></li>
-                                    <li><a href="news-left-sidebar.html">Blog</a></li>
-                                    <li><a href="pricing.html">Pricing</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div><!-- Row end -->
-
-                    <div id="back-to-top" data-spy="affix" data-offset-top="10" class="back-to-top position-fixed">
-                        <button class="btn btn-primary" title="Back to Top">
-                            <i class="fa fa-angle-double-up"></i>
-                        </button>
-                    </div>
-
-                </div><!-- Container end -->
-            </div><!-- Copyright end -->
-        </footer><!-- Footer end -->
-        <!-- Javascript Files
-        ================================================== -->
-        <!-- initialize jQuery Library -->
+        <script src="/lib/aspnet/signalr/dist/browser/signalr.js"></script>
         <script src="/plugins/jQuery/jquery.min.js"></script>
         <!-- Bootstrap jQuery -->
         <script src="/plugins/bootstrap/bootstrap.min.js" defer></script>
@@ -418,6 +387,105 @@
         <script src="/js/script.js"></script>
         <script src="/js/notification.js"></script>
         <script src="/js/formatMoney.js"></script>
+        
+        @RenderBody()
+
+        <footer id="footer" class="footer bg-overlay">
+            <div class="footer-main">
+                <div class="container">
+                    <div class="row justify-content-between">
+                        <div class="col-lg-4 col-md-6 footer-widget footer-about">
+                            <h3 class="widget-title">Về Freelance Platform</h3>
+                            <img loading="lazy" width="200px" class="footer-logo" src="/images/MainLogo.jpg" alt="Constra">
+                            <p>
+                                Chúng tôi cung cấp cho bạn một nền tền giúp kết nối nhà tuyển dụng và người làm việc tự do với nhau một cách dễ dàng, cung cấp các chức năng cho bạn làm việc hiệu quả.
+                            </p>
+                           
+                        </div><!-- Col end -->
+
+                        <div class="col-lg-4 col-md-6 footer-widget mt-5 mt-md-0">
+                            <h3 class="widget-title">Hoạt động</h3>
+                            <div class="working-hours">
+                              Đội ngũ Admin hoạt động liên tục hỗ trợ bạn khi gặp bất cứ khó khăn khi trải nghiệm dịch vụ
+                            </div>
+                        </div><!-- Col end -->
+
+                        <div class="col-lg-3 col-md-6 mt-5 mt-lg-0 footer-widget">
+                            <h3 class="widget-title">Dịch vụ</h3>
+                            <ul class="list-arrow">
+                                <li><a href="service-single.html">Tìm kiếm Freelancer và người thuê</a></li>
+                                <li><a href="service-single.html">Quản lý dự án</a></li>
+                                <li><a href="service-single.html">Quản lý ứng tuyển</a></li>
+                                <li><a href="service-single.html">Nhắn tin</a></li>
+                                <li><a href="service-single.html">Quản lý hợp đồng</a></li>
+                                <li><a href="service-single.html"></a>Quản lý thanh toán giao dịch</li>
+                            </ul>
+                        </div><!-- Col end -->
+                    </div><!-- Row end -->
+                </div><!-- Container end -->
+            </div><!-- Footer main end -->
+
+            <div class="copyright">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <div class="copyright-info">
+                                <span>
+                                    Copyright &copy; <script>
+                                                         document.write(new Date().getFullYear())
+                                    </script>, Developed by KhanhHuynhCtu
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="footer-menu text-center text-md-right">
+                                <!-- 
+                                
+                                <ul class="list-unstyled">
+                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="team.html">Our people</a></li>
+                                    <li><a href="faq.html">Faq</a></li>
+                                    <li><a href="news-left-sidebar.html">Blog</a></li>
+                                    <li><a href="pricing.html">Pricing</a></li>
+                                </ul>
+                                -->
+                            </div>
+                        </div>
+                    </div><!-- Row end -->
+
+                    <div id="back-to-top" data-spy="affix" data-offset-top="10" class="back-to-top position-fixed">
+                        <button class="btn btn-primary" title="Back to Top">
+                            <i class="fa fa-angle-double-up"></i>
+                        </button>
+                    </div>
+
+                </div><!-- Container end -->
+            </div><!-- Copyright end -->
+        </footer><!-- Footer end -->
+        <!-- Javascript Files
+        ================================================== -->
+        <!-- initialize jQuery Library -->
+        <!-- 
+        
+        <script src="/plugins/jQuery/jquery.min.js"></script>
+       
+        <script src="/plugins/bootstrap/bootstrap.min.js" defer></script>
+        <script src="/plugins/slick/slick.min.js"></script>
+        <script src="/plugins/slick/slick-animation.min.js"></script>
+        <script src="/plugins/colorbox/jquery.colorbox.js"></script>
+        <script src="/plugins/shuffle/shuffle.min.js" defer></script>
+
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU" defer></script>
+        <script src="/plugins/google-map/map.js" defer></script>
+
+        <script src="/js/script.js"></script>
+        <script src="/js/notification.js"></script>
+        <script src="/js/formatMoney.js"></script>
+        
+        -->
+        
         <script>
 
             /*$(document).ready(function () {
@@ -447,8 +515,126 @@
                 );
             });*/
 
+            function formatDate(dateString) {
+                var date = new Date(dateString);
+                var year = date.getFullYear();
+                var month = String(date.getMonth() + 1).padStart(2, '0');
+                var day = String(date.getDate()).padStart(2, '0');
+                var hours = String(date.getHours()).padStart(2, '0');
+                var minutes = String(date.getMinutes()).padStart(2, '0');
+                return `${year}-${month}-${day} ${hours}:${minutes}`;
+            }
+
 
             $(document).ready(function () {
+
+                const connection1 = new signalR.HubConnectionBuilder()
+                    .withUrl("/chathub")
+                    .build();
+
+                connection1.on("ReceiveChatCount", function (senderName) {
+                    //alert(senderName);
+
+                    $.ajax({
+                        url: '/Inbox/CheckChatCountUnSeen',
+                        type: 'POST',
+                        data: {
+                            id: senderName
+                        },
+                        success: function (response) {
+                            console.log('Lượng tin nhắn chưa đọc');
+                            console.log(response);
+
+                            // Thay đổi nội dung text của #chat-count
+                            if (response > 0) {
+                                var containerChatCount = document.getElementById('container-chat-count');
+                                containerChatCount.innerHTML = `
+                                                                           <span id="chat-count" style="background-color: red; color: white; border-radius: 50%; width: 20px; height: 20px; display: inline-block; text-align: center; font-size: 12px; line-height: 20px; position: relative; top: -10px; left: 5px;">
+                                                                                        ${response}
+                                                                           </span>`;
+                            }
+                            else {
+                                var containerChatCount = document.getElementById('container-chat-count');
+                                containerChatCount.innerHTML = ``;
+                            }
+                           // $('#chat-count').text(response);
+                        },
+                        error: function (xhr, status, error) {
+                            console.error('Lỗi hệ thống khi gửi tin, vui lòng thử lại!');
+                        }
+                    });
+
+                });
+
+                connection1.on("ReceiveNotify", function (content, timestamp) {
+                   
+
+                    $.ajax({
+                        url: '/Notification/CheckSeenStatus',
+                        type: 'POST',
+                        success: function (response) {
+                            console.log(response);
+                            if (response > 0) {
+                                var containerQuanlityNotify = document.getElementById('container-quanlity-notify');
+                                containerQuanlityNotify.innerHTML = `
+                                                            <span style="position: absolute; top: -10px; right: -10px; background-color: red; color: white; border-radius: 50%; padding: 3px 7px; font-size: 9px; font-weight: bold; display: inline-block; line-height: 1;">
+                                                                            ${response}
+                                                            </span>`;
+                            }
+                            else {
+                                var containerQuanlityNotify = document.getElementById('container-quanlity-notify');
+                                containerQuanlityNotify.innerHTML = ``;
+                            }
+                            // $('#chat-count').text(response);
+                        },
+                        error: function (xhr, status, error) {
+                            console.error('Lỗi hệ thống khi gửi tin, vui lòng thử lại!');
+                        }
+                    });
+
+                    $.ajax({
+                        url: '/Notification/LoadListNotify',
+                        type: 'POST',
+                        success: function (response) {
+                            console.log(response);
+                            if (response.length > 0) {
+
+                                var notificationHTML = '';
+
+                                $.each(response, function (index, notification) {
+                                    notificationHTML += `
+                                    <div style="padding: 10px; border-bottom: 1px solid #eee;">
+                                        <span style="font-size: 12px; color: #777;">${formatDate(notification.createDay)}</span><br>
+                                        <p style="margin: 0;">${notification.content}</p>
+                                    </div>
+                                `;
+                                });
+
+                                var html = ' <div id="notificationList" style="display: none; position: absolute; top: 30px; left: 100%; background: white; border: 1px solid #ccc; border-radius: 5px; max-height: 700px; overflow-y: auto; z-index: 100; width: 400px; text-align: left;">';
+
+                                html += notificationHTML;
+                                html += '</div>';
+                                var containerListNotify = document.getElementById('container-list-notify');
+                                containerListNotify.innerHTML = html;
+                                console.log(html);
+                            }
+                            else {
+                                var containerListNotify = document.getElementById('container-list-notify');
+                                containerListNotify.innerHTML = '';
+                            }
+                            // $('#chat-count').text(response);
+                        },
+                        error: function (xhr, status, error) {
+                            console.error('Lỗi hệ thống khi gửi tin, vui lòng thử lại!');
+                        }
+                    });
+
+                });
+
+
+                connection1.start().catch(function (err) {
+                    return console.error(err.toString());
+                });
                 // Hiển thị danh sách kỹ năng khi di chuột vào "Tìm qua kỹ năng"
                 $('#skill-dropdown-toggle').hover(
                     function () {
@@ -489,6 +675,44 @@
 
 
 
+                $('#skill-serach-job-dropdown-toggle').hover(
+                    function () {
+                        // Hiển thị danh sách kỹ năng
+                        $('#skills-list-search-job').css({
+                            display: 'block',
+                            top: $(this).offset().top - 130, // Xuất hiện bên dưới "Tìm qua kỹ năng"
+                            left: $(this).offset().left - 120 // Nằm ngay bên trái
+                        });
+                        // Hiển thị dropdown
+                        $(this).closest('.dropdown').addClass('show');
+                        $(this).closest('.dropdown').find('.dropdown-menu').addClass('show');
+                    },
+                    function () {
+                        // Ẩn danh sách kỹ năng khi chuột ra ngoài
+                        if (!$('#skills-list-search-job:hover').length) { // Nếu không rê chuột vào danh sách kỹ năng
+                            $('#skills-list-search-job').hide();
+                            $(this).closest('.dropdown').removeClass('show');
+                            $(this).closest('.dropdown').find('.dropdown-menu').removeClass('show');
+                        }
+                    }
+                );
+
+                // Hiển thị danh sách kỹ năng khi di chuột vào danh sách kỹ năng
+                $('#skills-list-search-job').hover(
+                    function () {
+                        $(this).show(); // Giữ cho danh sách kỹ năng hiển thị khi di chuột vào
+                        $('#skill-search-job-dropdown-toggle').closest('.dropdown').addClass('show');
+                        $('#skill-search-job-dropdown-toggle').closest('.dropdown').find('.dropdown-menu').addClass('show');
+                    },
+                    function () {
+                        $(this).hide(); // Ẩn danh sách kỹ năng khi chuột rời khỏi
+                        $('#skill-search-job-dropdown-toggle').closest('.dropdown').removeClass('show');
+                        $('#skill-search-job-dropdown-toggle').closest('.dropdown').find('.dropdown-menu').removeClass('show');
+                    }
+                );
+
+
+
                 $('#category-dropdown-toggle').hover(
                     function () {
                         // Hiển thị danh sách kỹ năng
@@ -526,6 +750,43 @@
                 );
 
 
+                $('#category-search-job-dropdown-toggle').hover(
+                    function () {
+                        // Hiển thị danh sách kỹ năng
+                        $('#categories-list-search-job').css({
+                            display: 'block',
+                            top: $(this).offset().top - 130, // Xuất hiện bên dưới "Tìm qua kỹ năng"
+                            left: $(this).offset().left - 120 // Nằm ngay bên trái
+                        });
+                        // Hiển thị dropdown
+                        $(this).closest('.dropdown').addClass('show');
+                        $(this).closest('.dropdown').find('.dropdown-menu').addClass('show');
+                    },
+                    function () {
+                        // Ẩn danh sách kỹ năng khi chuột ra ngoài
+                        if (!$('#categories-list-search-job:hover').length) { // Nếu không rê chuột vào danh sách kỹ năng
+                            $('#categories-list-search-job').hide();
+                            $(this).closest('.dropdown').removeClass('show');
+                            $(this).closest('.dropdown').find('.dropdown-menu').removeClass('show');
+                        }
+                    }
+                );
+
+                // Hiển thị danh sách kỹ năng khi di chuột vào danh sách kỹ năng
+                $('#categories-list-search-job').hover(
+                    function () {
+                        $(this).show(); // Giữ cho danh sách kỹ năng hiển thị khi di chuột vào
+                        $('#category-search-job-dropdown-toggle').closest('.dropdown').addClass('show');
+                        $('#category-search-job-dropdown-toggle').closest('.dropdown').find('.dropdown-menu').addClass('show');
+                    },
+                    function () {
+                        $(this).hide(); // Ẩn danh sách kỹ năng khi chuột rời khỏi
+                        $('#category-search-job-dropdown-toggle').closest('.dropdown').removeClass('show');
+                        $('#category-search-job-dropdown-toggle').closest('.dropdown').find('.dropdown-menu').removeClass('show');
+                    }
+                );
+
+
                 $('#search-keyword-unauthen-button').on('click', function () {
                     var value = $('#search-keyword-unauthen-input').val();
 
@@ -541,8 +802,6 @@
                 });
 
             });
-
-
 
 
         </script>

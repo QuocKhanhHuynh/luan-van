@@ -549,3 +549,5 @@ D:\Luan van\src1\FreelancerPlatform\FreelancerPlatform.Client\obj\Debug\net8.0\F
 D:\Luan van\src1\FreelancerPlatform\FreelancerPlatform.Client\obj\Debug\net8.0\ref\FreelancerPlatform.Client.dll
 D:\Luan van\src1\FreelancerPlatform\FreelancerPlatform.Client\bin\Debug\net8.0\libman.json
 D:\Luan van\src1\FreelancerPlatform\FreelancerPlatform.Client\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll
+D:\Luan van\src1\FreelancerPlatform\FreelancerPlatform.Client\obj\Debug\net8.0\FreelancerPlatform.Client.sourcelink.json
+D:\Luan van\src1\FreelancerPlatform\FreelancerPlatform.Client\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll

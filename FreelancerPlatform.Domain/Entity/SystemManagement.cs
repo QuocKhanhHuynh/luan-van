@@ -20,20 +20,13 @@ namespace FreelancerPlatform.Domain.Entity
         [Column("mat_khau")]
         public string Password { get; set; }
 
-        [Column("ho_ten")]
-        public string? FullName { get; set; }
+        [Column("trang_thai_khoa")]
+        public bool Status { get; set; } = false;
 
         [Column("so_dien_thoai")]
         public string? PhoneNumber { get; set; }
-
-        [Column("Email")]
-        public string? Email { get; set; }
-
-        [Required]
-        [Column("trang_thai_hoat_dong")]
-        public bool Status { get; set; } = true;
-        public List<Freelancer> Freelancers { get; set; }
+        /*public List<Freelancer> Freelancers { get; set; }
         public List<Job> Jobs { get; set; }
-        public List<SystemManagementRole> SystemManagementRoles { get; set; }
+        public List<SystemManagementRole> SystemManagementRoles { get; set; }*/
     }
 }

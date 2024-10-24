@@ -29,9 +29,11 @@ namespace FreelancerPlatform.Application.ServiceImplementions
         private readonly ISkillRepository _skillRepository;
         private readonly IJobSkillRepository _jobSkillRepository;
         private readonly IFavoriteJobRepository _favoriteJobRepository;
+        private readonly IOfferRepository _offerRepository;
+        private readonly IContractRepository _contractRepository;
 		public ApplyService(IUnitOfWork unitOfWork, IMapper mapper, ILogger<Apply> logger, IApplyRepository applyRepository, IJobRepository jobRepository,
-            ICategoryRepository categoryRepository,
-            IFreelancerRepository freelancerRepository, ISkillRepository skillRepository, IJobSkillRepository jobSkillRepository, IFavoriteJobRepository favoriteJobRepository) : base(unitOfWork, mapper, logger)
+            ICategoryRepository categoryRepository, IOfferRepository offerRepository,
+            IFreelancerRepository freelancerRepository, ISkillRepository skillRepository, IJobSkillRepository jobSkillRepository, IFavoriteJobRepository favoriteJobRepository, IContractRepository contractRepository) : base(unitOfWork, mapper, logger)
         {
             _applyRepository = applyRepository;
             _jobRepository = jobRepository;
@@ -40,6 +42,8 @@ namespace FreelancerPlatform.Application.ServiceImplementions
             _skillRepository = skillRepository;
             _jobSkillRepository = jobSkillRepository;
             _favoriteJobRepository = favoriteJobRepository;
+            _offerRepository = offerRepository;
+            _contractRepository = contractRepository;
         }
 
         public async Task<ServiceResultInt> CreateApplyAsync(ApplyCreateRequest request)
@@ -48,7 +52,7 @@ namespace FreelancerPlatform.Application.ServiceImplementions
             {
                 //var entity = _mapper.Map<Apply>(request);
                 var apply = (await _applyRepository.GetAllAsync()).FirstOrDefault(x => x.FreelancerId == request.FreelancerId && x.JobId == request.JobId);
-
+                var isOffer = (await _offerRepository.GetAllAsync()).Where(x => x.JobId == request.JobId && x.FreelancerOfferId == request.FreelancerId).Any();
                 if (apply != null)
                 {
                     return new ServiceResultInt()
@@ -88,6 +92,10 @@ namespace FreelancerPlatform.Application.ServiceImplementions
                     ExecutionTime = request.ExecutionDay,
                     Deal = request.Deal.Value,
                 };
+                if (isOffer)
+                {
+                    newApply.IsOffer = true;
+                }
                 await _applyRepository.CreateAsync(newApply);
                 await _unitOfWork.SaveChangeAsync();
 
@@ -96,6 +104,43 @@ namespace FreelancerPlatform.Application.ServiceImplementions
                     Message = "Tạo thông tin thành công",
                     Status = StatusResult.Success,
                     Result = newApply.Id
+                };
+            }
+            catch (Exception ex)
+            {
+                _unitOfWork.Cancel();
+                _logger.LogError(ex.InnerException.Message);
+
+                return new ServiceResultInt()
+                {
+                    Message = $"Lỗi hệ thống, ({ex.InnerException.Message})",
+                    Status = StatusResult.SystemError
+                };
+            }
+        }
+
+        public async Task<ServiceResult> DeleteApplyAsync(int id)
+        {
+            try
+            {
+                //var entity = _mapper.Map<Apply>(request);
+                var apply =await _applyRepository.GetByIdAsync(id);
+
+                if (apply == null)
+                {
+                    return new ServiceResultInt()
+                    {
+                        Message = "Không tìm thấy ứng tuyển",
+                        Status = StatusResult.ClientError
+                    };
+                }
+                _applyRepository.Delete(apply);
+                await _unitOfWork.SaveChangeAsync();
+
+                return new ServiceResult()
+                {
+                    Message = "Xóa thông tin thành công",
+                    Status = StatusResult.Success,
                 };
             }
             catch (Exception ex)
@@ -135,6 +180,8 @@ namespace FreelancerPlatform.Application.ServiceImplementions
             var categories = (await _categoryRepository.GetAllAsync());
             var jobSkills = await _jobSkillRepository.GetAllAsync();
             var skills = await _skillRepository.GetAllAsync();
+            var contracts = await _contractRepository.GetAllAsync();
+            var jobContract = contracts.Select(x => x.ProjectId).ToList();
 
             var query = from j in jobs
                         join c in categories on j.CategoryId equals c.Id
@@ -161,6 +208,7 @@ namespace FreelancerPlatform.Application.ServiceImplementions
                 JobType = x.j.JobType,
                 SalaryType = x.j.SalaryType,
                 IsHiden = x.j.IsHiden,
+                InContract = jobContract.Contains(x.j.Id) ? true : false,
                 Skills = queryJobSkill.Where(y => y.j.JobId == x.j.Id).Select(y => new SkillQuickViewModel()
                 {
                     Id = y.s.Id,
@@ -185,7 +233,9 @@ namespace FreelancerPlatform.Application.ServiceImplementions
                 CreateDay = x.a.CreateDay,
                 ImageUrl = x.f.ImageUrl,
                 LastName = x.f.LastName,
-                FirstName = x.f.FirstName
+                FirstName = x.f.FirstName,
+                FreelancerId = x.a.FreelancerId,
+                IsOffer = x.a.IsOffer,
             }).ToList();
         }
 

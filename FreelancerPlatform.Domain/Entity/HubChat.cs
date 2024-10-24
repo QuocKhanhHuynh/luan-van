@@ -18,6 +18,8 @@ namespace FreelancerPlatform.Domain.Entity
 
         public int FreelancerA { get; set; }
         public int FreelancerB { get; set; }
+        public bool SeenStatusA { get; set; } = false;
+        public bool SeenStatusB { get; set; } = false;
 
         public List<Chat> Chats { get; set; }
     }
