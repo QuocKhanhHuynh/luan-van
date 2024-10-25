@@ -332,6 +332,10 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                         .HasColumnType("int")
                         .HasColumnName("luong_mot_gio");
 
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit")
+                        .HasColumnName("trang_thai_khoa");
+
                     b.HasKey("Id");
 
                     b.ToTable("ung_vien");
@@ -716,6 +720,10 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
 
                     b.Property<int>("FreelancerId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsReview")
+                        .HasColumnType("bit")
+                        .HasColumnName("da_danh_gia");
 
                     b.Property<int>("UserReport")
                         .HasColumnType("int");

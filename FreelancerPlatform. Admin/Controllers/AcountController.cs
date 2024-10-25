@@ -18,11 +18,13 @@ namespace FreelancerPlatform._Admin.Controllers
     public class AcountController : Controller
     {
         private readonly ISystemManagementService _systemManagementService;
+        private readonly IFreelancerService _freelancerService;
         private readonly IConfiguration _configuration;
-        public AcountController(ISystemManagementService systemManagementService, IConfiguration configuration)
+        public AcountController(ISystemManagementService systemManagementService, IConfiguration configuration, IFreelancerService freelancerService)
         {
             _systemManagementService = systemManagementService;
             _configuration = configuration;
+            _freelancerService = freelancerService;
         }
         public IActionResult Login()
         {
@@ -125,6 +127,17 @@ namespace FreelancerPlatform._Admin.Controllers
             return View(admins);
         }
 
+        public async Task<IActionResult> GetFreelancer(string keyword = null)
+        {
+            var freelancers = await _freelancerService.GetAllFreelancerAsync();
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                
+                freelancers = freelancers.Where(x => $"{x.LastName.ToUpper()} {x.FirstName.ToUpper()}".Contains(keyword.Trim()) || x.Id.ToString() == keyword.Trim()).ToList();
+            }
+            return View(freelancers);
+        }
+
         public async Task<IActionResult> CreateAdmin()
         {
            
@@ -150,6 +163,60 @@ namespace FreelancerPlatform._Admin.Controllers
         {
 
             var result = await _systemManagementService.UnLockAcountAsync(adminId);
+
+            if (result.Status != StatusResult.Success)
+            {
+
+                return BadRequest(result.Message);
+            }
+            return Ok(result.Message);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> LockFreelancer(int freelancerId)
+        {
+
+            var result = await _freelancerService.LockAcountAsync(freelancerId);
+
+            if (result.Status != StatusResult.Success)
+            {
+
+                return BadRequest(result.Message);
+            }
+            return Ok(result.Message);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UnLockFreelancer (int freelancerId)
+        {
+
+            var result = await _freelancerService.UnLockAcountAsync(freelancerId);
+
+            if (result.Status != StatusResult.Success)
+            {
+
+                return BadRequest(result.Message);
+            }
+            return Ok(result.Message);
+        }
+
+        public async Task<IActionResult> GetVerifyPayment()
+        {
+            var result = await _freelancerService.GetFeelancerVerifyPayment();
+            return View(result);
+        }
+
+        public async Task<IActionResult> GetVerifyPaymentDetail(int id)
+        {
+            var result = (await _freelancerService.GetFeelancerVerifyPayment()).FirstOrDefault(x => x.Id == id);
+            return View(result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateVerifyPayment(int id, bool status)
+        {
+
+            var result = await _freelancerService.UpdateVerifyPayment(id, status);
 
             if (result.Status != StatusResult.Success)
             {

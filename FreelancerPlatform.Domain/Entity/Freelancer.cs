@@ -51,6 +51,9 @@ namespace FreelancerPlatform.Domain.Entity
         [Column("do_uu_tien")]
         public int Priority { get; set; } = 0;
 
+        [Column("trang_thai_khoa")]
+        public bool Status { get; set; } = false;
+
 
         public List<RequirementServiceByFreelancer> RequirementServiceByFreelancers { get; set; }
 

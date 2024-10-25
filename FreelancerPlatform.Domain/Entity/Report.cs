@@ -16,6 +16,9 @@ namespace FreelancerPlatform.Domain.Entity
         [Column("noi_dung")]
         public string Content { get; set; }
 
+        [Column("da_danh_gia")]
+        public bool IsReview {  get; set; } = false;
+
         public Freelancer Freelancer { get; set; }
         public int FreelancerId { get; set; }
 

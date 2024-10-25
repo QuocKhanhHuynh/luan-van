@@ -14,6 +14,10 @@ namespace FreelancerPlatform.Application.Abstraction.Service
         Task<ServiceResult> UpdateFreelancerAsync(int id, FreelancerUpdateRequest request);
         Task<ServiceResult> UpdatePaymentAsync(int id, FreelancerPaymentUpdateRequest request);
         Task<List<FreelancerQuickViewModel>> GetAllFreelancerAsync();
+        Task<ServiceResult> LockAcountAsync(int adminId);
+        Task<ServiceResult> UnLockAcountAsync(int adminId);
+        Task<List<PaymentConfirmViewModel>> GetFeelancerVerifyPayment();
+        Task<ServiceResult> UpdateVerifyPayment(int id, bool statusVerify);
         //Task<ServiceResult> CreateFreelancerAsync(FreelancerCreateRequest request);
         /*Task<ServiceResult> CreateFreelancerAsync(FreelancerCreateRequest request);
         Task<ServiceResult> UpdateFreelancerAsync(int id, FreelancerUpdateRequest request);

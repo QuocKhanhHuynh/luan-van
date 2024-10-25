@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace FreelancerPlatform.Application.Dtos.Report
 {
-    public class ReportViewModel : ReportInfor
+    public class ReportViewModel : ReportQuickViewModel
     {
-        public int Id { get; set; }
+        public string Content { get; set; }
     }
 }

@@ -12,5 +12,7 @@ namespace FreelancerPlatform.Application.Abstraction.Service
     {
         Task<ServiceResult> CreateTransaction(TransactionCreateRequest request);
         Task<List<TransactionQuickViewModel>> GetTransactionOfContract(int contractId);
+        Task<List<TransactionQuickViewModelSecond>> GetAllTransaction();
+        Task<ServiceResult> UpdateStatusTransaction(int transactionId, bool status);
     }
 }

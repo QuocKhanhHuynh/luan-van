@@ -19,9 +19,11 @@ namespace FreelancerPlatform.Application.ServiceImplementions
     public class ReportService : BaseService<Report>, IReportService
     {
         private readonly IReportRepository _reportRepository;
-        public ReportService(IUnitOfWork unitOfWork, IMapper mapper, ILogger<Report> logge, IReportRepository reportRepository) : base(unitOfWork, mapper, logge)
+        private readonly IFreelancerRepository _freelancerRepository;
+        public ReportService(IUnitOfWork unitOfWork, IMapper mapper, ILogger<Report> logge, IReportRepository reportRepository, IFreelancerRepository freelancerRepository) : base(unitOfWork, mapper, logge)
         {
             _reportRepository = reportRepository;
+            _freelancerRepository = freelancerRepository;
         }
         public async Task<ServiceResult> CreateReportAsync(ReportCreateRequest request)
         {
@@ -48,6 +50,96 @@ namespace FreelancerPlatform.Application.ServiceImplementions
                 return new ServiceResult()
                 {
                     Message = "Tạo báo cáo thành công",
+                    Status = StatusResult.Success
+                };
+            }
+            catch (Exception ex)
+            {
+                _unitOfWork.Cancel();
+                _logger.LogError(ex.InnerException.Message);
+
+                return new ServiceResult()
+                {
+                    Message = $"Lỗi hệ thống, ({ex.InnerException.Message})",
+                    Status = StatusResult.SystemError
+                };
+            }
+        }
+
+        public async Task<List<ReportQuickViewModel>> GetReportAllAsync()
+        {
+            var reports = await _reportRepository.GetAllAsync();
+            var freelancers = await _freelancerRepository.GetAllAsync();
+            var query = from r in reports
+                        join f in freelancers on r.FreelancerId equals f.Id
+                        where r.IsReview == false
+                        select new { r, f };
+            return query.Select(x => new ReportQuickViewModel()
+            {
+                Id = x.f.Id,
+                DateCreate = x.f.CreateDay,
+                FirstName = x.f.FirstName,
+                LastName = x.f.LastName,
+                FreelancerId = x.f.Id,
+                NumberReport = reports.Where(y => y.FreelancerId == x.f.Id).Count(),
+            }).ToList();
+        }
+
+        public async Task<ReportViewModel> GetReportAsync(int id)
+        {
+            var report = await _reportRepository.GetByIdAsync(id);
+            var freelancer = await _freelancerRepository.GetByIdAsync(report.FreelancerId);
+            return new ReportViewModel()
+            {
+                Id = id,
+                FreelancerId = freelancer.Id,
+                Content = report.Content,
+                DateCreate = report.CreateDay,
+                FirstName = freelancer.FirstName,
+                LastName = freelancer.LastName,
+            };
+        }
+
+        public async Task<ServiceResult> ReviewReportAsync(int id)
+        {
+            try
+            {
+                var report = await _reportRepository.GetByIdAsync(id);
+                report.IsReview = true;
+                _reportRepository.Update(report);
+                await _unitOfWork.SaveChangeAsync();
+
+                return new ServiceResult()
+                {
+                    Message = "Cập nhật báo cáo thành công",
+                    Status = StatusResult.Success
+                };
+            }
+            catch (Exception ex)
+            {
+                _unitOfWork.Cancel();
+                _logger.LogError(ex.InnerException.Message);
+
+                return new ServiceResult()
+                {
+                    Message = $"Lỗi hệ thống, ({ex.InnerException.Message})",
+                    Status = StatusResult.SystemError
+                };
+            }
+        }
+
+        public async Task<ServiceResult> UnReviewReportAsync(int id)
+        {
+            try
+            {
+                var report = await _reportRepository.GetByIdAsync(id);
+                report.IsReview = false;
+                _reportRepository.Update(report);
+                await _unitOfWork.SaveChangeAsync();
+
+                return new ServiceResult()
+                {
+                    Message = "Cập nhật báo cáo thành công",
                     Status = StatusResult.Success
                 };
             }

@@ -85,10 +85,64 @@ namespace FreelancerPlatform.Application.ServiceImplementions
                 Skills = skillOfFreelancer.Where(y => y.fk.FreelancerId == x.f.Id).Select(y => new SkillQuickViewModel() { Id = y.s.Id, Name = y.s.Name }).ToList(),
                 Point = (contracts.Where(y => y.Partner == x.f.Id && y.PartnerPoints != null).Sum(y => y.PartnerPoints).GetValueOrDefault() > 0? contracts.Where(y => y.Partner == x.f.Id && y.PartnerPoints != null).Sum(y => y.PartnerPoints).GetValueOrDefault() / contracts.Where(y => y.Partner == x.f.Id && y.PartnerPoints != null).Count() : 0),
                 ReviewQuanlity = contracts.Where(y => y.Partner == x.f.Id && y.PartnerPoints != null).Count(),
-                ContractQuanlity = contracts.Where(y => y.Partner == x.f.Id).Count()
+                ContractQuanlity = contracts.Where(y => y.Partner == x.f.Id).Count(),
+                Status = x.f.Status,
+                CreateDay = x.f.CreateDay
             }).ToList();
         }
 
+        public async  Task<List<PaymentConfirmViewModel>> GetFeelancerVerifyPayment()
+        {
+
+            var freelancers = (await _freelancerRepository.GetAllAsync()).Where(x => x.PaymentVerification == false);
+
+            return freelancers.Select(x => new PaymentConfirmViewModel()
+            {
+                FirstName = x.FirstName,
+                Id = x.Id,
+                LastName = x.LastName,
+                UpdateDay = x.CreateUpdate.GetValueOrDefault(),
+                BankName = x.BankName,
+                BankNumber = x.BankNumber,
+                VerifyStatus = x.PaymentVerification
+            }).OrderByDescending(x => x.UpdateDay).ToList();
+        }
+
+        public async Task<ServiceResult> UpdateVerifyPayment(int id, bool statusVerify)
+        {
+            try
+            {
+                var entities = await _freelancerRepository.GetByIdAsync(id);
+                if (entities == null)
+                {
+                    return new ServiceResult()
+                    {
+                        Status = StatusResult.ClientError,
+                        Message = "Không tìm thấy thông tin"
+                    };
+                }
+                entities.PaymentVerification = statusVerify;
+                _freelancerRepository.Update(entities);
+                await _unitOfWork.SaveChangeAsync();
+
+                return new ServiceResult()
+                {
+                    Message = "Cập nhật thành công",
+                    Status = StatusResult.Success
+                };
+            }
+            catch (Exception ex)
+            {
+                _unitOfWork.Cancel();
+                _logger.LogError(ex.InnerException.Message);
+
+                return new ServiceResult()
+                {
+                    Message = $"Lỗi hệ thống, ({ex.InnerException.Message})",
+                    Status = StatusResult.SystemError
+                };
+            }
+        }
 
         public async Task<FreelancerViewModel> GetFreelancerAsync(int id)
         {
@@ -127,6 +181,42 @@ namespace FreelancerPlatform.Application.ServiceImplementions
                 ReviewQuanlity = contracts.Count(),
                 ContractQuanlity = contractQuanlity
             };
+        }
+
+        public async Task<ServiceResult> LockAcountAsync(int adminId)
+        {
+            try
+            {
+                var entities = await _freelancerRepository.GetByIdAsync(adminId);
+                if (entities == null)
+                {
+                    return new ServiceResult()
+                    {
+                        Status = StatusResult.ClientError,
+                        Message = "Không tìm thấy thông tin"
+                    };
+                }
+                entities.Status = true;
+                _freelancerRepository.Update(entities);
+                await _unitOfWork.SaveChangeAsync();
+
+                return new ServiceResult()
+                {
+                    Message = "Cập nhật thành công",
+                    Status = StatusResult.Success
+                };
+            }
+            catch (Exception ex)
+            {
+                _unitOfWork.Cancel();
+                _logger.LogError(ex.InnerException.Message);
+
+                return new ServiceResult()
+                {
+                    Message = $"Lỗi hệ thống, ({ex.InnerException.Message})",
+                    Status = StatusResult.SystemError
+                };
+            }
         }
 
 
@@ -561,12 +651,49 @@ namespace FreelancerPlatform.Application.ServiceImplementions
                 account.FirstName = request.FirstName;
                 account.LastName = request.LastName;
                 account.Password = passwordHasher;
+                account.CreateUpdate = DateTime.Now;
                 await _freelancerRepository.CreateAsync(account);
                 await _unitOfWork.SaveChangeAsync(); 
 
                 return new ServiceResult()
                 {
                     Message = "Đăng ký thành công",
+                    Status = StatusResult.Success
+                };
+            }
+            catch (Exception ex)
+            {
+                _unitOfWork.Cancel();
+                _logger.LogError(ex.InnerException.Message);
+
+                return new ServiceResult()
+                {
+                    Message = $"Lỗi hệ thống, ({ex.InnerException.Message})",
+                    Status = StatusResult.SystemError
+                };
+            }
+        }
+
+        public async Task<ServiceResult> UnLockAcountAsync(int adminId)
+        {
+            try
+            {
+                var entities = await _freelancerRepository.GetByIdAsync(adminId);
+                if (entities == null)
+                {
+                    return new ServiceResult()
+                    {
+                        Status = StatusResult.ClientError,
+                        Message = "Không tìm thấy thông tin"
+                    };
+                }
+                entities.Status = false;
+                _freelancerRepository.Update(entities);
+                await _unitOfWork.SaveChangeAsync();
+
+                return new ServiceResult()
+                {
+                    Message = "Cập nhật thành công",
                     Status = StatusResult.Success
                 };
             }

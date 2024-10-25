@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FreelancerPlatform.Application.Dtos.SystemManagement
 {
-    internal class SystemManagementLoginRequestValidator : AbstractValidator<SystemManagementLoginRequest>
+    public class SystemManagementLoginRequestValidator : AbstractValidator<SystemManagementLoginRequest>
     {
         public SystemManagementLoginRequestValidator()
         {

@@ -64,6 +64,74 @@ app.MapControllerRoute(
     defaults: new { controller = "Acount", action = "CreateAdmin" }
 );
 
+app.MapControllerRoute(
+    name: "freelancer",
+    pattern: "freelancer",
+    defaults: new { controller = "Acount", action = "GetFreelancer" }
+);
+
+app.MapControllerRoute(
+    name: "category",
+    pattern: "linh-vuc",
+    defaults: new { controller = "Category", action = "GetCategory" }
+);
+
+app.MapControllerRoute(
+    name: "skill",
+    pattern: "ky-nang",
+    defaults: new { controller = "Category", action = "GetSkill" }
+);
+
+app.MapControllerRoute(
+    name: "createSkill",
+    pattern: "them-ky-nang",
+    defaults: new { controller = "Category", action = "CreateSkill" }
+);
+
+app.MapControllerRoute(
+    name: "updateSkill",
+    pattern: "sua-ky-nang/{id}",
+    defaults: new { controller = "Category", action = "UpdateSkill" }
+);
+
+app.MapControllerRoute(
+    name: "deleteSkill",
+    pattern: "xoa-ky-nang/{id}",
+    defaults: new { controller = "Category", action = "DeleteSkill" }
+);
+
+app.MapControllerRoute(
+    name: "report",
+    pattern: "bao-cao",
+    defaults: new { controller = "Report", action = "GetReport" }
+);
+
+app.MapControllerRoute(
+    name: "transaction",
+    pattern: "giao-dich",
+    defaults: new { controller = "Transaction", action = "GetTransaction" }
+);
+
+app.MapControllerRoute(
+    name: "detailTransaction",
+    pattern: "chi-tiet-giao-dich/{id}",
+    defaults: new { controller = "Transaction", action = "GetTransactionDetail" }
+);
+
+app.MapControllerRoute(
+    name: "verifyPayment",
+    pattern: "xac-thuc-thanh-toan",
+    defaults: new { controller = "Acount", action = "GetVerifyPayment" }
+);
+
+app.MapControllerRoute(
+    name: "verifyPaymentDetail",
+    pattern: "chi-tiet-xac-thuc-thanh-toan/{id}",
+    defaults: new { controller = "Acount", action = "GetVerifyPaymentDetail" }
+);
+
+
+
 
 
 app.Run();

@@ -12,5 +12,9 @@ namespace FreelancerPlatform.Application.Abstraction.Service
     public interface IReportService
     {
         Task<ServiceResult> CreateReportAsync(ReportCreateRequest request);
+        Task<List<ReportQuickViewModel>> GetReportAllAsync();
+        Task<ReportViewModel> GetReportAsync(int id);
+        Task<ServiceResult> ReviewReportAsync(int id);
+        Task<ServiceResult> UnReviewReportAsync(int id);
     }
 }
