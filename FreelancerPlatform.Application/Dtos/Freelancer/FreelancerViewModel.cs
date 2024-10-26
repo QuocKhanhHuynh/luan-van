@@ -26,6 +26,10 @@ namespace FreelancerPlatform.Application.Dtos.Freelancer
         public double Point {  get; set; }
         public int ReviewQuanlity { get; set; }
         public int ContractQuanlity { set; get; }
+        public string Experience { get; set; }
+        public string Education { get; set; }
+        public string Certification { get; set; }
+        public string Archive { get; set; }
         public List<CategoryQuickViewModel> Categories { get; set; }
         public List<SkillQuickViewModel> Skills { get; set; }
     }

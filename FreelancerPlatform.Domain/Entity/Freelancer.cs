@@ -54,6 +54,15 @@ namespace FreelancerPlatform.Domain.Entity
         [Column("trang_thai_khoa")]
         public bool Status { get; set; } = false;
 
+        [Column("kinh_nghiem")]
+        public string? Experience { get; set; }
+        [Column("hoc_van")]
+        public string? Education { get; set; }
+        [Column("chung_chi")]
+        public string? Certification { get; set; }
+        [Column("thanh_tuu")]
+        public string? Archive  { get; set; }
+
 
         public List<RequirementServiceByFreelancer> RequirementServiceByFreelancers { get; set; }
 
@@ -73,6 +82,7 @@ namespace FreelancerPlatform.Domain.Entity
         public List<Post> Posts { get; set; }
         public List<Comment> Comments { get; set; }
         public List<SavePost> SavePosts { get; set; }
+        public List<LikeComment> LikeComments { get; set; }
 
     }
 }

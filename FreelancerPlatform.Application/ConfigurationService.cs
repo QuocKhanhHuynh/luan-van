@@ -36,6 +36,7 @@ namespace FreelancerPlatform.Application
             services.AddTransient<ISavePostService, SavePostService>();
             services.AddTransient<ILikePostService, LikePostService>();
             services.AddTransient<ISystemManagementService, SystemManagementService>();
+            services.AddTransient<ILikeCommentService, LikeCommentService>();
             /*services.AddTransient<IProjectService, ProjectService>();
             services.AddTransient<IApplyService, ApplyService>();
             services.AddTransient<ICategoryService, CategoryService>();

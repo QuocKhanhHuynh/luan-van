@@ -138,7 +138,7 @@ namespace FreelancerPlatform.Application.ServiceImplementions
             try
             {
                 PotentialFreelancer potient = (await _potientialFreelancerRepository.GetAllAsync()).FirstOrDefault(x => x.FreelancerId == request.FreelancerId && x.FreelancerPotientId == request.FreelancerPotientId);
-                if (potient != null)
+                if (potient == null)
                 {
                     return new ServiceResult()
                     {

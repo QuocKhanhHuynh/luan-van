@@ -14,5 +14,6 @@ namespace FreelancerPlatform.Application.Abstraction.Service
         Task<ServiceResult> CreatePost(CommentCreateRequest request);
         Task<List<CommentViewModel>> GetCommentParent(int postId);
         Task<List<CommentViewModel>> GetCommentReply(int parent);
+        Task<List<int>> GetLikeCommentOfFreelancer(int freelancerId);
     }
 }

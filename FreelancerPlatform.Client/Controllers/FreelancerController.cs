@@ -183,7 +183,8 @@ namespace FreelancerPlatform.Client.Controllers
         {
             var freelancer = await _freelancerService.GetFreelancerAsync(id);
 
-            var jobs = await _jobService.GetAllJobsAsync();
+            var jobOfContract = (await _contractService.GetContractOfRecruiter(User.GetUserId())).Select(x => x.ProjectId);
+            var jobs = (await _jobService.GetAllJobsAsync()).Where(x => !jobOfContract.Contains(x.Id)).ToList();
             var JobOffFreelancer = jobs.Where(x => x.FreelancerId == User.GetUserId());
             var reviewOfFreelancer = await _contractService.GetReviewOfFreelancer(id);
             ViewBag.ReviewOfFreelancer = reviewOfFreelancer;
@@ -219,7 +220,11 @@ namespace FreelancerPlatform.Client.Controllers
                 ImageUrl = freelancer.ImageUrl,
                 RateHour = freelancer.RateHour,
                 CategoryIds = freelancer.Categories.Select(x => x.Id).ToList(),
-                SkillIds = freelancer.Skills.Select(x => x.Id).ToList()
+                SkillIds = freelancer.Skills.Select(x => x.Id).ToList(),
+                Experience = freelancer.Experience,
+                Education = freelancer.Education,
+                Certification = freelancer.Certification,
+                Archive = freelancer.Archive
             };
             return View(request);
         }
@@ -250,7 +255,11 @@ namespace FreelancerPlatform.Client.Controllers
                 LastName = request.LastName,
                 CategoryIds = request.CategoryIds,
                 SkillIds = request.SkillIds,
-                RateHour = request.RateHour
+                RateHour = request.RateHour,
+                Archive = request.Archive,
+                Certification = request.Certification,
+                Education = request.Education,
+                Experience = request.Experience,
             };
             if (request.ImageUrl != null)
             {

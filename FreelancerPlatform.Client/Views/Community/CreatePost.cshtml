@@ -13,7 +13,7 @@
             <input value="" type="text" id="title-post" placeholder="Nhập tiêu đề bài đăng" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px;">
         </div>
         <label for="bio" style="font-size: 18px;">Nội dung bài đăng:</label>
-        <textarea id="content-post" rows="4" placeholder="Nhập nội dung bài đăng" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px;"></textarea>
+        <textarea id="content_post" rows="4" placeholder="Nhập nội dung bài đăng" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px;"></textarea>
         <div id="container-edit-avatar" class="avatar-section" style="display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 20px;">
             <label for="upload-avatar-edit" style="font-size: 18px;">Ảnh đính kèm:</label>
             <input type="file" id="image-post" accept="image/*" style="margin-top: 10px;">
@@ -29,11 +29,11 @@
 @section script {
     <script>
         $(document).ready(function () {
-
+            CKEDITOR.replace('content_post');
             $('body').on('click', '#btn-create-post', function (e) {
 
                 const newTitle = $('#title-post').val();
-                const newContent = $('#content-post').val();
+                const newContent = CKEDITOR.instances.content_post.getData();
                 const newImageUrl = $('#image-post')[0].files[0];
 
                 const formData = new FormData();

@@ -71,6 +71,21 @@ namespace FreelancerPlatform.Application.ServiceImplementions
             }
         }
 
+        public async Task<List<ContractQuickViewModel>> GetAllContract()
+        {
+            var result = (await _contractRepository.GetAllAsync()).Select(x => new ContractQuickViewModel()
+            {
+                AcceptStatus = x.AcceptStatus,
+                ContractStatus = x.ContractStatus,
+                CreateDay = x.CreateDay,
+                Content = x.Content,
+                Id = x.Id,
+                Name = x.Name,
+                ProjectId = x.ProjectId.GetValueOrDefault()
+            }).ToList();
+            return result;
+        }
+
         public async Task<ContractViewModel> GetContract(int id)
         {
             var contract = await _contractRepository.GetByIdAsync(id);

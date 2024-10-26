@@ -19,5 +19,6 @@ namespace FreelancerPlatform.Application.Abstraction.Service
         Task<List<ContractQuickViewModel>> GetContractOfRecruiter(int id);
         Task<List<ReviewOfFreelancerQuickViewModel>> GetReviewOfFreelancer(int freelancerId);
         Task<ContractViewModel> GetContract(int id);
+        Task<List<ContractQuickViewModel>> GetAllContract();
     }
 }

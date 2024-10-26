@@ -38,7 +38,7 @@
                             }
                         </div>
                         <p class="job-title" style="font-size: 18px; color: gray; margin: 5px 0;">@string.Join(" - ", Model.Categories.Select(x => x.Name))</p>
-                        <p class="bio" style="font-size: 16px; line-height: 1.5;">@Model.About</p>
+                        <p class="bio" style="font-size: 16px; line-height: 1.5;">@Html.Raw(Model.About)</p>
                    
 
 
@@ -49,6 +49,8 @@
                             <p style="font-size: 16px; margin: 5px 0;"><strong>Số đánh giá:</strong> 150</p>
                             <p style="font-size: 16px; margin: 5px 0;"><strong>Thu nhập:</strong> 200.000đ</p>
                         </div>
+
+
                     </div>
 
                 </div>
@@ -174,6 +176,62 @@
                     else
                     {
                         <p>Chưa có kỹ năng</p>
+                    }
+                }
+
+            </div>
+            <div class="experience-section" style="margin-bottom: 20px;">
+                <h2 style="font-size: 22px; margin-bottom: 10px;">Kinh nghiệm</h2>
+                @{
+                    if (Model.Experience!= null)
+                    {
+                        <p>@Html.Raw(Model.Experience)</p>
+                    }
+                    else
+                    {
+                        <p>Chưa có thông tin kinh nghiệm</p>
+                    }
+                }
+
+            </div>
+            <div class="education-section" style="margin-bottom: 20px;">
+                <h2 style="font-size: 22px; margin-bottom: 10px;">Học vấn</h2>
+                @{
+                    if (Model.Education != null)
+                    {
+                        <p>@Html.Raw(Model.Education)</p>
+                    }
+                    else
+                    {
+                        <p>Chưa có thông tin học vấn</p>
+                    }
+                }
+
+            </div>
+            <div class="certification-section" style="margin-bottom: 20px;">
+                <h2 style="font-size: 22px; margin-bottom: 10px;">Chứng chỉ</h2>
+                @{
+                    if (Model.Certification != null)
+                    {
+                        <p>@Html.Raw(Model.Certification)</p>
+                    }
+                    else
+                    {
+                        <p>Chưa có thông tin chứng chỉ</p>
+                    }
+                }
+
+            </div>
+            <div class="archive-section" style="margin-bottom: 20px;">
+                <h2 style="font-size: 22px; margin-bottom: 10px;">Thành tựu</h2>
+                @{
+                    if (Model.Archive != null)
+                    {
+                        <p>@Html.Raw(Model.Archive)</p>
+                    }
+                    else
+                    {
+                        <p>Chưa có thông tin thành tựu</p>
                     }
                 }
 

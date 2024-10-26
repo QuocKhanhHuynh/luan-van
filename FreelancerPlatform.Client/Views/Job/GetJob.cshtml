@@ -68,10 +68,10 @@
             @{
                 foreach (var i in ViewBag.Categories)
                 {
-                    <div style="margin-bottom: 2px;">
-                        <input type="checkbox" checked="@(ViewBag.CategoryId == i.Id)" class="category-checkbox" value="@i.Id" style="margin-right: 10px;">
-                        <label for="category1">@i.Name</label>
-                    </div>
+                        <div style="margin-bottom: 2px;">
+                            <input type="checkbox" checked="@(ViewBag.CategoryId == i.Id)" class="category-checkbox" value="@i.Id" style="margin-right: 10px;">
+                            <label for="category1">@i.Name</label>
+                        </div>
                 }
             }
             <!-- Skill Filter -->
@@ -79,11 +79,11 @@
             @{
                 foreach (var i in ViewBag.Skills)
                 {
-                    <div style="margin-bottom: 2px;">
+                        <div style="margin-bottom: 2px;">
 
-                        <input type="checkbox" checked="@( ViewBag.SkillId == i.Id)" class="skill-checkbox" value="@i.Id" style="margin-right: 10px;">
-                        <label for="skill1">@i.Name</label>
-                    </div>
+                            <input type="checkbox" checked="@( ViewBag.SkillId == i.Id)" class="skill-checkbox" value="@i.Id" style="margin-right: 10px;">
+                            <label for="skill1">@i.Name</label>
+                        </div>
                 }
             }
         </div>
@@ -93,104 +93,104 @@
             @{
                 foreach (var i in Model)
                 {
-                    <div data-job-type="@i.JobType" data-salary-type="@i.SalaryType" data-keyword="@(i.Name))" data-min-salary="@i.MinDeal" data-max-salary="@i.MaxDeal" class="freelancer-item" data-skill="@string.Join(",", i.Skills.Select(x => x.Id).ToList())" data-category="@i.Category.Id" style="display: flex; justify-content: space-between; border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 5px; background-color: #fff; position: relative;">
-                        <div style="display: flex; flex: 1;">
-                            
-                            <div style="max-width: 600px; position: relative;">
-                                <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <div>
-                                        <div style="display: flex; align-items: center;">
-                                            <h4 style="margin: 0; font-size: 16px;">@i.Name</h4>
-                                            <span style="font-size: 12px; color: gray; margin-left: 10px;">  @((int)((DateTime.Now - i.CreateDay)).TotalDays) ngày trước</span>
+                        <div data-job-type="@i.JobType" data-salary-type="@i.SalaryType" data-keyword="@(i.Name))" data-min-salary="@i.MinDeal" data-max-salary="@i.MaxDeal" class="freelancer-item" data-skill="@string.Join(",", i.Skills.Select(x => x.Id).ToList())" data-category="@i.Category.Id" style="display: flex; justify-content: space-between; border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 5px; background-color: #fff; position: relative;">
+                            <div style="display: flex; flex: 1;">
+                                
+                                <div style="max-width: 600px; position: relative;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <div>
+                                            <div style="display: flex; align-items: center;">
+                                                <h4 style="margin: 0; font-size: 16px;">@i.Name</h4>
+                                                <span style="font-size: 12px; color: gray; margin-left: 10px;">  @((int)((DateTime.Now - i.CreateDay)).TotalDays) ngày trước</span>
+                                            </div>
+                                            <div style="font-size: 12px; display: inline-block; margin-left: 10px;">@i.Category.Name</div>
+                                            <div style="font-size: 12px; display: inline-block; margin-left: 10px;">| <i class="fa fa-calendar"></i> @(i.JobType == 1 ? "Ngắn hạn" : "Hằng ngày")</div>
+                                            <div style="font-size: 12px; display: inline-block; margin-left: 10px;">| <i class="fa fa-money-bill"></i> @(i.SalaryType == 1 ? "Lương theo giờ" : "Lương một lần")</div>
+
+                                            
                                         </div>
-                                        <div style="font-size: 12px; display: inline-block; margin-left: 10px;">@i.Category.Name</div>
-                                        <div style="font-size: 12px; display: inline-block; margin-left: 10px;">| <i class="fa fa-calendar"></i> @(i.JobType == 1 ? "Ngắn hạn" : "Hằng ngày")</div>
-                                        <div style="font-size: 12px; display: inline-block; margin-left: 10px;">| <i class="fa fa-money-bill"></i> @(i.SalaryType == 1 ? "Lương theo giờ" : "Lương một lần")</div>
-
-                                        
                                     </div>
-                                </div>
-                                <p style="font-size: 16px; margin: 10px 0;">@(Helper.CutString(i.Description))</p>
-                                <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+                                    <p style="font-size: 16px; margin: 10px 0;">@(Helper.CutString(i.Description))</p>
+                                    <div style="display: flex; flex-wrap: wrap; gap: 5px;">
 
-                                    @{
+                                        @{
                                         foreach (var j in i.Skills)
                                         {
-                                            <span style="border-radius: 15px; padding: 5px 10px; background-color: #0078D4; color: #fff; font-size: 12px;">@j.Name</span>
+                                                    <span style="border-radius: 15px; padding: 5px 10px; background-color: #0078D4; color: #fff; font-size: 12px;">@j.Name</span>
                                         }
-                                    }
+                                        }
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- Heart icon -->
-                        <!--
+                            <!-- Heart icon -->
+                            <!--
 
-                        <div id="container-btn-potient-i.Id" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; border-radius: 5px;">
+                            <div id="container-btn-potient-i.Id" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; border-radius: 5px;">
 
-                        {
-                            if (ViewBag.PotientOfFreelancer.Contains(i.Id))
                             {
-                                            <button data-potient="i.Id" style="background: none; border: none; cursor: pointer;" title="Đã thêm yêu thích" class="gallery-icon remove-potient">
-
-                                                <i class="fa fa-heart" style="font-size: 24px; color: red; margin: 0 10px;"></i>
-                                            </button>
-                            }
-                            else
-                            {
-                                            <button data-potient="i.Id" style="background: none; border: none; cursor: pointer;" title="Thêm yêu thích" class="gallery-icon add-potient">
-
-                                                <i class="fa fa-heart" style="font-size: 24px; color: #0078D4; margin: 0 10px;"></i>
-                                            </button>
-                            }
-
-                        }
-                        </div>
-                        
-                        -->
-
-                        <div id="container-btn-favorite-job-@i.Id" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; border-radius: 5px;">
-                            @{
-                                if (!ViewBag.FavoriteJobOfFreelancers.Contains(i.Id))
+                                if (ViewBag.PotientOfFreelancer.Contains(i.Id))
                                 {
-                                    <button data-favorite-job="@i.Id" style="background: none; border: none; cursor: pointer;" title="Thêm yêu thích" class="gallery-icon add-favorite-job">
+                                                <button data-potient="i.Id" style="background: none; border: none; cursor: pointer;" title="Đã thêm yêu thích" class="gallery-icon remove-potient">
 
-                                        <i class="fa fa-heart" style="font-size: 24px; color: #0078D4; margin: 0 10px;"></i>
-                                    </button>
+                                                    <i class="fa fa-heart" style="font-size: 24px; color: red; margin: 0 10px;"></i>
+                                                </button>
                                 }
                                 else
                                 {
-                                    <button data-favorite-job="@i.Id" style="background: none; border: none; cursor: pointer;" title="Đã thêm yêu thích" class="gallery-icon remove-favorite-job">
+                                                <button data-potient="i.Id" style="background: none; border: none; cursor: pointer;" title="Thêm yêu thích" class="gallery-icon add-potient">
 
-                                        <i class="fa fa-heart" style="font-size: 24px; color: red; margin: 0 10px;"></i>
-                                    </button>
+                                                    <i class="fa fa-heart" style="font-size: 24px; color: #0078D4; margin: 0 10px;"></i>
+                                                </button>
                                 }
+
                             }
-                           
-                        </div>
+                            </div>
+                            
+                            -->
+
+                            <div id="container-btn-favorite-job-@i.Id" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; border-radius: 5px;">
+                                @{
+                                if (!ViewBag.FavoriteJobOfFreelancers.Contains(i.Id))
+                                {
+                                            <button data-favorite-job="@i.Id" style="background: none; border: none; cursor: pointer;" title="Thêm yêu thích" class="gallery-icon add-favorite-job">
+
+                                                <i class="fa fa-heart" style="font-size: 24px; color: #0078D4; margin: 0 10px;"></i>
+                                            </button>
+                                }
+                                else
+                                {
+                                            <button data-favorite-job="@i.Id" style="background: none; border: none; cursor: pointer;" title="Đã thêm yêu thích" class="gallery-icon remove-favorite-job">
+
+                                                <i class="fa fa-heart" style="font-size: 24px; color: red; margin: 0 10px;"></i>
+                                            </button>
+                                }
+                                }
+                               
+                            </div>
 
 
-                        @{
+                            @{
                             if(i.MaxDeal > 0)
                             {
-                                <div style="position: absolute; top: 15px; right: 15px; font-size: 20px; color: #555;">
-                                    @($"{i.MinDeal:N0} - {i.MaxDeal:N0}")
-                                </div>
+                                        <div style="position: absolute; top: 15px; right: 15px; font-size: 20px; color: #555;">
+                                            @($"{i.MinDeal:N0} - {i.MaxDeal:N0}")
+                                        </div>
                             }
                             else
                             {
-                                <div style="position: absolute; top: 15px; right: 15px; font-size: 20px; color: #555;">
-                                    @($"{i.MinDeal:N0}")
-                                </div>
+                                        <div style="position: absolute; top: 15px; right: 15px; font-size: 20px; color: #555;">
+                                            @($"{i.MinDeal:N0}")
+                                        </div>
                             }
-                        }
+                            }
 
 
-                        <div style="display: flex; flex-direction: row; gap: 10px; position: absolute; bottom: 15px; right: 15px;">
-                            <button style="padding: 8px 15px; background-color: #fff; color: #0078D4; border: solid;  border-width: 1px; border-radius: 5px; border-color: #0078D4; cursor: pointer;">Liên hệ</button>
-                            <button style="padding: 8px 15px; background-color: #0078D4; color: #fff; border: none; border-radius: 5px; cursor: pointer;"><a href="~/chi-tiet-du-an/@i.Id">Chi tiết</a></button>
+                            <div style="display: flex; flex-direction: row; gap: 10px; position: absolute; bottom: 15px; right: 15px;">
+                                <button style="padding: 8px 15px; background-color: #fff; color: #0078D4; border: solid;  border-width: 1px; border-radius: 5px; border-color: #0078D4; cursor: pointer;">Liên hệ</button>
+                                <button style="padding: 8px 15px; background-color: #0078D4; color: #fff; border: none; border-radius: 5px; cursor: pointer;"><a href="~/chi-tiet-du-an/@i.Id">Chi tiết</a></button>
+                            </div>
                         </div>
-                    </div>
 
                 }
             }
@@ -208,6 +208,8 @@
             //filterFreelancerCategories();
             //filterFreelancerSkills();
             initial();
+            addFavoriteJob();
+            removeFavoriteJob();
 
 
             function initial() {
@@ -449,56 +451,62 @@
             }
 
 
-            $('.add-favorite-job').on('click', function () {
-                var id = $(this).data('favorite-job');
+            function addFavoriteJob(){
+                $('.add-favorite-job').on('click', function () {
+                    var id = $(this).data('favorite-job');
 
-                $.ajax({
-                    url: '/Job/AddFavoriteJob',
-                    type: 'POST',
-                    data: {
-                        jobId: id
-                    },
-                    success: function (response) {
-                        showSuccess('Thêm yêu thích thành công.');
-                        var container = document.getElementById(`container-btn-favorite-job-${id}`); // Corrected variable name
-                        container.innerHTML = `
-                                                         <button data-favorite-job="${id}" style="background: none; border: none; cursor: pointer;" title="Đã thêm yêu thích" class="gallery-icon remove-favorite-job">
+                    $.ajax({
+                        url: '/Job/AddFavoriteJob',
+                        type: 'POST',
+                        data: {
+                            jobId: id
+                        },
+                        success: function (response) {
+                            showSuccess('Thêm yêu thích thành công.');
+                            var container = document.getElementById(`container-btn-favorite-job-${id}`); // Corrected variable name
+                            container.innerHTML = `
+                                                                 <button data-favorite-job="${id}" style="background: none; border: none; cursor: pointer;" title="Đã thêm yêu thích" class="gallery-icon remove-favorite-job">
 
-                                                <i class="fa fa-heart" style="font-size: 24px; color: red; margin: 0 10px;"></i>
-                                            </button>
-                            `;
-                    },
-                    error: function (xhr, status, error) {
-                        showError('Hãy đăng nhập');
-                    }
-                });
-            });
-
-
-            $('.remove-favorite-job').on('click', function () {
-                var id = $(this).data('favorite-job');
-
-                $.ajax({
-                    url: '/Job/MinusFavoriteJob',
-                    type: 'POST',
-                    data: {
-                        jobId: id
-                    },
-                    success: function (response) {
-                        showSuccess('Xóa yêu thích thành công.');
-                        var container = document.getElementById(`container-btn-favorite-job-${id}`); // Corrected variable name
-                        container.innerHTML = `
-                                                        <button data-favorite-job="${id}" style="background: none; border: none; cursor: pointer;" title="Thêm yêu thích" class="gallery-icon add-favorite-job">
-
-                                                <i class="fa fa-heart" style="font-size: 24px; color: #0078D4; margin: 0 10px;"></i>
-                                            </button>
+                                                        <i class="fa fa-heart" style="font-size: 24px; color: red; margin: 0 10px;"></i>
+                                                    </button>
                                     `;
-                    },
-                    error: function (err) {
-                        showError('Hãy đăng nhập');
-                    }
+                            removeFavoriteJob();
+                        },
+                        error: function (xhr, status, error) {
+                            showError('Hãy đăng nhập');
+                        }
+                    });
                 });
-            });
+            }
+
+
+            function removeFavoriteJob(){
+                $('.remove-favorite-job').on('click', function () {
+                    var id = $(this).data('favorite-job');
+
+                    $.ajax({
+                        url: '/Job/MinusFavoriteJob',
+                        type: 'POST',
+                        data: {
+                            jobId: id
+                        },
+                        success: function (response) {
+                            showSuccess('Xóa yêu thích thành công.');
+                            var container = document.getElementById(`container-btn-favorite-job-${id}`); // Corrected variable name
+                            container.innerHTML = `
+                                                                <button data-favorite-job="${id}" style="background: none; border: none; cursor: pointer;" title="Thêm yêu thích" class="gallery-icon add-favorite-job">
+
+                                                        <i class="fa fa-heart" style="font-size: 24px; color: #0078D4; margin: 0 10px;"></i>
+                                                    </button>
+                                            `;
+                            addFavoriteJob();
+                        },
+                        error: function (err) {
+                            showError('Hãy đăng nhập');
+                        }
+                    });
+                });
+            }
 
         });
     </script>

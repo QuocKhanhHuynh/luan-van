@@ -59,7 +59,7 @@
         </div>
 
         <label for="bio" style="font-size: 18px;">Mô tả dự án:</label>
-        <textarea id="job-description" rows="4" placeholder="Nhập thông tin giới thiệu" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px;"></textarea>
+        <textarea id="job_description" name="job_description" rows="4" placeholder="Nhập thông tin giới thiệu" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px;"></textarea>
     </div>
 
     <div class="skills-section" style="margin-bottom: 20px;">
@@ -138,6 +138,7 @@
 @section script {
     <script>
         $(document).ready(function () {
+            CKEDITOR.replace('job_description');
 
             $('.remove-skill').on('click', function () {
                 $(this).closest('li').remove(); // Tìm thẻ li chứa icon và xóa nó
@@ -184,7 +185,7 @@
                 const newJobMaxSalary = $('#job-max-salary').val();
                 const newJobType = $('#job-type').val();
                 const newJobSalaryType = $('#job-salary-type').val();
-                const newJobDescription = $('#job-description').val();
+                const newJobDescription = CKEDITOR.instances.job_description.getData();
 
 
                 $.ajax({

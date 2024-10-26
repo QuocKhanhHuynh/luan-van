@@ -77,6 +77,10 @@ namespace FreelancerPlatform.Infratructure.Entityframework
             builder.Entity<SavePost>().HasOne(x => x.Post).WithMany(x => x.SavePosts).HasForeignKey(x => x.PostId).OnDelete(DeleteBehavior.NoAction);
             builder.Entity<SavePost>().HasOne(x => x.Freelancer).WithMany(x => x.SavePosts).HasForeignKey(x => x.FreelancerId).OnDelete(DeleteBehavior.NoAction);
 
+            builder.Entity<LikeComment>().HasOne(x => x.Comment).WithMany(x => x.LikeComments).HasForeignKey(x => x.CommentId).OnDelete(DeleteBehavior.NoAction);
+            builder.Entity<LikeComment>().HasOne(x => x.Freelancer).WithMany(x => x.LikeComments).HasForeignKey(x => x.FreelancerId).OnDelete(DeleteBehavior.NoAction);
+
+
             // builder.Entity<Contract>().HasOne(x => x.Job).WithMany(x => x.Contracts).HasForeignKey(x => x.JobId).OnDelete(DeleteBehavior.NoAction);
 
 
@@ -105,5 +109,6 @@ namespace FreelancerPlatform.Infratructure.Entityframework
         public DbSet<Comment> Comments { get; set; }
         public DbSet<SavePost> SavePosts { get; set; }
         public DbSet<LikePost> LikePosts { get; set; }
+        public DbSet<LikeComment> LikeComments { get; set; }
     }
 }

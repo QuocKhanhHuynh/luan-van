@@ -47,7 +47,17 @@
         </div>
 
         <label for="bio" style="font-size: 18px;">Thông tin giới thiệu:</label>
-        <textarea id="bio" rows="4" placeholder="Nhập thông tin giới thiệu" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px;">@Model.About</textarea>
+        <textarea id="bio" name="bio" rows="4" placeholder="Nhập thông tin giới thiệu" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px;">@Model.About</textarea>
+        <label for="experience"  style="font-size: 18px;">Kinh nghiệm:</label>
+        <textarea id="experience" name="experience" rows="4" placeholder="Nhập thông tin kinh nghiệm" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px;">@Model.Experience</textarea>
+        <label for="education" style="font-size: 18px;">Học vấn:</label>
+        <textarea id="education" name="education" rows="4" placeholder="Nhập thông tin học vấn" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px;">@Model.Education</textarea>
+        <label for="certification" style="font-size: 18px;">Chứng chỉ:</label>
+        <textarea id="certification" name="certification" rows="4" placeholder="Nhập thông tin chứng chỉ" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px;">@Model.Certification</textarea>
+        <label for="archive" style="font-size: 18px;">Thành tựu:</label>
+        <textarea id="archive" name="archive" rows="4" placeholder="Nhập thông tin thành tựu" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px;">@Model.Archive</textarea>
+
+
     </div>
 
 
@@ -209,6 +219,12 @@
     <script>
         $(document).ready(function () {
 
+            CKEDITOR.replace('bio');
+            CKEDITOR.replace('experience');
+            CKEDITOR.replace('education');
+            CKEDITOR.replace('certification');
+            CKEDITOR.replace('archive');
+
             $('.remove-skill').on('click', function () {
                 $(this).closest('li').remove(); // Tìm thẻ li chứa icon và xóa nó
             });
@@ -304,8 +320,12 @@
 
                 const newFirstName = $('#last-name').val();
                 const newLastName = $('#first-name').val();
-                const newAbout = $('#bio').val();
+                const newAbout = CKEDITOR.instances.bio.getData();
                 const newRateHour = $('#hourly-rate').val();
+                const newExperience = CKEDITOR.instances.experience.getData();
+                const newEducation = CKEDITOR.instances.education.getData();
+                const newCertification = CKEDITOR.instances.certification.getData();
+                const newArchive = CKEDITOR.instances.archive.getData();
 
 
                 const formData = new FormData();
@@ -314,6 +334,10 @@
                 formData.append('firstName', newLastName);
                 formData.append('about', newAbout);
                 formData.append('rateHour', convertFormatCurrencyToNumber(newRateHour));
+                formData.append('experience', newExperience);
+                formData.append('education', newEducation);
+                formData.append('certification', newCertification);
+                formData.append('archive', newArchive);
 
                 for (var i in newCategoryIds){
                     formData.append('categoryIds', newCategoryIds[i]);

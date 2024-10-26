@@ -19,12 +19,14 @@ namespace FreelancerPlatform.Application.ServiceImplementions
     {
         private readonly ICommentRepository _commentRepository;
         private readonly IFreelancerRepository _freelancerRepository;
+        private readonly ILikeCommentRepository _likeCommentRepository;
 
        
-        public CommentService(IUnitOfWork unitOfWork, IMapper mapper, ILogger<Comment> logger, ICommentRepository commentRepository, IFreelancerRepository freelancerRepository) :base(unitOfWork, mapper, logger)
+        public CommentService(IUnitOfWork unitOfWork, IMapper mapper, ILogger<Comment> logger, ICommentRepository commentRepository, IFreelancerRepository freelancerRepository, ILikeCommentRepository likeCommentRepository) : base(unitOfWork, mapper, logger)
         {
             _commentRepository = commentRepository;
             _freelancerRepository = freelancerRepository;
+            _likeCommentRepository = likeCommentRepository;
         }
 
         public async Task<ServiceResult> CreatePost(CommentCreateRequest request)
@@ -72,6 +74,7 @@ namespace FreelancerPlatform.Application.ServiceImplementions
             var commentRaw = (await _commentRepository.GetAllAsync());
             var comments = commentRaw.Where(x => x.PostId == postId && x.Parent == null);
             var freelancer = await _freelancerRepository.GetAllAsync();
+            var likeComments = await _likeCommentRepository.GetAllAsync();
 
             var query = from c in comments
                         join f in freelancer on c.FreelancerId equals f.Id
@@ -85,7 +88,7 @@ namespace FreelancerPlatform.Application.ServiceImplementions
                 LastName = x.f.LastName,
                 FreelancerId = x.f.Id,
                 ImageUrl = x.f.ImageUrl,
-                LikeNumber = x.c.LikeNumber,
+                LikeNumber = likeComments.Where(y => y.CommentId == x.c.Id).Count(),
                 Parent = x.c.Parent,
                 PostId = postId,
                 Reply = x.c.Reply,
@@ -99,6 +102,7 @@ namespace FreelancerPlatform.Application.ServiceImplementions
             var commentParent = await _commentRepository.GetByIdAsync(parent);
             var comments = commentRaw.Where(x => x.Parent == parent);
             var freelancer = await _freelancerRepository.GetAllAsync();
+            var likeComments = await _likeCommentRepository.GetAllAsync();
 
             var query = from c in comments
                         join f in freelancer on c.FreelancerId equals f.Id
@@ -112,11 +116,18 @@ namespace FreelancerPlatform.Application.ServiceImplementions
                 LastName = x.f.LastName,
                 FreelancerId = x.f.Id,
                 ImageUrl = x.f.ImageUrl,
-                LikeNumber = x.c.LikeNumber,
+                LikeNumber = likeComments.Where(y => y.CommentId == x.c.Id).Count(),
                 Parent = x.c.Parent,
                 PostId = commentParent.PostId,
                 Reply = x.c.Reply
             }).ToList();
+        }
+
+        public async Task<List<int>> GetLikeCommentOfFreelancer(int freelancerId)
+        {
+            var likeComments = (await _likeCommentRepository.GetAllAsync()).Where(x => x.FreelancerId == freelancerId).Select(x => x.CommentId).ToList();
+            return likeComments;
+
         }
     }
 }

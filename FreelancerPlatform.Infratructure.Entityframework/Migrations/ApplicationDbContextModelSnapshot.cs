@@ -280,6 +280,10 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("gioi_thieu");
 
+                    b.Property<string>("Archive")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("thanh_tuu");
+
                     b.Property<string>("BankName")
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("ten_tai_khoan_ngan_hang");
@@ -287,6 +291,10 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                     b.Property<string>("BankNumber")
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("so_tai_khoan_ngan_hang");
+
+                    b.Property<string>("Certification")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("chung_chi");
 
                     b.Property<DateTime>("CreateDay")
                         .HasColumnType("datetime2")
@@ -296,10 +304,18 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("ngay_cap_nhat");
 
+                    b.Property<string>("Education")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("hoc_van");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("Email");
+
+                    b.Property<string>("Experience")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("kinh_nghiem");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -484,6 +500,34 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                     b.HasIndex("SkillId");
 
                     b.ToTable("JobSkill");
+                });
+
+            modelBuilder.Entity("FreelancerPlatform.Domain.Entity.LikeComment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CommentId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CommentId1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FreelancerId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CommentId");
+
+                    b.HasIndex("CommentId1");
+
+                    b.HasIndex("FreelancerId");
+
+                    b.ToTable("LikeComments");
                 });
 
             modelBuilder.Entity("FreelancerPlatform.Domain.Entity.LikePost", b =>
@@ -1170,6 +1214,29 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                     b.Navigation("SKill");
                 });
 
+            modelBuilder.Entity("FreelancerPlatform.Domain.Entity.LikeComment", b =>
+                {
+                    b.HasOne("FreelancerPlatform.Domain.Entity.Comment", "Comment")
+                        .WithMany("LikeComments")
+                        .HasForeignKey("CommentId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("FreelancerPlatform.Domain.Entity.Comment", null)
+                        .WithMany("Comments")
+                        .HasForeignKey("CommentId1");
+
+                    b.HasOne("FreelancerPlatform.Domain.Entity.Freelancer", "Freelancer")
+                        .WithMany("LikeComments")
+                        .HasForeignKey("FreelancerId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Comment");
+
+                    b.Navigation("Freelancer");
+                });
+
             modelBuilder.Entity("FreelancerPlatform.Domain.Entity.LikePost", b =>
                 {
                     b.HasOne("FreelancerPlatform.Domain.Entity.Freelancer", "Freelancer")
@@ -1354,6 +1421,13 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                     b.Navigation("Jobs");
                 });
 
+            modelBuilder.Entity("FreelancerPlatform.Domain.Entity.Comment", b =>
+                {
+                    b.Navigation("Comments");
+
+                    b.Navigation("LikeComments");
+                });
+
             modelBuilder.Entity("FreelancerPlatform.Domain.Entity.Contract", b =>
                 {
                     b.Navigation("Transactions");
@@ -1372,6 +1446,8 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                     b.Navigation("FreelancerCategories");
 
                     b.Navigation("FreelancerSkills");
+
+                    b.Navigation("LikeComments");
 
                     b.Navigation("Notifications");
 

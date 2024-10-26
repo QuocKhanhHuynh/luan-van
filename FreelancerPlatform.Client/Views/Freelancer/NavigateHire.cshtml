@@ -1,4 +1,6 @@
 ﻿@using FreelancerPlatform.Client.Helpers
+@using System.Text.RegularExpressions
+@using System.Web
 @model FreelancerPlatform.Client.Models.NavigateHireViewModel
 
 @{
@@ -86,64 +88,64 @@
                 @{
                     foreach (var i in Model.Potients)
                     {
-                            <div data-keyword="@(i.LastName + " " + i.FirstName))" data-salary="@i.RateHour" class="freelancer-item" data-skill="@string.Join(",", i.Skills.Select(x => x.Id).ToList())" data-category="@string.Join(",", i.Categories.Select(x => x.Id).ToList())" style="display: flex; justify-content: space-between; border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 5px; background-color: #fff; position: relative;">
-                                <div style="display: flex; flex: 1;">
-                                    <img src=@(i.ImageUrl != null && i.ImageUrl != ""? $"/Image/{i.ImageUrl}" : "/images/default-avatar.jpg") alt="Freelancer Avatar" style="width: 80px; height: 80px; border-radius: 50%; margin-right: 15px;">
-                                    <div style="max-width: 600px; position: relative;">
-                                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                                            <div>
-                                                <div style="display: flex; align-items: center;">
-                                                    <h4 style="margin: 0; font-size: 16px;">@i.LastName @i.FirstName</h4>
-                                                <span style="font-size: 12px; color: gray; margin-left: 10px;">Thêm yêu thích @((int)((DateTime.Now - i.CreateAddPotient)).TotalDays) ngày trước</span>
-                                                </div>
-                                            <div style="color: gold; font-size: 16px; display: inline-block;">
-                                                @{
+                                    <div data-keyword="@(i.LastName + " " + i.FirstName))" data-salary="@i.RateHour" class="freelancer-item" data-skill="@string.Join(",", i.Skills.Select(x => x.Id).ToList())" data-category="@string.Join(",", i.Categories.Select(x => x.Id).ToList())" style="display: flex; justify-content: space-between; border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 5px; background-color: #fff; position: relative;">
+                                        <div style="display: flex; flex: 1;">
+                                            <img src=@(i.ImageUrl != null && i.ImageUrl != ""? $"/Image/{i.ImageUrl}" : "/images/default-avatar.jpg") alt="Freelancer Avatar" style="width: 80px; height: 80px; border-radius: 50%; margin-right: 15px;">
+                                            <div style="max-width: 600px; position: relative;">
+                                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                                    <div>
+                                                        <div style="display: flex; align-items: center;">
+                                                            <h4 style="margin: 0; font-size: 16px;">@i.LastName @i.FirstName</h4>
+                                                        <span style="font-size: 12px; color: gray; margin-left: 10px;">Thêm yêu thích @((int)((DateTime.Now - i.CreateAddPotient)).TotalDays) ngày trước</span>
+                                                        </div>
+                                                    <div style="color: gold; font-size: 16px; display: inline-block;">
+                                                        @{
                                                     for (var s = 1; s <= (int)i.Point; s++)
                                                     {
-                                                        <span>★</span>
+                                                                        <span>★</span>
                                                     }
-                                                }
-                                            </div>
-                                            <div style="font-size: 12px; display: inline-block; margin-left: 5px;">@i.ReviewQuanlity <i class="fa fa-pen"></i></div>
+                                                        }
+                                                    </div>
+                                                    <div style="font-size: 12px; display: inline-block; margin-left: 5px;">@i.ReviewQuanlity <i class="fa fa-pen"></i></div>
 
-                                            <!-- New fields for contracts and rating points -->
-                                            <div style="font-size: 12px; display: inline-block; margin-left: 10px;">| @i.ContractQuanlity  <i class="fa fa-file"></i></div>
-                                            <div style="font-size: 12px; display: inline-block; margin-left: 10px;">| @i.Point <i class="fa fa-star"></i></div>
+                                                    <!-- New fields for contracts and rating points -->
+                                                    <div style="font-size: 12px; display: inline-block; margin-left: 10px;">| @i.ContractQuanlity  <i class="fa fa-file"></i></div>
+                                                    <div style="font-size: 12px; display: inline-block; margin-left: 10px;">| @i.Point <i class="fa fa-star"></i></div>
 
-                                                <p style="font-size: 14px; margin: 5px 0;">@(string.Join(" - ", i.Categories.Select(x => x.Name).ToList()))</p>
-                                            </div>
-                                        </div>
-                                        <p style="font-size: 16px; margin: 10px 0;">@(Helper.CutString(i.About))</p>
-                                        <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+                                                        <p style="font-size: 14px; margin: 5px 0;">@(string.Join(" - ", i.Categories.Select(x => x.Name).ToList()))</p>
+                                                    </div>
+                                                </div>
+                                                <p style="font-size: 16px; margin: 10px 0;">@(Helper.CutString(i.About))</p>
+                                                <div style="display: flex; flex-wrap: wrap; gap: 5px;">
 
-                                            @{
+                                                    @{
                                             foreach (var j in i.Skills)
                                             {
-                                                        <span style="border-radius: 15px; padding: 5px 10px; background-color: #0078D4; color: #fff; font-size: 12px;">@j.Name</span>
+                                                                        <span style="border-radius: 15px; padding: 5px 10px; background-color: #0078D4; color: #fff; font-size: 12px;">@j.Name</span>
                                             }
-                                            }
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Heart icon -->
+                                        <div id="container-btn-potient-@i.Id" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; border-radius: 5px;">
+                                            <button data-potient="@i.Id" style="background: none; border: none; cursor: pointer;" title="Đã thêm yêu thích" class="gallery-icon remove-potient">
+                                                <i class="fa fa-heart" style="font-size: 24px; color: red; margin: 0 10px;"></i>
+                                            </button>
+                                        </div>
+
+
+                                        <div style="position: absolute; top: 15px; right: 15px; font-size: 20px; color: #555;">
+                                            @($"{i.RateHour:N0}/giờ")
+                                        </div>
+
+
+                                        <div style="display: flex; flex-direction: row; gap: 10px; position: absolute; bottom: 15px; right: 15px;">
+                                        <button style="padding: 8px 15px; background-color: #fff; color: #0078D4; border: solid;  border-width: 1px; border-radius: 5px; border-color: #0078D4; cursor: pointer;"><a href="~/tin-nhan?freelancerB=@i.Id">Liên hệ</a></button>
+                                            <button style="padding: 8px 15px; background-color: #0078D4; color: #fff; border: none; border-radius: 5px; cursor: pointer;"><a href="~/chi-tiet-freelancer/@i.Id">Chi tiết</a></button>
                                         </div>
                                     </div>
-                                </div>
-
-                                <!-- Heart icon -->
-                                <div id="container-btn-potient-@i.Id" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; border-radius: 5px;">
-                                    <button data-potient="@i.Id" style="background: none; border: none; cursor: pointer;" title="Đã thêm yêu thích" class="gallery-icon remove-potient">
-                                        <i class="fa fa-heart" style="font-size: 24px; color: red; margin: 0 10px;"></i>
-                                    </button>
-                                </div>
-
-
-                                <div style="position: absolute; top: 15px; right: 15px; font-size: 20px; color: #555;">
-                                    @($"{i.RateHour:N0}/giờ")
-                                </div>
-
-
-                                <div style="display: flex; flex-direction: row; gap: 10px; position: absolute; bottom: 15px; right: 15px;">
-                                <button style="padding: 8px 15px; background-color: #fff; color: #0078D4; border: solid;  border-width: 1px; border-radius: 5px; border-color: #0078D4; cursor: pointer;"><a href="~/tin-nhan?freelancerB=@i.Id">Liên hệ</a></button>
-                                    <button style="padding: 8px 15px; background-color: #0078D4; color: #fff; border: none; border-radius: 5px; cursor: pointer;"><a href="~/chi-tiet-freelancer/@i.Id">Chi tiết</a></button>
-                                </div>
-                            </div>
 
                     }
                 }
@@ -154,94 +156,94 @@
                 @{
                     foreach (var i in Model.JobPosts)
                     {
-                        <div data-job-type="@i.JobType" data-salary-type="@i.SalaryType" data-keyword="@(i.Name))" data-min-salary="@i.MinDeal" data-max-salary="@i.MaxDeal" class="freelancer-item" data-skill="@string.Join(",", i.Skills.Select(x => x.Id).ToList())" data-category="@i.Category.Id" style="display: flex; justify-content: space-between; border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 5px; background-color: #fff; position: relative;">
-                            <div style="display: flex; flex: 1;">
+                                <div data-job-type="@i.JobType" data-salary-type="@i.SalaryType" data-keyword="@(i.Name))" data-min-salary="@i.MinDeal" data-max-salary="@i.MaxDeal" class="freelancer-item" data-skill="@string.Join(",", i.Skills.Select(x => x.Id).ToList())" data-category="@i.Category.Id" style="display: flex; justify-content: space-between; border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 5px; background-color: #fff; position: relative;">
+                                    <div style="display: flex; flex: 1;">
 
-                                <div style="max-width: 600px; position: relative;">
-                                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                                        <div>
-                                            <div style="display: flex; align-items: center;">
-                                                <h4 style="margin: 0; font-size: 16px;">@i.Name</h4>
-                                                @{
+                                        <div style="max-width: 600px; position: relative;">
+                                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                                <div>
+                                                    <div style="display: flex; align-items: center;">
+                                                        <h4 style="margin: 0; font-size: 16px;">@i.Name</h4>
+                                                        @{
                                                     if (!i.InContract)
                                                     {
                                                         if (i.IsHiden)
                                                         {
-                                                            <span style="font-size: 12px; color: gray; margin-left: 10px;">Đã ẩn</span>
+                                                                            <span style="font-size: 12px; color: gray; margin-left: 10px;">Đã ẩn</span>
 
                                                         }
                                                         else
                                                         {
-                                                            <span style="font-size: 12px; color: gray; margin-left: 10px;">@((int)((DateTime.Now - i.CreateDay)).TotalDays) ngày trước</span>
+                                                                            <span style="font-size: 12px; color: gray; margin-left: 10px;">@((int)((DateTime.Now - i.CreateDay)).TotalDays) ngày trước</span>
                                                         }
                                                     }
                                                     else
                                                     {
-                                                        <span style="font-size: 12px; color: gray; margin-left: 10px;">Dự án đã tạo hợp đồng</span>
+                                                                        <span style="font-size: 12px; color: gray; margin-left: 10px;">Dự án đã tạo hợp đồng</span>
                                                     }
-                                                }
+                                                        }
+                                                    </div>
+                                                    <div style="font-size: 12px; display: inline-block; margin-left: 10px;">@i.Category.Name</div>
+                                                    <div style="font-size: 12px; display: inline-block; margin-left: 10px;">| <i class="fa fa-calendar"></i> @(i.JobType == 1 ? "Ngắn hạn" : "Hằng ngày")</div>
+                                                    <div style="font-size: 12px; display: inline-block; margin-left: 10px;">| <i class="fa fa-money-bill"></i> @(i.SalaryType == 1 ? "Lương theo giờ" : "Lương một lần")</div>
+
+
+                                                </div>
                                             </div>
-                                            <div style="font-size: 12px; display: inline-block; margin-left: 10px;">@i.Category.Name</div>
-                                            <div style="font-size: 12px; display: inline-block; margin-left: 10px;">| <i class="fa fa-calendar"></i> @(i.JobType == 1 ? "Ngắn hạn" : "Hằng ngày")</div>
-                                            <div style="font-size: 12px; display: inline-block; margin-left: 10px;">| <i class="fa fa-money-bill"></i> @(i.SalaryType == 1 ? "Lương theo giờ" : "Lương một lần")</div>
+                                    <p style="font-size: 16px; margin: 10px 0;">@(Helper.CutString(HttpUtility.HtmlDecode(Regex.Replace(i.Description, "<.*?>", string.Empty))))</p>
+                                            <div style="display: flex; flex-wrap: wrap; gap: 5px;">
 
-
-                                        </div>
-                                    </div>
-                                    <p style="font-size: 16px; margin: 10px 0;">@(Helper.CutString(i.Description))</p>
-                                    <div style="display: flex; flex-wrap: wrap; gap: 5px;">
-
-                                        @{
+                                                @{
                                             foreach (var j in i.Skills)
                                             {
-                                                <span style="border-radius: 15px; padding: 5px 10px; background-color: #0078D4; color: #fff; font-size: 12px;">@j.Name</span>
+                                                                <span style="border-radius: 15px; padding: 5px 10px; background-color: #0078D4; color: #fff; font-size: 12px;">@j.Name</span>
                                             }
-                                        }
+                                                }
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
 
 
-                            <div id="container-btn-hiden-@i.Id" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; border-radius: 5px;">
-                                @{
+                                    <div id="container-btn-hiden-@i.Id" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; border-radius: 5px;">
+                                        @{
                                     if (!i.IsHiden)
                                     {
-                                        <button data-hiden-job="@i.Id" style="background: none; border: none; cursor: pointer;" title="Ẩn đi" class="gallery-icon add-hiden-job">
+                                                        <button data-hiden-job="@i.Id" style="background: none; border: none; cursor: pointer;" title="Ẩn đi" class="gallery-icon add-hiden-job">
 
-                                            <i class="fa fa-eye" style="font-size: 24px; color: #0078D4; margin: 0 10px;"></i>
-                                        </button>
+                                                            <i class="fa fa-eye" style="font-size: 24px; color: #0078D4; margin: 0 10px;"></i>
+                                                        </button>
                                     }
                                     else
                                     {
-                                        <button data-hiden-job="@i.Id" style="background: none; border: none; cursor: pointer;" title="Đã ẩn" class="gallery-icon remove-hiden-job">
+                                                        <button data-hiden-job="@i.Id" style="background: none; border: none; cursor: pointer;" title="Đã ẩn" class="gallery-icon remove-hiden-job">
 
-                                            <i class="fa fa-eye" style="font-size: 24px; color: red; margin: 0 10px;"></i>
-                                        </button>
+                                                            <i class="fa fa-eye" style="font-size: 24px; color: red; margin: 0 10px;"></i>
+                                                        </button>
                                     }
-                                }
+                                        }
 
-                            </div>
+                                    </div>
 
-                            @{
+                                    @{
                                 if (i.MaxDeal > 0)
                                 {
-                                    <div style="position: absolute; top: 15px; right: 15px; font-size: 20px; color: #555;">
-                                        @($"{i.MinDeal:N0} - {i.MaxDeal:N0}")
-                                    </div>
+                                                    <div style="position: absolute; top: 15px; right: 15px; font-size: 20px; color: #555;">
+                                                        @($"{i.MinDeal:N0} - {i.MaxDeal:N0}")
+                                                    </div>
                                 }
                                 else
                                 {
-                                    <div style="position: absolute; top: 15px; right: 15px; font-size: 20px; color: #555;">
-                                        @($"{i.MinDeal:N0}")
-                                    </div>
+                                                    <div style="position: absolute; top: 15px; right: 15px; font-size: 20px; color: #555;">
+                                                        @($"{i.MinDeal:N0}")
+                                                    </div>
                                 }
-                            }
+                                    }
 
 
-                            <div style="display: flex; flex-direction: row; gap: 10px; position: absolute; bottom: 15px; right: 15px;">
-                                <button style="padding: 8px 15px; background-color: #0078D4; color: #fff; border: none; border-radius: 5px; cursor: pointer;"><a href="~/chi-tiet-du-an/@i.Id">Chi tiết</a></button>
-                            </div>
-                        </div>
+                                    <div style="display: flex; flex-direction: row; gap: 10px; position: absolute; bottom: 15px; right: 15px;">
+                                        <button style="padding: 8px 15px; background-color: #0078D4; color: #fff; border: none; border-radius: 5px; cursor: pointer;"><a href="~/chi-tiet-du-an/@i.Id">Chi tiết</a></button>
+                                    </div>
+                                </div>
 
                     }
                 }
@@ -251,75 +253,75 @@
                 @{
                     foreach (var i in Model.OfferJobs)
                     {
-                        <div id="container-offer-@i.OfferId" data-job-type="@i.JobType" data-salary-type="@i.SalaryType" data-keyword="@(i.Name))" data-min-salary="@i.MinDeal" data-max-salary="@i.MaxDeal" class="freelancer-item" data-skill="@string.Join(",", i.Skills.Select(x => x.Id).ToList())" data-category="@i.Category.Id" style="display: flex; justify-content: space-between; border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 5px; background-color: #fff; position: relative;">
-                            <div style="display: flex; flex: 1;">
+                                <div id="container-offer-@i.OfferId" data-job-type="@i.JobType" data-salary-type="@i.SalaryType" data-keyword="@(i.Name))" data-min-salary="@i.MinDeal" data-max-salary="@i.MaxDeal" class="freelancer-item" data-skill="@string.Join(",", i.Skills.Select(x => x.Id).ToList())" data-category="@i.Category.Id" style="display: flex; justify-content: space-between; border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 5px; background-color: #fff; position: relative;">
+                                    <div style="display: flex; flex: 1;">
 
-                                <div style="max-width: 600px; position: relative;">
-                                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                                        <div>
-                                            <div style="display: flex; align-items: center;">
-                                                <img src=@(i.ImageUrl != null && i.ImageUrl != "" ? $"/Image/{i.ImageUrl}" : "/images/default-avatar.jpg") alt="Avatar" style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
-                                                <h4 style="margin: 0; font-size: 16px;">
-                                                    @i.LastName @i.FirstName - @i.Name
-                                                </h4>
-                                                @{
+                                        <div style="max-width: 600px; position: relative;">
+                                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                                <div>
+                                                    <div style="display: flex; align-items: center;">
+                                                        <img src=@(i.ImageUrl != null && i.ImageUrl != "" ? $"/Image/{i.ImageUrl}" : "/images/default-avatar.jpg") alt="Avatar" style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;">
+                                                        <h4 style="margin: 0; font-size: 16px;">
+                                                            @i.LastName @i.FirstName - @i.Name
+                                                        </h4>
+                                                        @{
                                                     if (i.IsHiden)
                                                     {
-                                                        <span style="font-size: 12px; color: gray; margin-left: 10px;">Đã ẩn</span>
+                                                                        <span style="font-size: 12px; color: gray; margin-left: 10px;">Đã ẩn</span>
                                                     }
                                                     else
                                                     {
-                                                        <span style="font-size: 12px; color: gray; margin-left: 10px;">@((int)((DateTime.Now - i.CreateDay)).TotalDays) ngày trước</span>
+                                                                        <span style="font-size: 12px; color: gray; margin-left: 10px;">@((int)((DateTime.Now - i.CreateDay)).TotalDays) ngày trước</span>
                                                     }
-                                                }
+                                                        }
+                                                    </div>
+                                                    <div style="font-size: 12px; display: inline-block; margin-left: 10px;">@i.Category.Name</div>
+                                                    <div style="font-size: 12px; display: inline-block; margin-left: 10px;">| <i class="fa fa-calendar"></i> @(i.JobType == 1 ? "Ngắn hạn" : "Hằng ngày")</div>
+                                                    <div style="font-size: 12px; display: inline-block; margin-left: 10px;">| <i class="fa fa-money-bill"></i> @(i.SalaryType == 1 ? "Lương theo giờ" : "Lương một lần")</div>
+
+
+                                                </div>
                                             </div>
-                                            <div style="font-size: 12px; display: inline-block; margin-left: 10px;">@i.Category.Name</div>
-                                            <div style="font-size: 12px; display: inline-block; margin-left: 10px;">| <i class="fa fa-calendar"></i> @(i.JobType == 1 ? "Ngắn hạn" : "Hằng ngày")</div>
-                                            <div style="font-size: 12px; display: inline-block; margin-left: 10px;">| <i class="fa fa-money-bill"></i> @(i.SalaryType == 1 ? "Lương theo giờ" : "Lương một lần")</div>
+                                            <p style="font-size: 16px; margin: 10px 0;">@(Helper.CutString(i.Description))</p>
+                                            <div style="display: flex; flex-wrap: wrap; gap: 5px;">
 
-
-                                        </div>
-                                    </div>
-                                    <p style="font-size: 16px; margin: 10px 0;">@(Helper.CutString(i.Description))</p>
-                                    <div style="display: flex; flex-wrap: wrap; gap: 5px;">
-
-                                        @{
+                                                @{
                                             foreach (var j in i.Skills)
                                             {
-                                                <span style="border-radius: 15px; padding: 5px 10px; background-color: #0078D4; color: #fff; font-size: 12px;">@j.Name</span>
+                                                                <span style="border-radius: 15px; padding: 5px 10px; background-color: #0078D4; color: #fff; font-size: 12px;">@j.Name</span>
                                             }
-                                        }
+                                                }
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
 
 
-                            <div id="container-btn-remove-offer-@i.OfferId" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; border-radius: 5px;">
-                                <button data-offer="@i.OfferId" style="background: none; border: none; cursor: pointer;" title="Hủy lời mời" class="gallery-icon delete-offer">
-                                    <i class="fa fa-trash" style="font-size: 24px; color: #0078D4; margin: 0 10px;"></i>
-                                </button>
-                            </div>
+                                    <div id="container-btn-remove-offer-@i.OfferId" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; border-radius: 5px;">
+                                        <button data-offer="@i.OfferId" style="background: none; border: none; cursor: pointer;" title="Hủy lời mời" class="gallery-icon delete-offer">
+                                            <i class="fa fa-trash" style="font-size: 24px; color: #0078D4; margin: 0 10px;"></i>
+                                        </button>
+                                    </div>
 
-                            @{
+                                    @{
                                 if (i.MaxDeal > 0)
                                 {
-                                    <div style="position: absolute; top: 15px; right: 15px; font-size: 20px; color: #555;">
-                                        @($"{i.MinDeal:N0} - {i.MaxDeal:N0}")
-                                    </div>
+                                                    <div style="position: absolute; top: 15px; right: 15px; font-size: 20px; color: #555;">
+                                                        @($"{i.MinDeal:N0} - {i.MaxDeal:N0}")
+                                                    </div>
                                 }
                                 else
                                 {
-                                    <div style="position: absolute; top: 15px; right: 15px; font-size: 20px; color: #555;">
-                                        @($"{i.MinDeal:N0}")
-                                    </div>
+                                                    <div style="position: absolute; top: 15px; right: 15px; font-size: 20px; color: #555;">
+                                                        @($"{i.MinDeal:N0}")
+                                                    </div>
                                 }
-                            }
+                                    }
 
 
-                            <div style="display: flex; flex-direction: row; gap: 10px; position: absolute; bottom: 15px; right: 15px;">
-                                <button style="padding: 8px 15px; background-color: #0078D4; color: #fff; border: none; border-radius: 5px; cursor: pointer;"><a href="~/chi-tiet-du-an/@i.Id">Chi tiết</a></button>
-                            </div>
-                        </div>
+                                    <div style="display: flex; flex-direction: row; gap: 10px; position: absolute; bottom: 15px; right: 15px;">
+                                <button style="padding: 8px 15px; background-color: #0078D4; color: #fff; border: none; border-radius: 5px; cursor: pointer;"><a href="~/chi-tiet-freelancer/@i.FreelancerId">Chi tiết</a></button>
+                                    </div>
+                                </div>
 
                     }
                 }
@@ -328,58 +330,58 @@
                 @{
                     foreach (var i in Model.Contracts)
                     {
-                        <div data-contract="@i.Id" class="freelancer-item" style="display: flex; justify-content: space-between; border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 5px; background-color: #fff; position: relative;">
-                            <div style="display: flex; flex: 1;">
+                                <div data-contract="@i.Id" class="freelancer-item" style="display: flex; justify-content: space-between; border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 5px; background-color: #fff; position: relative;">
+                                    <div style="display: flex; flex: 1;">
 
-                                <div style="max-width: 600px; position: relative;">
-                                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                                        <div>
-                                            <div>
-                                                <h4 style="margin: 0; font-size: 16px;">@i.Name</h4>
-                                                <div style="font-size: 12px; display: inline-block; margin-left: 10px;">@i.CreateDay.ToString("dd/MM/yyyy")</div>
+                                        <div style="max-width: 600px; position: relative;">
+                                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                                <div>
+                                                    <div>
+                                                        <h4 style="margin: 0; font-size: 16px;">@i.Name</h4>
+                                                        <div style="font-size: 12px; display: inline-block; margin-left: 10px;">@i.CreateDay.ToString("dd/MM/yyyy")</div>
+                                                    </div>
+
+
+                                                </div>
                                             </div>
+                                            <p style="font-size: 16px; margin: 5px 0;">@(Helper.CutString(i.Content))</p>
+                                            <div style="display: flex; flex-wrap: wrap; gap: 5px;">
 
-
+                                                <p></p>
+                                            </div>
                                         </div>
                                     </div>
-                                    <p style="font-size: 16px; margin: 5px 0;">@(Helper.CutString(i.Content))</p>
-                                    <div style="display: flex; flex-wrap: wrap; gap: 5px;">
-
-                                        <p></p>
-                                    </div>
-                                </div>
-                            </div>
 
 
-                            <div style="position: absolute; top: 15px; right: 15px; font-size: 20px; color: #555;">
-                                @{
+                                    <div style="position: absolute; top: 15px; right: 15px; font-size: 20px; color: #555;">
+                                        @{
                                     if (i.AcceptStatus == 0)
                                     {
-                                        <span>Đang chờ phản hồi</span>
+                                                        <span>Đang chờ phản hồi</span>
                                     }
                                     else if(i.AcceptStatus == 1)
                                     {
-                                        <span>Đã từ chối</span>
+                                                        <span>Đã từ chối</span>
                                     }
                                     else
                                     {
                                         if (i.ContractStatus == false)
                                         {
-                                            <span>Đã kết thúc</span>
+                                                            <span>Đã kết thúc</span>
                                         }
                                         else
                                         {
-                                            <span>Đang diễn ra</span>
+                                                            <span>Đang diễn ra</span>
                                         }
                                     }
-                                }
-                            </div>
+                                        }
+                                    </div>
 
 
-                            <div style="display: flex; flex-direction: row; gap: 10px; position: absolute; bottom: 15px; right: 15px;">
-                                <button style="padding: 8px 15px; background-color: #0078D4; color: #fff; border: none; border-radius: 5px; cursor: pointer;"><a href="~/chi-tiet-hop-dong/@i.Id">Chi tiết</a></button>
-                            </div>
-                        </div>
+                                    <div style="display: flex; flex-direction: row; gap: 10px; position: absolute; bottom: 15px; right: 15px;">
+                                        <button style="padding: 8px 15px; background-color: #0078D4; color: #fff; border: none; border-radius: 5px; cursor: pointer;"><a href="~/chi-tiet-hop-dong/@i.Id">Chi tiết</a></button>
+                                    </div>
+                                </div>
 
                     }
                 }
@@ -398,6 +400,10 @@
 
             
             initial();
+            removePotient();
+            addPotient();
+            addHideJob();
+            removeHideJob();
             function initial() {
                 $('#potient-mode').show();
                 $('#offer-job-mode').hide();
@@ -451,55 +457,61 @@
             }
 
 
-            $('.add-potient').on('click', function () {
-                var id = $(this).data('potient');
+           function addPotient(){
+                $('.add-potient').on('click', function () {
+                    var id = $(this).data('potient');
 
-                $.ajax({
-                    url: '/Freelancer/AddFreelancerPotient',
-                    type: 'POST',
-                    data: {
-                        freelancerPotientId: id
-                    },
-                    success: function (response) {
-                        showSuccess('Thêm yêu thích thành công.');
-                        var container = document.getElementById(`container-btn-potient-${id}`); // Corrected variable name
-                        container.innerHTML = `
-                                                <button data-potient="${id}" style="background: none; border: none; cursor: pointer;" title="Đã thêm yêu thích" class="gallery-icon remove-potient">
+                    $.ajax({
+                        url: '/Freelancer/AddFreelancerPotient',
+                        type: 'POST',
+                        data: {
+                            freelancerPotientId: id
+                        },
+                        success: function (response) {
+                            showSuccess('Thêm yêu thích thành công.');
+                            var container = document.getElementById(`container-btn-potient-${id}`); // Corrected variable name
+                            container.innerHTML = `
+                                                        <button data-potient="${id}" style="background: none; border: none; cursor: pointer;" title="Đã thêm yêu thích" class="gallery-icon remove-potient">
 
-                                                        <i class="fa fa-heart" style="font-size: 24px; color: red; margin: 0 10px;"></i>
-                                                        </button>
-                            `;
-                    },
-                    error: function (xhr, status, error) {
-                        showError('Hãy đăng nhập');
-                    }
-                });
-            });
-
-
-            $('.remove-potient').on('click', function () {
-                var id = $(this).data('potient');
-
-                $.ajax({
-                    url: '/Freelancer/MinusFreelancerPotient',
-                    type: 'POST',
-                    data: {
-                        freelancerPotientId: id
-                    },
-                    success: function (response) {
-                        showSuccess('Xóa yêu thích thành công.');
-                        var container = document.getElementById(`container-btn-potient-${id}`); // Corrected variable name
-                        container.innerHTML = `
-                                                <button data-potient="${id}" style="background: none; border: none; cursor: pointer;" title="Thêm yêu thích" class="gallery-icon add-potient">
-                                                    <i class="fa fa-heart" style="font-size: 24px; color: #0078D4; margin: 0 10px;"></i>
-                                        </button>
+                                                                <i class="fa fa-heart" style="font-size: 24px; color: red; margin: 0 10px;"></i>
+                                                                </button>
                                     `;
-                    },
-                    error: function (err) {
-                        showError('Hãy đăng nhập');
-                    }
+                            removePotient();
+                        },
+                        error: function (xhr, status, error) {
+                            showError('Hãy đăng nhập');
+                        }
+                    });
                 });
-            });
+           }
+
+
+            function removePotient(){
+                $('.remove-potient').on('click', function () {
+                    var id = $(this).data('potient');
+
+                    $.ajax({
+                        url: '/Freelancer/MinusFreelancerPotient',
+                        type: 'POST',
+                        data: {
+                            freelancerPotientId: id
+                        },
+                        success: function (response) {
+                            showSuccess('Xóa yêu thích thành công.');
+                            var container = document.getElementById(`container-btn-potient-${id}`); // Corrected variable name
+                            container.innerHTML = `
+                                                        <button data-potient="${id}" style="background: none; border: none; cursor: pointer;" title="Thêm yêu thích" class="gallery-icon add-potient">
+                                                            <i class="fa fa-heart" style="font-size: 24px; color: #0078D4; margin: 0 10px;"></i>
+                                                </button>
+                                            `;
+                            addPotient();
+                        },
+                        error: function (err) {
+                            showError('Hãy đăng nhập');
+                        }
+                    });
+                });
+            }
 
 
             $('.delete-offer').on('click', function () {
@@ -632,55 +644,61 @@
             });
 
 
-            $('.add-hiden-job').on('click', function () {
-                var idJob = $(this).data('hiden-job');
+           function addHideJob(){
+                $('.add-hiden-job').on('click', function () {
+                    var idJob = $(this).data('hiden-job');
 
-                $.ajax({
-                    url: '/Freelancer/HidenJob',
-                    type: 'POST',
-                    data: {
-                        id: idJob
-                    },
-                    success: function (response) {
-                        showSuccess('Ẩn dự án thành công.');
-                        var container = document.getElementById(`container-btn-hiden-${idJob}`); // Corrected variable name
-                        container.innerHTML = `
-                                                    <button data-hiden-job="${idJob}" style="background: none; border: none; cursor: pointer;" title="Đã ẩn" class="gallery-icon remove-hiden-job">
+                    $.ajax({
+                        url: '/Freelancer/HidenJob',
+                        type: 'POST',
+                        data: {
+                            id: idJob
+                        },
+                        success: function (response) {
+                            showSuccess('Ẩn dự án thành công.');
+                            var container = document.getElementById(`container-btn-hiden-${idJob}`); // Corrected variable name
+                            container.innerHTML = `
+                                                            <button data-hiden-job="${idJob}" style="background: none; border: none; cursor: pointer;" title="Đã ẩn" class="gallery-icon remove-hiden-job">
 
-                                                    <i class="fa fa-eye" style="font-size: 24px; color: red; margin: 0 10px;"></i>
-                                                </button>
-                            `;
-                    },
-                    error: function (xhr, status, error) {
-                        showError('Hãy đăng nhập');
-                    }
-                });
-            });
-
-            $('.remove-hiden-job').on('click', function () {
-                var idJob = $(this).data('hiden-job');
-
-                $.ajax({
-                    url: '/Freelancer/RemoveHidenJob',
-                    type: 'POST',
-                    data: {
-                        id: idJob
-                    },
-                    success: function (response) {
-                        showSuccess('Xóa ẩn dự án thành công.');
-                        var container = document.getElementById(`container-btn-hiden-${idJob}`); // Corrected variable name
-                        container.innerHTML = `
-                                                                                  <button data-hiden-job="${idJob}" style="background: none; border: none; cursor: pointer;" title="Ẩn đi" class="gallery-icon add-hiden-job">
-
-                                                    <i class="fa fa-eye" style="font-size: 24px; color: #0078D4; margin: 0 10px;"></i>
-                                                </button>
+                                                            <i class="fa fa-eye" style="font-size: 24px; color: red; margin: 0 10px;"></i>
+                                                        </button>
                                     `;
-                    },
-                    error: function (xhr, status, error) {
-                        showError('Hãy đăng nhập');
-                    }
+                            removeHideJob();
+                        },
+                        error: function (xhr, status, error) {
+                            showError('Hãy đăng nhập');
+                        }
+                    });
                 });
-            });
+           }
+
+            function removeHideJob(){
+                $('.remove-hiden-job').on('click', function () {
+                    var idJob = $(this).data('hiden-job');
+
+                    $.ajax({
+                        url: '/Freelancer/RemoveHidenJob',
+                        type: 'POST',
+                        data: {
+                            id: idJob
+                        },
+                        success: function (response) {
+                            showSuccess('Xóa ẩn dự án thành công.');
+                            var container = document.getElementById(`container-btn-hiden-${idJob}`); // Corrected variable name
+                            container.innerHTML = `
+                                                                                          <button data-hiden-job="${idJob}" style="background: none; border: none; cursor: pointer;" title="Ẩn đi" class="gallery-icon add-hiden-job">
+
+                                                            <i class="fa fa-eye" style="font-size: 24px; color: #0078D4; margin: 0 10px;"></i>
+                                                        </button>
+                                            `;
+                            addHideJob();
+                        },
+                        error: function (xhr, status, error) {
+                            showError('Hãy đăng nhập');
+                        }
+                    });
+                });
+            }
 
 
 

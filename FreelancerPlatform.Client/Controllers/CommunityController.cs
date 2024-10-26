@@ -18,12 +18,16 @@ namespace FreelancerPlatform.Client.Controllers
         private readonly IStorageService _storageService;
         private readonly ISavePostService _savePostService;
         private readonly ILikePostService _likePostService;
-        public CommunityController(IPostService postService, IStorageService storageService, ISavePostService savePostService, ILikePostService likePostService)
+        private readonly ILikeCommentService _likeCommentService;
+        private readonly ICommentService _commentService;
+        public CommunityController(IPostService postService, IStorageService storageService, ISavePostService savePostService,  ILikePostService likePostService, ILikeCommentService likeCommentService, ICommentService commentService)
         {
             _postService = postService;
             _storageService = storageService;
             _savePostService = savePostService;
             _likePostService = likePostService;
+            _likeCommentService = likeCommentService;
+            _commentService = commentService;
         }
         public async Task<IActionResult> Index()
         {
@@ -31,9 +35,11 @@ namespace FreelancerPlatform.Client.Controllers
             var savePotRaw = await _postService.GetSavePostByFreelancerId(User.GetUserId());
             var savePostId = savePotRaw.Select(x => x.Id).ToList();
             var likePost = await _likePostService.GetLikePostOfFreelancer(User.GetUserId());
+            var likeComment = await _commentService.GetLikeCommentOfFreelancer(User.GetUserId());
 
             ViewBag.LikePost = likePost;
             ViewBag.SavePost = savePostId;
+            ViewBag.LikeComment = likeComment;
 
             return View(posts);
         }

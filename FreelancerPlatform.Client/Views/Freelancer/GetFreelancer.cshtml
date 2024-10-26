@@ -161,6 +161,8 @@
             //filterFreelancerCategories();
             //filterFreelancerSkills();
             initial();
+            addPotient();
+            removePotient();
 
 
             function initial(){
@@ -332,55 +334,61 @@
             }
 
 
-            $('.add-potient').on('click', function () {
-                var id = $(this).data('potient');
-                
-                $.ajax({
-                    url: '/Freelancer/AddFreelancerPotient',
-                    type: 'POST',
-                    data: {
-                        freelancerPotientId: id
-                    },
-                    success: function (response) {
-                        showSuccess('Thêm yêu thích thành công.');
-                        var container = document.getElementById(`container-btn-potient-${id}`); // Corrected variable name
-                        container.innerHTML = `
-                                        <button data-potient="${id}" style="background: none; border: none; cursor: pointer;" title="Đã thêm yêu thích" class="gallery-icon remove-potient">
+           function addPotient(){
+                $('.add-potient').on('click', function () {
+                    var id = $(this).data('potient');
 
-                                                <i class="fa fa-heart" style="font-size: 24px; color: red; margin: 0 10px;"></i>
-                                                </button>
-                    `;
-                    },
-                    error: function (xhr, status, error) {
-                        showError('Hãy đăng nhập');
-                    }
-                });
-            });
+                    $.ajax({
+                        url: '/Freelancer/AddFreelancerPotient',
+                        type: 'POST',
+                        data: {
+                            freelancerPotientId: id
+                        },
+                        success: function (response) {
+                            showSuccess('Thêm yêu thích thành công.');
+                            var container = document.getElementById(`container-btn-potient-${id}`); // Corrected variable name
+                            container.innerHTML = `
+                                                <button data-potient="${id}" style="background: none; border: none; cursor: pointer;" title="Đã thêm yêu thích" class="gallery-icon remove-potient">
 
-
-            $('.remove-potient').on('click', function () {
-                var id = $(this).data('potient');
-
-                $.ajax({
-                    url: '/Freelancer/MinusFreelancerPotient',
-                    type: 'POST',
-                    data: {
-                        freelancerPotientId: id
-                    },
-                    success: function (response) {
-                        showSuccess('Xóa yêu thích thành công.');
-                        var container = document.getElementById(`container-btn-potient-${id}`); // Corrected variable name
-                        container.innerHTML = `
-                                        <button data-potient="${id}" style="background: none; border: none; cursor: pointer;" title="Thêm yêu thích" class="gallery-icon add-potient">
-                                            <i class="fa fa-heart" style="font-size: 24px; color: #0078D4; margin: 0 10px;"></i>
-                                </button>
+                                                        <i class="fa fa-heart" style="font-size: 24px; color: red; margin: 0 10px;"></i>
+                                                        </button>
                             `;
-                    },
-                    error: function (err) {
-                        showError('Hãy đăng nhập');
-                    }
+                            removePotient();
+                        },
+                        error: function (xhr, status, error) {
+                            showError('Hãy đăng nhập');
+                        }
+                    });
                 });
-            });
+           }
+
+
+           function removePotient(){
+                $('.remove-potient').on('click', function () {
+                    var id = $(this).data('potient');
+
+                    $.ajax({
+                        url: '/Freelancer/MinusFreelancerPotient',
+                        type: 'POST',
+                        data: {
+                            freelancerPotientId: id
+                        },
+                        success: function (response) {
+                            showSuccess('Xóa yêu thích thành công.');
+                            var container = document.getElementById(`container-btn-potient-${id}`); // Corrected variable name
+                            container.innerHTML = `
+                                                <button data-potient="${id}" style="background: none; border: none; cursor: pointer;" title="Thêm yêu thích" class="gallery-icon add-potient">
+                                                    <i class="fa fa-heart" style="font-size: 24px; color: #0078D4; margin: 0 10px;"></i>
+                                        </button>
+                                    `;
+                            addPotient();s
+                        },
+                        error: function (err) {
+                            showError('Hãy đăng nhập');
+                        }
+                    });
+                });
+           }
 
 
 

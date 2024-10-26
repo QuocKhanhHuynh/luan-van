@@ -179,7 +179,11 @@ namespace FreelancerPlatform.Application.ServiceImplementions
                 Skills = skillOfFreelancer.Select(x => new SkillQuickViewModel() { Id = x.Id, Name = x.Name }).ToList(),
                 Point = (contracts.Sum(y => y.PartnerPoints).GetValueOrDefault() > 0 ? contracts.Sum(y => y.PartnerPoints).GetValueOrDefault() / contracts.Count() : 0),
                 ReviewQuanlity = contracts.Count(),
-                ContractQuanlity = contractQuanlity
+                ContractQuanlity = contractQuanlity,
+                Archive = freelancer.Archive,
+                Certification = freelancer.Certification,
+                Education = freelancer.Education,
+                Experience = freelancer.Experience
             };
         }
 
@@ -587,6 +591,14 @@ namespace FreelancerPlatform.Application.ServiceImplementions
                         Status = StatusResult.ClientError
                     };
                 }
+                if (freelancer.Status)
+                {
+                    return new LoginResult()
+                    {
+                        Message = "Tài khoản đã bị khóa",
+                        Status = StatusResult.ClientError
+                    };
+                }
                 var verifyPassword = PasswordHelper.VerifyPassword(freelancer.Password, request.Password);
                 if (!verifyPassword)
                 {
@@ -728,6 +740,22 @@ namespace FreelancerPlatform.Application.ServiceImplementions
                 entity.LastName = request.LastName;
                 entity.FirstName = request.FirstName;
                 entity.ImageUrl = request.ImageUrl != null? request.ImageUrl : entity.ImageUrl;
+                if (request.Experience != null && request.Experience.Trim() != "")
+                {
+                    entity.Experience = request.Experience.Trim();
+                }
+                if (request.Education != null && request.Education.Trim() != "")
+                {
+                    entity.Experience = request.Education.Trim();
+                }
+                if (request.Certification != null && request.Certification.Trim() != "")
+                {
+                    entity.Certification = request.Certification.Trim();
+                }
+                if (request.Archive != null && request.Archive.Trim() != "")
+                {
+                    entity.Archive = request.Archive.Trim();
+                }
                 _freelancerRepository.Update(entity);
 
                 var categoryIdOfFreelancer = (await _freelancerCategoryRepository.GetAllAsync()).Where(x => x.FreelancerId == id);

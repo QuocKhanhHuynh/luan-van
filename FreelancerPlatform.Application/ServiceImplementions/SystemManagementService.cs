@@ -90,6 +90,14 @@ namespace FreelancerPlatform.Application.ServiceImplementions
                         Status = StatusResult.ClientError
                     };
                 }
+                if (freelancer.Status)
+                {
+                    return new LoginResult()
+                    {
+                        Message = "Tài khoản đã bị khóa",
+                        Status = StatusResult.ClientError
+                    };
+                }
                 var verifyPassword = PasswordHelper.VerifyPassword(freelancer.Password, request.Password);
                 if (!verifyPassword)
                 {

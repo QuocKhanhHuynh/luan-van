@@ -23,7 +23,6 @@ namespace FreelancerPlatform.Domain.Entity
 
         [Column("luot_thich")]
         public int LikeNumber { get; set; }
-
         public int? Parent {  get; set; }
         public int? Reply {  get; set; }
 
@@ -32,6 +31,8 @@ namespace FreelancerPlatform.Domain.Entity
 
         public int FreelancerId { get; set; }
         public Freelancer Freelancer { get; set; }
+        public List<LikeComment> Comments {  get; set; }
+        public List<LikeComment> LikeComments { get; set; }
 
     }
 }

@@ -18,7 +18,7 @@
             <input value="@Model.Title" type="text" id="title-post" placeholder="Nhập tiêu đề bài đăng" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px;">
         </div>
         <label for="bio" style="font-size: 18px;">Nội dung bài đăng:</label>
-        <textarea id="content-post" rows="4" placeholder="Nhập nội dung bài đăng" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px;">@Model.Content</textarea>
+        <textarea id="content_post" rows="4" placeholder="Nhập nội dung bài đăng" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px;">@Model.Content</textarea>
 
         <div id="container-edit-avatar" class="avatar-section" style="display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 20px;">
             @{
@@ -46,6 +46,7 @@
 
 @section script{
     <script>
+        CKEDITOR.replace('content_post');
         $('#btn-remove-image').on('click', function (event) {
             event.preventDefault();
             $('#update-image-flag').val(1)
@@ -72,7 +73,7 @@
         $('body').on('click', '#btn-update-post', function (e) {
 
             const newTitle = $('#title-post').val();
-            const newContent = $('#content-post').val();
+            const newContent = CKEDITOR.instances.content_post.getData();
             var newImageUrl = null;
             var newId = $('#post-id').val();
 

@@ -52,6 +52,7 @@ namespace FreelancerPlatform.Infratructure.Entityframework
             services.AddTransient<IPostRepository, PostRepository>();
             services.AddTransient<ISavePostRepository, SavePostRepository>();
             services.AddTransient<ILikePostRepository, LikePostRepository>();
+            services.AddTransient<ILikeCommentRepository, LikeCommentRepository>();
 
             return services;
         }
