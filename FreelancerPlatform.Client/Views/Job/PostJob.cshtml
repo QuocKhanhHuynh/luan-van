@@ -32,7 +32,7 @@
                 @{
                     foreach (var i in ViewBag.Categories)
                     {
-                        <option value="@i.Id">@i.Name</option>
+                                <option value="@i.Id">@i.Name</option>
                     }
                 }
             </select>
@@ -58,8 +58,23 @@
             <input value="" type="text" id="job-max-salary" placeholder="Nhập mức tối đa" style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
         </div>
 
+        <div id="estimated-completion" class="form-section" style="margin-bottom: 20px;">
+            <label for="label_estimated-completion" style="font-size: 18px;">Số giờ dự kiến hoàn thành:</label>
+            <input value="" type="text" id="job-estimated-completion" placeholder="Nhập số giờ dự kiến hoàn thành" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px;">
+        </div>
+
+        <div id="hour-per-day" class="form-section" style="margin-bottom: 20px;">
+            <label for="label_hour_per_day" style="font-size: 18px;">Số giờ làm trên ngày:</label>
+            <input value="" type="text" id="job-hour-per-day" placeholder="Nhập số giờ làm một ngày" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px;">
+        </div>
+
         <label for="bio" style="font-size: 18px;">Mô tả dự án:</label>
-        <textarea id="job_description" name="job_description" rows="4" placeholder="Nhập thông tin giới thiệu" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px;"></textarea>
+        <textarea id="job_description" name="job_description" rows="4" placeholder="Nhập thông mô tả" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px;"></textarea>
+
+        <label for="job_requirement" style="font-size: 18px;">Thông tin yêu cầu:</label>
+        <textarea id="job_requirement" name="job_requirement" rows="4" placeholder="Nhập thông tin yêu cầu" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px;"></textarea>
+
+       
     </div>
 
     <div class="skills-section" style="margin-bottom: 20px;">
@@ -72,7 +87,7 @@
                     @{
                         foreach(var i in ViewBag.Skills)
                         {
-                            <option value="@i.Id">@i.Name</option>
+                                    <option value="@i.Id">@i.Name</option>
                         }
                     }
                 </select>
@@ -138,7 +153,27 @@
 @section script {
     <script>
         $(document).ready(function () {
+            $('#estimated-completion').hide();
+            $('#hour-per-day').hide();
             CKEDITOR.replace('job_description');
+            CKEDITOR.replace('job_requirement');
+
+            $('#job-salary-type, #job-type').on('change', function () {
+                var salaryType = $('#job-salary-type').val();
+                var jobType = $('#job-type').val();
+                if (salaryType == 1 && jobType == 1) {
+                    $('#estimated-completion').show();
+                    $('#hour-per-day').hide();
+                }
+                else if (salaryType == 1 && jobType == 2) {
+                    $('#estimated-completion').hide();
+                    $('#hour-per-day').show();
+                }
+                else {
+                    $('#estimated-completion').hide();
+                    $('#hour-per-day').hide();
+                }
+            });
 
             $('.remove-skill').on('click', function () {
                 $(this).closest('li').remove(); // Tìm thẻ li chứa icon và xóa nó
@@ -186,7 +221,17 @@
                 const newJobType = $('#job-type').val();
                 const newJobSalaryType = $('#job-salary-type').val();
                 const newJobDescription = CKEDITOR.instances.job_description.getData();
+                const newJobRequirement = CKEDITOR.instances.job_requirement.getData();
+                var newEstimatedCompletion = null;
+                var newHourPerDay = null;
 
+                if (newJobType == 1 && newJobSalaryType == 1) {
+                   
+                    newEstimatedCompletion = $('#job-estimated-completion').val();
+                }
+                else if (newJobType == 2 && newJobSalaryType == 1) {
+                    newHourPerDay = $('#hour-per-day').val();
+                }
 
                 $.ajax({
                     type: "POST",
@@ -199,7 +244,10 @@
                         jobType: newJobType,
                         salaryType: newJobSalaryType,
                         categoryId: newJobCategory,
-                        skills: newSkillIds
+                        skills: newSkillIds,
+                        requirement: newJobRequirement,
+                        estimatedCompletion: newEstimatedCompletion,
+                        hourPerDay: newHourPerDay
                     },
                     success: function (res) {
                         showSuccess("Đăng tuyển thành công");

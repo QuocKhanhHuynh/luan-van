@@ -32,12 +32,13 @@ namespace FreelancerPlatform.Application.ServiceImplementions
         private readonly IJobSkillRepository _jobSkillRepository;
         private readonly ISkillRepository _skillRepository;
         private readonly IContractRepository _contractRepository;
+        private readonly IRecentViewRepository _recentViewRepository;
 
 
         public JobService(IUnitOfWork unitOfWork, IMapper mapper, ILogger<Job> logger, IJobRepository jobRepository, 
             IFavoriteJobRepository favoriteJobRepository, IContractRepository contractRepository
             , ITransactionRepository transactionRepository, ICategoryRepository categoryRepository, ISkillRepository skillRepository,
-            IApplyRepository applyRepository, IJobSkillRepository jobSkillRepository) : base(unitOfWork, mapper, logger)
+            IApplyRepository applyRepository, IJobSkillRepository jobSkillRepository, IRecentViewRepository recentViewRepository) : base(unitOfWork, mapper, logger)
         {
             _jobRepository = jobRepository;
             _jobRepository = jobRepository;
@@ -48,8 +49,57 @@ namespace FreelancerPlatform.Application.ServiceImplementions
             _jobSkillRepository = jobSkillRepository;
             _skillRepository = skillRepository;
             _contractRepository = contractRepository;
+            _recentViewRepository = recentViewRepository;
         }
 
+        public async Task<ServiceResult> AddViewRecent(int freelancerId, int jobId)
+        {
+            try
+            {
+                var recentViews = await _recentViewRepository.GetAllAsync();
+                var entity = recentViews.FirstOrDefault(x => x.FreelancerId == freelancerId && x.JobId == jobId);
+                if (entity != null)
+                {
+                    return new ServiceResult()
+                    {
+                        Message = "Tạo thông tin thành công",
+                        Status = StatusResult.Success
+                    };
+                }
+                var viewOfUsers = recentViews.Where(x => x.FreelancerId == freelancerId).OrderBy(x => x.CreateDay).ToList();
+                if (viewOfUsers.Count() == 10)
+                {
+                    var viewOfUser = viewOfUsers[0];
+                    _recentViewRepository.Delete(viewOfUser);
+                }
+
+                var recentView = new RecentView()
+                {
+                    FreelancerId = freelancerId,
+                    JobId = jobId
+                };
+                    
+                await _recentViewRepository.CreateAsync(recentView);
+            
+                await _unitOfWork.SaveChangeAsync();
+                return new ServiceResult()
+                {
+                    Message = "Tạo thông tin thành công",
+                    Status = StatusResult.Success
+                };
+            }
+            catch (Exception ex)
+            {
+                _unitOfWork.Cancel();
+                _logger.LogError(ex.InnerException.Message);
+
+                return new ServiceResult()
+                {
+                    Message = $"Lỗi hệ thống, ({ex.InnerException.Message})",
+                    Status = StatusResult.SystemError
+                };
+            }
+        }
 
         public async Task<ServiceResult> CreateJobAsync(JobCreateRequest request)
         {
@@ -66,8 +116,17 @@ namespace FreelancerPlatform.Application.ServiceImplementions
                     MinDeal = request.MinDeal,
                     SalaryType = request.SalaryType,
                     JobType = request.JobType,
+                    Requirement = request.Requirement
 
                 };
+                if (request.EstimatedCompletion.HasValue && request.EstimatedCompletion.Value > 0)
+                {
+                    job.EstimatedCompletion = request.EstimatedCompletion.Value;
+                }
+                if (request.HourPerDay.HasValue && request.HourPerDay > 0)
+                {
+                    job.HourPerDay = request.HourPerDay.Value;
+                }
                 await _jobRepository.CreateAsync(job);
 
                 await _unitOfWork.SaveChangeAsync();
@@ -274,8 +333,16 @@ namespace FreelancerPlatform.Application.ServiceImplementions
                 entity.MinDeal = request.MinDeal;
                 entity.SalaryType = request.SalaryType;
                 entity.JobType = request.JobType;
-
+                entity.Requirement = request.Requirement;
                 entity.CreateUpdate = DateTime.Now;
+                if (request.EstimatedCompletion.HasValue && request.EstimatedCompletion > 0)
+                {
+                    entity.EstimatedCompletion = request.EstimatedCompletion.Value;
+                }
+                if (request.HourPerDay.HasValue && request.HourPerDay > 0)
+                {
+                    entity.HourPerDay = request.HourPerDay.Value;
+                }
                 _jobRepository.Update(entity);
 
                 var oldJobSkill = (await _jobSkillRepository.GetAllAsync()).Where(x => x.JobId == entity.Id);

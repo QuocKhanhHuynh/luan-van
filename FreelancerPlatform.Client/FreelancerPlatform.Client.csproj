@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FreelancerPlatform.ApiService\FreelancerPlatform.ApiService.csproj" />
     <ProjectReference Include="..\FreelancerPlatform.Application\FreelancerPlatform.Application.csproj" />
     <ProjectReference Include="..\FreelancerPlatform.Infratructure.Entityframework\FreelancerPlatform.Infratructure.Entityframework.csproj" />
   </ItemGroup>

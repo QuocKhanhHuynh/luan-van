@@ -43,9 +43,20 @@ namespace FreelancerPlatform.Domain.Entity
         [Column("an_cong_viec")]
         public bool IsHiden { get; set; } = false;
 
+        [Column("yeu_cau")]
+        [Required]
+        public string Requirement { get; set; }
+
+        [Column("so_ngay_du_kien_hoan_thanh")]
+        public int? EstimatedCompletion {  get; set; }
+        [Column("so_gio_lam_viec_ngay")]
+        public int? HourPerDay { get; set; }
+
+
 
         //public List<Contract> Contracts { get; set; }
         public List<Apply> Applies { get; set; }
+        public List<RecentView> RecentViews { get; set; }
         public List<FavoriteJob> FavoriteJobs { get; set; }
         public List<Offer> Offers { get; set; }
         public List<JobSkill> JobSkills { get; set; }

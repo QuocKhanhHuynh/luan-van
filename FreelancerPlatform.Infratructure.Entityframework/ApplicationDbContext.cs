@@ -80,6 +80,9 @@ namespace FreelancerPlatform.Infratructure.Entityframework
             builder.Entity<LikeComment>().HasOne(x => x.Comment).WithMany(x => x.LikeComments).HasForeignKey(x => x.CommentId).OnDelete(DeleteBehavior.NoAction);
             builder.Entity<LikeComment>().HasOne(x => x.Freelancer).WithMany(x => x.LikeComments).HasForeignKey(x => x.FreelancerId).OnDelete(DeleteBehavior.NoAction);
 
+            builder.Entity<RecentView>().HasOne(x => x.Freelancer).WithMany(x => x.RecentViews).HasForeignKey(x => x.FreelancerId).OnDelete(DeleteBehavior.NoAction);
+            builder.Entity<RecentView>().HasOne(x => x.Job).WithMany(x => x.RecentViews).HasForeignKey(x => x.JobId).OnDelete(DeleteBehavior.NoAction);
+            builder.Entity<RecentView>().HasKey(x => new {x.FreelancerId, x.JobId});
 
             // builder.Entity<Contract>().HasOne(x => x.Job).WithMany(x => x.Contracts).HasForeignKey(x => x.JobId).OnDelete(DeleteBehavior.NoAction);
 

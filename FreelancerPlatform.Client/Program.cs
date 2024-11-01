@@ -1,3 +1,4 @@
+using FreelancerPlatform.ApiService;
 using FreelancerPlatform.Application;
 using FreelancerPlatform.Client;
 using FreelancerPlatform.Domain.Constans;
@@ -28,6 +29,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddApplicationService();
 builder.Services.AddPresentService();
 builder.Services.AddInfrastructureEntityFrameworkService(builder.Configuration);
+builder.Services.AddApiService();
 
 builder.Services.AddSignalR();
 builder.Services.AddSingleton<IUserIdProvider, CustomUserIdProvider>();

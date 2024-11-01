@@ -23,6 +23,7 @@ namespace FreelancerPlatform.Application.Dtos.Job
             .When(x => x.MaxDeal.HasValue)
             .WithMessage("Mức lương lớn nhất không được rỗng hoặc phải hợp lệ nếu có giá trị.");
             RuleFor(x => x.Skills).NotEmpty().WithMessage("Danh sách kỹ năng không được rỗng");
+            RuleFor(x => x.EstimatedCompletion).GreaterThan(0).When(x => x.EstimatedCompletion.HasValue).WithMessage("Số giờ ước lượng hoàn thành không được rỗng");
         }
     }
 }

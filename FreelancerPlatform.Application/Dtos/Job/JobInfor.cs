@@ -19,6 +19,9 @@ namespace FreelancerPlatform.Application.Dtos.Job
         public int FreelancerId { get; set; }
         public int SalaryType {  get; set; }
         public int JobType { get; set; }
+        public string Requirement { get; set; }
+        public int? EstimatedCompletion { get; set; }
+        public int? HourPerDay { get; set; }
         public List<int> Skills { get; set; }
     }
 }

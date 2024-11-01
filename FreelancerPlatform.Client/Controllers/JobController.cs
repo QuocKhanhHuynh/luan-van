@@ -1,4 +1,5 @@
-﻿using FreelancerPlatform.Application.Abstraction.Service;
+﻿using FreelancerPlatform.Application.Abstraction.Repository;
+using FreelancerPlatform.Application.Abstraction.Service;
 using FreelancerPlatform.Application.Dtos.Common;
 using FreelancerPlatform.Application.Dtos.FavoriteJob;
 using FreelancerPlatform.Application.Dtos.Job;
@@ -23,6 +24,7 @@ namespace FreelancerPlatform.Client.Controllers
         private readonly IFreelancerService _freelancerService;
         private readonly IApplyService _applyService;
         private readonly IOfferService _offerService;
+       
 
         public JobController(ICategoryService categoryService, ISkillService skillService, IJobService jobService,
             IFavoriteJobService favoriteJobService, IFreelancerService freelancerService, IApplyService applyService, IOfferService offerService)
@@ -237,6 +239,11 @@ namespace FreelancerPlatform.Client.Controllers
             ViewBag.RelatedJob = relatedJobs;
             ViewBag.ApplyOfJob = applyOfJob;
             ViewBag.CreateUserName = $"{freelancer.LastName} + {freelancer.FirstName}";
+
+            if (User.Identity.IsAuthenticated)
+            {
+                await _jobService.AddViewRecent(User.GetUserId(), id);
+            }
            
 
 

@@ -446,8 +446,16 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("mo_ta");
 
+                    b.Property<int?>("EstimatedCompletion")
+                        .HasColumnType("int")
+                        .HasColumnName("so_ngay_du_kien_hoan_thanh");
+
                     b.Property<int>("FreelancerId")
                         .HasColumnType("int");
+
+                    b.Property<int?>("HourPerDay")
+                        .HasColumnType("int")
+                        .HasColumnName("so_gio_lam_viec_ngay");
 
                     b.Property<bool>("IsHiden")
                         .HasColumnType("bit")
@@ -473,6 +481,11 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                     b.Property<int>("Priority")
                         .HasColumnType("int")
                         .HasColumnName("do_uu_tien");
+
+                    b.Property<string>("Requirement")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("yeu_cau");
 
                     b.Property<int>("SalaryType")
                         .HasColumnType("int")
@@ -738,6 +751,29 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                     b.HasIndex("FreelancerId");
 
                     b.ToTable("ung_vien_tim_nang");
+                });
+
+            modelBuilder.Entity("FreelancerPlatform.Domain.Entity.RecentView", b =>
+                {
+                    b.Property<int>("FreelancerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("JobId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDay")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("ngay_tao");
+
+                    b.Property<DateTime?>("CreateUpdate")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("ngay_cap_nhat");
+
+                    b.HasKey("FreelancerId", "JobId");
+
+                    b.HasIndex("JobId");
+
+                    b.ToTable("cong_viec_xem_gan_day");
                 });
 
             modelBuilder.Entity("FreelancerPlatform.Domain.Entity.Report", b =>
@@ -1308,6 +1344,25 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                     b.Navigation("Freelancer");
                 });
 
+            modelBuilder.Entity("FreelancerPlatform.Domain.Entity.RecentView", b =>
+                {
+                    b.HasOne("FreelancerPlatform.Domain.Entity.Freelancer", "Freelancer")
+                        .WithMany("RecentViews")
+                        .HasForeignKey("FreelancerId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("FreelancerPlatform.Domain.Entity.Job", "Job")
+                        .WithMany("RecentViews")
+                        .HasForeignKey("JobId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Freelancer");
+
+                    b.Navigation("Job");
+                });
+
             modelBuilder.Entity("FreelancerPlatform.Domain.Entity.Report", b =>
                 {
                     b.HasOne("FreelancerPlatform.Domain.Entity.Freelancer", "Freelancer")
@@ -1457,6 +1512,8 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
 
                     b.Navigation("PotentialFreelancers");
 
+                    b.Navigation("RecentViews");
+
                     b.Navigation("Reports");
 
                     b.Navigation("RequirementServiceByFreelancers");
@@ -1480,6 +1537,8 @@ namespace FreelancerPlatform.Infratructure.Entityframework.Migrations
                     b.Navigation("JobSkills");
 
                     b.Navigation("Offers");
+
+                    b.Navigation("RecentViews");
                 });
 
             modelBuilder.Entity("FreelancerPlatform.Domain.Entity.Permission", b =>

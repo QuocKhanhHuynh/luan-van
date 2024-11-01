@@ -83,6 +83,7 @@ namespace FreelancerPlatform.Domain.Entity
         public List<Comment> Comments { get; set; }
         public List<SavePost> SavePosts { get; set; }
         public List<LikeComment> LikeComments { get; set; }
+        public List<RecentView> RecentViews { get; set; }
 
     }
 }

@@ -3,6 +3,7 @@ using FreelancerPlatform.Application.Dtos.Job;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,6 +17,7 @@ namespace FreelancerPlatform.Application.Abstraction.Service
         Task<ServiceResult> HidenJobAsync(int id);
         Task<ServiceResult> DeleteHidenJobAsync(int id);
         Task<ServiceResult> UpdateJobAsync(int id, JobUpdateRequest request);
+        Task<ServiceResult> AddViewRecent(int freelancerId, int jobId);
         /*Task<ServiceResult> UpdateJobAsync(int id, JobUpdateRequest request);
         Task<ServiceResult> UpdateHidenJobAsync(int id);
         Task<bool> CheckHidenJobAsync(int id);

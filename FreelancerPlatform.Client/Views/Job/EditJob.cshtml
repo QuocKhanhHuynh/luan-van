@@ -24,7 +24,7 @@
                 @{
                     foreach (var i in ViewBag.Categories)
                     {
-                        <option value="@i.Id" selected="@(Model.CategoryId == i.Id? true : false)">@i.Name</option>
+                                    <option value="@i.Id" selected="@(Model.CategoryId == i.Id? true : false)">@i.Name</option>
                     }
                 }
             </select>
@@ -50,8 +50,20 @@
             <input value="@Model.MaxDeal" type="text" id="job-max-salary" placeholder="Nhập mức tối đa" style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
         </div>
 
+        <div id="estimated-completion" class="form-section" style="margin-bottom: 20px;">
+            <label for="label_estimated-completion" style="font-size: 18px;">Số giờ dự kiến hoàn thành:</label>
+            <input value="@Model.EstimatedCompletion" type="text" id="job-estimated-completion" placeholder="Nhập số giờ dự kiến hoàn thành" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px;">
+        </div>
+
+         <div id="hour-per-day" class="form-section" style="margin-bottom: 20px;">
+            <label for="label_hour_per_day" style="font-size: 18px;">Số giờ làm trên ngày:</label>
+            <input value="@Model.HourPerDay" type="text" id="job-hour-per-day" placeholder="Nhập số giờ làm một ngày" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px;">
+        </div>
+
         <label for="bio" style="font-size: 18px;">Mô tả dự án:</label>
         <textarea id="job_description" name="job_description" rows="4" placeholder="Nhập thông tin giới thiệu" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px;">@Model.Description</textarea>
+        <label for="job_requirement" style="font-size: 18px;">Thông tin yêu cầu:</label>
+        <textarea id="job_requirement" name="job_requirement" rows="4" placeholder="Nhập thông tin yêu cầu" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px;">@Model.Requirement</textarea>
     </div>
 
     <div class="skills-section" style="margin-bottom: 20px;">
@@ -64,7 +76,7 @@
                     @{
                         foreach (var i in ViewBag.Skills)
                         {
-                            <option value="@i.Id">@i.Name</option>
+                                        <option value="@i.Id">@i.Name</option>
                         }
                     }
                 </select>
@@ -76,12 +88,12 @@
                     @{
                         foreach (var i in ViewBag.SkillOfJob)
                         {
-                            <li style="margin: 5px">
-                                <span style="background-color: #0078D4; color: #fff; padding: 8px 12px; border-radius: 20px; font-size: 16px; position: relative; display: inline-block;">
-                                    @i.Name
-                                    <i class="fas fa-times remove-skill" style="position: absolute; top: -5px; right: -5px; cursor: pointer; color: #333;"></i>
-                                </span>
-                            </li>
+                                        <li style="margin: 5px">
+                                            <span style="background-color: #0078D4; color: #fff; padding: 8px 12px; border-radius: 20px; font-size: 16px; position: relative; display: inline-block;">
+                                                @i.Name
+                                                <i class="fas fa-times remove-skill" style="position: absolute; top: -5px; right: -5px; cursor: pointer; color: #333;"></i>
+                                            </span>
+                                        </li>
                         }
                     }
                 </ul>
@@ -137,6 +149,50 @@
     <script>
         $(document).ready(function () {
             CKEDITOR.replace('job_description');
+            
+            CKEDITOR.replace('job_requirement');
+
+            var salaryType = $('#job-salary-type').val();
+            var jobType = $('#job-type').val();
+            if (salaryType == 1 && jobType == 1) {
+                $('#estimated-completion').show();
+                $('#hour-per-day').hide();
+            }
+            else if (salaryType == 1 && jobType == 2) {
+                $('#estimated-completion').hide();
+                $('#hour-per-day').show();
+            }
+            else {
+                $('#estimated-completion').hide();
+                $('#hour-per-day').hide();
+            }
+
+            $('#job-salary-type').on('change', function () {
+                var salaryType = $('#job-salary-type').val();
+                var jobType = $('#job-type').val();
+                if (salaryType == 1 && jobType == 1) {
+                    $('#estimated-completion').show();
+                    $('#hour-per-day').hide();
+                }
+                else if (salaryType == 1 && jobType == 2) {
+                    $('#estimated-completion').hide();
+                    $('#hour-per-day').show();
+                }
+                else {
+                    $('#estimated-completion').hide();
+                    $('#hour-per-day').hide();
+                }
+            });
+
+            $('#job-salary-type').on('change', function () {
+                var type = $('#job-salary-type').val();
+                if (type == 1) {
+                    $('#estimated-completion').show();
+                }
+                else {
+                    $('#estimated-completion').hide();
+                }
+            });
 
             $('.remove-skill').on('click', function () {
                 $(this).closest('li').remove(); // Tìm thẻ li chứa icon và xóa nó
@@ -176,6 +232,16 @@
                 const newJobSalaryType = $('#job-salary-type').val();
                 const newJobDescription = CKEDITOR.instances.job_description.getData();
                 const newJobId = $('#job-id').val();
+                const newJobRequirement = CKEDITOR.instances.job_requirement.getData();
+                var newEstimatedCompletion = null;
+                var newHourPerDay = null;
+
+                if (newJobType == 1 && newJobSalaryType == 1) {
+                    newEstimatedCompletion = $('#job-estimated-completion').val();
+                }
+                else if (newJobType == 1 && newJobSalaryType == 2) {
+                    newHourPerDay = $('#hour-per-day').val();
+                }
                 //alert('ok');
 
                 $.ajax({
@@ -190,7 +256,8 @@
                         jobType: newJobType,
                         salaryType: newJobSalaryType,
                         categoryId: newJobCategory,
-                        skills: newSkillIds
+                        skills: newSkillIds,
+                        estimatedCompletion: newEstimatedCompletion
                     },
                     success: function (res) {
                         showSuccess("Sửa dự án thành công");

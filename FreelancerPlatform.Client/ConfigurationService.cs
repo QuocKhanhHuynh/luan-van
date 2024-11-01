@@ -19,6 +19,7 @@ namespace FreelancerPlatform.Client
             services.AddSession(x => x.IdleTimeout = TimeSpan.FromMinutes(60));
             services.AddHttpClient();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddHttpClient();
             services.AddHttpContextAccessor();
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
