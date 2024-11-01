@@ -32,9 +32,45 @@ namespace FreelancerPlatform.ApiService
         {
             var httpClient = _httpContextFactory.CreateClient();
             httpClient.BaseAddress = new Uri(_configuration["AIAddress"]);
+
+            // Gọi API
             var response = await httpClient.GetAsync($"/api/recommend/{jobId}");
 
-            return JsonConvert.DeserializeObject<List<int>>(await response.Content.ReadAsStringAsync());
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                var data = JsonConvert.DeserializeObject<RecommendationResponse>(jsonResponse);
+                return data.Result;  // Trả về danh sách số nguyên trong `Result`
+            }
+            else
+            {
+                throw new HttpRequestException($"Request failed with status code: {response.StatusCode}");
+            }
         }
+
+        public async Task<List<int>> GetRecommendation2(int jobId)
+        {
+            var httpClient = _httpContextFactory.CreateClient();
+            httpClient.BaseAddress = new Uri(_configuration["AIAddress"]);
+
+            // Gọi API
+            var response = await httpClient.GetAsync($"/api/recommend2/{jobId}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                var data = JsonConvert.DeserializeObject<RecommendationResponse>(jsonResponse);
+                return data.Result;  // Trả về danh sách số nguyên trong `Result`
+            }
+            else
+            {
+                throw new HttpRequestException($"Request failed with status code: {response.StatusCode}");
+            }
+        }
+    }
+
+    public class RecommendationResponse
+    {
+        public List<int> Result { get; set; }
     }
 }

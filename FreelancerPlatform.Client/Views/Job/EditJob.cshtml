@@ -24,7 +24,7 @@
                 @{
                     foreach (var i in ViewBag.Categories)
                     {
-                                    <option value="@i.Id" selected="@(Model.CategoryId == i.Id? true : false)">@i.Name</option>
+                                            <option value="@i.Id" selected="@(Model.CategoryId == i.Id? true : false)">@i.Name</option>
                     }
                 }
             </select>
@@ -47,7 +47,7 @@
         <label for="first-name" style="font-size: 18px;">Mức lương:</label>
         <div style="display: flex; gap: 10px; margin-bottom: 10px;">
             <input value="@Model.MinDeal" type="text" id="job-min-salary" placeholder="Nhập mức tối thiểu" style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
-            <input value="@Model.MaxDeal" type="text" id="job-max-salary" placeholder="Nhập mức tối đa" style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+            <input value="@(Model.MaxDeal > 0 ? Model.MaxDeal : null)" type="text" id="job-max-salary" placeholder="Nhập mức tối đa" style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
         </div>
 
         <div id="estimated-completion" class="form-section" style="margin-bottom: 20px;">
@@ -76,7 +76,7 @@
                     @{
                         foreach (var i in ViewBag.Skills)
                         {
-                                        <option value="@i.Id">@i.Name</option>
+                                                <option value="@i.Id">@i.Name</option>
                         }
                     }
                 </select>
@@ -88,12 +88,12 @@
                     @{
                         foreach (var i in ViewBag.SkillOfJob)
                         {
-                                        <li style="margin: 5px">
-                                            <span style="background-color: #0078D4; color: #fff; padding: 8px 12px; border-radius: 20px; font-size: 16px; position: relative; display: inline-block;">
-                                                @i.Name
-                                                <i class="fas fa-times remove-skill" style="position: absolute; top: -5px; right: -5px; cursor: pointer; color: #333;"></i>
-                                            </span>
-                                        </li>
+                                                <li style="margin: 5px">
+                                                    <span style="background-color: #0078D4; color: #fff; padding: 8px 12px; border-radius: 20px; font-size: 16px; position: relative; display: inline-block;">
+                                                        @i.Name
+                                                        <i class="fas fa-times remove-skill" style="position: absolute; top: -5px; right: -5px; cursor: pointer; color: #333;"></i>
+                                                    </span>
+                                                </li>
                         }
                     }
                 </ul>
@@ -154,6 +154,15 @@
 
             var salaryType = $('#job-salary-type').val();
             var jobType = $('#job-type').val();
+            var jobMinSalary = $('#job-min-salary').val();
+            var jobMaxSalary = $('#job-max-salary').val();
+            /*if (jobMinSalary != '') {
+               // alert(formatCurrency($('#job-min-salary').val()));
+                $('#job-min-salary').val(formatCurrency($('#job-min-salary').val()));
+            }
+            if (jobMaxSalary != '') {
+                $('#job-max-salary').val(formatCurrency($('#job-max-salary').val()));
+            }*/
             if (salaryType == 1 && jobType == 1) {
                 $('#estimated-completion').show();
                 $('#hour-per-day').hide();
@@ -167,20 +176,32 @@
                 $('#hour-per-day').hide();
             }
 
-            $('#job-salary-type').on('change', function () {
+            $('#job-min-salary').on('input', function () {
+                formatCurrency(this);
+            });
+
+            $('#job-max-salary').on('input', function () {
+                formatCurrency(this);
+            });
+
+            $('#job-salary-type, #job-type').on('change', function () {
                 var salaryType = $('#job-salary-type').val();
                 var jobType = $('#job-type').val();
                 if (salaryType == 1 && jobType == 1) {
                     $('#estimated-completion').show();
                     $('#hour-per-day').hide();
+                    $('#job-hour-per-day').val(null);
                 }
                 else if (salaryType == 1 && jobType == 2) {
                     $('#estimated-completion').hide();
                     $('#hour-per-day').show();
+                    $('#job-estimated-completion').val(null);
                 }
                 else {
                     $('#estimated-completion').hide();
                     $('#hour-per-day').hide();
+                    $('#job-estimated-completion').val(null);
+                    $('#job-hour-per-day').val(null);
                 }
             });
 
@@ -240,7 +261,7 @@
                     newEstimatedCompletion = $('#job-estimated-completion').val();
                 }
                 else if (newJobType == 1 && newJobSalaryType == 2) {
-                    newHourPerDay = $('#hour-per-day').val();
+                    newHourPerDay = $('#job-hour-per-day').val();
                 }
                 //alert('ok');
 
@@ -257,7 +278,9 @@
                         salaryType: newJobSalaryType,
                         categoryId: newJobCategory,
                         skills: newSkillIds,
-                        estimatedCompletion: newEstimatedCompletion
+                        requirement: newJobRequirement,
+                        estimatedCompletion: newEstimatedCompletion,
+                        hourPerDay: newHourPerDay
                     },
                     success: function (res) {
                         showSuccess("Sửa dự án thành công");

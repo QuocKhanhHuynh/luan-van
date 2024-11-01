@@ -1,4 +1,6 @@
 ﻿@using FreelancerPlatform.Client.Helpers
+@using System.Web
+@using System.Text.RegularExpressions
 @model List<FreelancerPlatform.Application.Dtos.Job.JobQuickViewModel>
 @{
     ViewData["Title"] = "GetJob";
@@ -110,7 +112,7 @@
                                             
                                         </div>
                                     </div>
-                                    <p style="font-size: 16px; margin: 10px 0;">@(Helper.CutString(i.Description))</p>
+                                <p style="font-size: 16px; margin: 10px 0;">@(Helper.CutString(HttpUtility.HtmlDecode(Regex.Replace(i.Description, "<.*?>", string.Empty))))</p>
                                     <div style="display: flex; flex-wrap: wrap; gap: 5px;">
 
                                         @{

@@ -18,6 +18,8 @@ namespace FreelancerPlatform.Application.Abstraction.Service
         Task<ServiceResult> DeleteHidenJobAsync(int id);
         Task<ServiceResult> UpdateJobAsync(int id, JobUpdateRequest request);
         Task<ServiceResult> AddViewRecent(int freelancerId, int jobId);
+        Task<List<JobQuickViewModel>> GetRecentView();
+        Task<List<int>> GetJobIdRecentViewOfFreelancer(int freelancerId);
         /*Task<ServiceResult> UpdateJobAsync(int id, JobUpdateRequest request);
         Task<ServiceResult> UpdateHidenJobAsync(int id);
         Task<bool> CheckHidenJobAsync(int id);

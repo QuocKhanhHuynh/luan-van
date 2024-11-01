@@ -10,5 +10,6 @@ namespace FreelancerPlatform.ApiService
     {
         Task BuildSystemRecommendation();
         Task<List<int>> GetRecommendation(int jobId);
+        Task<List<int>> GetRecommendation2(int jobId);
     }
 }

@@ -1,4 +1,5 @@
-﻿using FreelancerPlatform.Application.Abstraction.Repository;
+﻿using FreelancerPlatform.ApiService;
+using FreelancerPlatform.Application.Abstraction.Repository;
 using FreelancerPlatform.Application.Abstraction.Service;
 using FreelancerPlatform.Application.Dtos.Common;
 using FreelancerPlatform.Application.Dtos.FavoriteJob;
@@ -24,9 +25,9 @@ namespace FreelancerPlatform.Client.Controllers
         private readonly IFreelancerService _freelancerService;
         private readonly IApplyService _applyService;
         private readonly IOfferService _offerService;
-       
+        private readonly ISystemRecommendationApiService _systemRecommendationApiService;
 
-        public JobController(ICategoryService categoryService, ISkillService skillService, IJobService jobService,
+        public JobController(ICategoryService categoryService, ISkillService skillService, IJobService jobService, ISystemRecommendationApiService systemRecommendationApiService,
             IFavoriteJobService favoriteJobService, IFreelancerService freelancerService, IApplyService applyService, IOfferService offerService)
         {
             _categoryService = categoryService;
@@ -36,6 +37,7 @@ namespace FreelancerPlatform.Client.Controllers
             _freelancerService = freelancerService;
             _applyService = applyService;
             _offerService = offerService;
+            _systemRecommendationApiService = systemRecommendationApiService;
         }
 
         public async Task<IActionResult> PostJob()
@@ -66,7 +68,10 @@ namespace FreelancerPlatform.Client.Controllers
                 Name = job.Name,
                 SalaryType = job.SalaryType,
                 Skills = job.Skills.Select(x => x.Id).ToList(),
-                Id = job.Id 
+                Id = job.Id,
+                Requirement = job.Requirement,
+                HourPerDay = job.HourPerDay,
+                EstimatedCompletion = job.EstimatedCompletion,
             };
 
             var categories = await _categoryService.GetCategoryAsync();
@@ -114,7 +119,7 @@ namespace FreelancerPlatform.Client.Controllers
 
                 return BadRequest(new { Errors = errors });
             }
-
+            await _systemRecommendationApiService.BuildSystemRecommendation();
             return Ok(response.Message);
 
         }
@@ -216,6 +221,7 @@ namespace FreelancerPlatform.Client.Controllers
 
                 return BadRequest(new { Errors = errors });
             }
+           // await _systemRecommendationApiService.BuildSystemRecommendation();
 
             return Ok(response.Message);
         }
@@ -226,7 +232,7 @@ namespace FreelancerPlatform.Client.Controllers
             var jobDetail = await _jobService.GetJobAsync(id);
             var freelancer = await _freelancerService.GetFreelancerAsync(jobDetail.FreelancerId);
             var jobs = await _jobService.GetAllJobsAsync();
-            var relatedJobs = jobs.Where(x => x.Category.Id == jobDetail.Category.Id && x.Id != jobDetail.Id);
+            var relatedJobs = await this.GetRecommendJob(id); //jobs.Where(x => x.Category.Id == jobDetail.Category.Id && x.Id != jobDetail.Id);
             var applyOfJob = await _applyService.GetApplyOfJobAsync(id);
             ViewBag.IsOffer = false;
             if (User.Identity.IsAuthenticated)
@@ -240,7 +246,7 @@ namespace FreelancerPlatform.Client.Controllers
             ViewBag.ApplyOfJob = applyOfJob;
             ViewBag.CreateUserName = $"{freelancer.LastName} + {freelancer.FirstName}";
 
-            if (User.Identity.IsAuthenticated)
+            if (User.Identity.IsAuthenticated && jobDetail.FreelancerId != User.GetUserId())
             {
                 await _jobService.AddViewRecent(User.GetUserId(), id);
             }
@@ -248,6 +254,37 @@ namespace FreelancerPlatform.Client.Controllers
 
 
             return View(jobDetail);
+        }
+
+
+        private async Task<List<JobQuickViewModel>> GetRecommendJob(int id)
+        {
+            var recommendIdJobs = await _systemRecommendationApiService.GetRecommendation(id);
+            var recommendjobList = new List<JobQuickViewModel>();
+            foreach (var j in recommendIdJobs)
+            {
+                var job = await _jobService.GetJobAsync(j);
+                recommendjobList.Add(new JobQuickViewModel()
+                {
+                    Category = job.Category,
+                    CreateDay = job.CreateDay,
+                    Description = job.Description,
+                    FreelancerId = job.FreelancerId,
+                    Id = job.Id,
+                    InContract = job.InContract,
+                    IsHiden = job.IsHiden,
+                    JobType = job.JobType,
+                    MaxDeal = job.MaxDeal,
+                    MinDeal = job.MinDeal,
+                    Name = job.Name,
+                    Priority = job.Priority,
+                    SalaryType = job.SalaryType,
+                    Skills = job.Skills,
+
+                });
+            }
+
+            return recommendjobList;
         }
     }
 }

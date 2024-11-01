@@ -13,6 +13,8 @@ namespace FreelancerPlatform.Application.Dtos.Job
 {
     public class JobViewModel : JobQuickViewModel
     {
-
+        public string Requirement { get; set; }
+        public int? EstimatedCompletion { get; set; }
+        public int? HourPerDay { get; set; }
     }
 }

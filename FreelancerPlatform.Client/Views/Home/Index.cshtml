@@ -1,4 +1,8 @@
-﻿ <!--/ Header end -->
+﻿@using FreelancerPlatform.Client.Helpers
+@using System.Web
+@using System.Text.RegularExpressions
+@model FreelancerPlatform.Client.Models.HomeViewModel
+ <!--/ Header end -->
 @{
     ViewData["Title"] = "Trang chủ";
 }
@@ -70,44 +74,46 @@
         <div class="facts-wrapper">
             <div class="row">
                 <div class="col-md-3 col-sm-6 ts-facts">
-                    <div class="ts-facts-img">
-                        <img loading="lazy" src="/images/icon-image/fact1.png" alt="facts-img">
+                    <div style="color: #0078D4; text-align: center;">
+                        <i style="font-size: 40px;" class="fa fa-star"></i>
                     </div>
-                    <div class="ts-facts-content">
-                        <h2 class="ts-facts-num"><span class="counterUp" data-count="1789">0</span></h2>
-                        <h3 class="ts-facts-title">Total Projects</h3>
+                    <div class="ts-facts-content" style="text-align: center;">
+                        <h2 class="ts-facts-num"><span class="counterUp" data-count="1000">0</span></h2>
+                        <h3 class="ts-facts-title">Lượt truy cập</h3>
                     </div>
-                </div><!-- Col end -->
+                </div>
 
-                <div class="col-md-3 col-sm-6 ts-facts mt-5 mt-sm-0">
-                    <div class="ts-facts-img">
-                        <img loading="lazy" src="/images/icon-image/fact2.png" alt="facts-img">
+                <div class="col-md-3 col-sm-6 ts-facts">
+                    <div style="color: #0078D4; text-align: center;">
+                        <i style="font-size: 40px;" class="fa fa-user"></i>
                     </div>
-                    <div class="ts-facts-content">
-                        <h2 class="ts-facts-num"><span class="counterUp" data-count="647">0</span></h2>
-                        <h3 class="ts-facts-title">Staff Members</h3>
+                    <div class="ts-facts-content" style="text-align: center;">
+                        <h2 class="ts-facts-num"><span class="counterUp" data-count="1000">0</span></h2>
+                        <h3 class="ts-facts-title">Thành viên</h3>
                     </div>
-                </div><!-- Col end -->
+                </div>
 
-                <div class="col-md-3 col-sm-6 ts-facts mt-5 mt-md-0">
-                    <div class="ts-facts-img">
-                        <img loading="lazy" src="/images/icon-image/fact3.png" alt="facts-img">
+                <div class="col-md-3 col-sm-6 ts-facts">
+                    <div style="color: #0078D4; text-align: center;">
+                        <i style="font-size: 40px;" class="fa fa-briefcase"></i>
                     </div>
-                    <div class="ts-facts-content">
-                        <h2 class="ts-facts-num"><span class="counterUp" data-count="4000">0</span></h2>
-                        <h3 class="ts-facts-title">Hours of Work</h3>
+                    <div class="ts-facts-content" style="text-align: center;">
+                        <h2 class="ts-facts-num"><span class="counterUp" data-count="1000">0</span></h2>
+                        <h3 class="ts-facts-title">Công việc</h3>
                     </div>
-                </div><!-- Col end -->
+                </div>
 
-                <div class="col-md-3 col-sm-6 ts-facts mt-5 mt-md-0">
-                    <div class="ts-facts-img">
-                        <img loading="lazy" src="/images/icon-image/fact4.png" alt="facts-img">
+                <div class="col-md-3 col-sm-6 ts-facts">
+                    <div style="color: #0078D4; text-align: center;">
+                        <i style="font-size: 40px;" class="fa fa-book-open"></i>
                     </div>
-                    <div class="ts-facts-content">
-                        <h2 class="ts-facts-num"><span class="counterUp" data-count="44">0</span></h2>
-                        <h3 class="ts-facts-title">Countries Experience</h3>
+                    <div class="ts-facts-content" style="text-align: center;">
+                        <h2 class="ts-facts-num"><span class="counterUp" data-count="1000">0</span></h2>
+                        <h3 class="ts-facts-title">Hợp đồng</h3>
                     </div>
-                </div><!-- Col end -->
+                </div>
+
+               
 
             </div> <!-- Facts end -->
         </div>
@@ -116,237 +122,174 @@
     <!--/ Container end -->
 </section><!-- Facts end -->
 
-<section id="ts-service-area" class="ts-service-area pb-0">
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-12">
-                <h2 class="section-title">Mang đến cho bạn cơ hội việc làm</h2>
-                <h3 class="section-sub-title">Trên nhiều lĩnh vực</h3>
+@{
+    if (Model.RecommendJobs != null)
+    {
+       
+        <section style="width: 80%; margin: 20px auto; background-color: #fff; padding: 20px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); border-radius: 8px;" id="project-area" class="project-area solid-bg">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-lg-12">
+                        <h2 class="section-title">Dự án</h2>
+                        <h3 class="section-sub-title">Dành cho bạn</h3>
+                    </div>
+                </div>
+                <!--/ Title row end -->
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div style="width: 100%; max-height: 1000px; overflow-y: auto;" id="freelancer-list">
+                                @{
+                                    foreach (var i in Model.RecommendJobs)
+                                    {
+                                        <div data-job-type="@i.JobType" data-salary-type="@i.SalaryType" data-keyword="@(i.Name))" data-min-salary="@i.MinDeal" data-max-salary="@i.MaxDeal" class="freelancer-item" data-skill="@string.Join(",", i.Skills.Select(x => x.Id).ToList())" data-category="@i.Category.Id" style="display: flex; justify-content: space-between; border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 5px; background-color: #fff; position: relative;">
+                                            <div style="display: flex; flex: 1;">
+
+                                                <div style="max-width: 600px; position: relative;">
+                                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                                        <div>
+                                                            <div style="display: flex; align-items: center;">
+                                                                <h4 style="margin: 0; font-size: 16px;">@i.Name</h4>
+                                                                <span style="font-size: 12px; color: gray; margin-left: 10px;">  @((int)((DateTime.Now - i.CreateDay)).TotalDays) ngày trước</span>
+                                                            </div>
+                                                            <div style="font-size: 12px; display: inline-block; margin-left: 10px;">@i.Category.Name</div>
+                                                            <div style="font-size: 12px; display: inline-block; margin-left: 10px;">| <i class="fa fa-calendar"></i> @(i.JobType == 1 ? "Ngắn hạn" : "Hằng ngày")</div>
+                                                            <div style="font-size: 12px; display: inline-block; margin-left: 10px;">| <i class="fa fa-money-bill"></i> @(i.SalaryType == 1 ? "Lương theo giờ" : "Lương một lần")</div>
+
+
+                                                        </div>
+                                                    </div>
+                                                    <p style="font-size: 16px; margin: 10px 0;">@(Helper.CutString(HttpUtility.HtmlDecode(Regex.Replace(i.Description, "<.*?>", string.Empty))))</p>
+                                                    <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+
+                                                        @{
+                                                            foreach (var j in i.Skills)
+                                                            {
+                                                                <span style="border-radius: 15px; padding: 5px 10px; background-color: #0078D4; color: #fff; font-size: 12px;">@j.Name</span>
+                                                            }
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            @{
+                                                if (i.MaxDeal > 0)
+                                                {
+                                                    <div style="position: absolute; top: 15px; right: 15px; font-size: 20px; color: #555;">
+                                                        @($"{i.MinDeal:N0} - {i.MaxDeal:N0}")
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div style="position: absolute; top: 15px; right: 15px; font-size: 20px; color: #555;">
+                                                        @($"{i.MinDeal:N0}")
+                                                    </div>
+                                                }
+                                            }
+
+
+                                            <div style="display: flex; flex-direction: row; gap: 10px; position: absolute; bottom: 15px; right: 15px;">
+                                                <button style="padding: 8px 15px; background-color: #fff; color: #0078D4; border: solid;  border-width: 1px; border-radius: 5px; border-color: #0078D4; cursor: pointer;">Liên hệ</button>
+                                                <button style="padding: 8px 15px; background-color: #0078D4; color: #fff; border: none; border-radius: 5px; cursor: pointer;"><a href="~/chi-tiet-du-an/@i.Id">Chi tiết</a></button>
+                                            </div>
+                                        </div>
+
+                                    }
+                                }
+                            </div>
+                        </div><!-- shuffle end -->
+                    </div>
+
+                </div><!-- Content row end -->
             </div>
-        </div>
-        <!--/ Title row end -->
+            <!--/ Container end -->
+        </section>
 
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="ts-service-box d-flex">
-                    <div class="ts-service-box-img">
-                        <img loading="lazy" src="/images/icon-image/service-icon1.png" alt="service-icon">
-                    </div>
-                    <div class="ts-service-box-info">
-                        <h3 class="service-box-title"><a href="#">Home Construction</a></h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit Integer adipiscing erat</p>
-                    </div>
-                </div><!-- Service 1 end -->
+        <!-- Project area end -->
+    }
+}
 
-                <div class="ts-service-box d-flex">
-                    <div class="ts-service-box-img">
-                        <img loading="lazy" src="/images/icon-image/service-icon2.png" alt="service-icon">
-                    </div>
-                    <div class="ts-service-box-info">
-                        <h3 class="service-box-title"><a href="#">Building Remodels</a></h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit Integer adipiscing erat</p>
-                    </div>
-                </div><!-- Service 2 end -->
-
-                <div class="ts-service-box d-flex">
-                    <div class="ts-service-box-img">
-                        <img loading="lazy" src="/images/icon-image/service-icon3.png" alt="service-icon">
-                    </div>
-                    <div class="ts-service-box-info">
-                        <h3 class="service-box-title"><a href="#">Interior Design</a></h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit Integer adipiscing erat</p>
-                    </div>
-                </div><!-- Service 3 end -->
-
-            </div><!-- Col end -->
-
-            <div class="col-lg-4 text-center">
-                <img loading="lazy" class="img-fluid" src="/images/services/service-center.jpg" alt="service-avater-image">
-            </div><!-- Col end -->
-
-            <div class="col-lg-4 mt-5 mt-lg-0 mb-4 mb-lg-0">
-                <div class="ts-service-box d-flex">
-                    <div class="ts-service-box-img">
-                        <img loading="lazy" src="/images/icon-image/service-icon4.png" alt="service-icon">
-                    </div>
-                    <div class="ts-service-box-info">
-                        <h3 class="service-box-title"><a href="#">Exterior Design</a></h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit Integer adipiscing erat</p>
-                    </div>
-                </div><!-- Service 4 end -->
-
-                <div class="ts-service-box d-flex">
-                    <div class="ts-service-box-img">
-                        <img loading="lazy" src="/images/icon-image/service-icon5.png" alt="service-icon">
-                    </div>
-                    <div class="ts-service-box-info">
-                        <h3 class="service-box-title"><a href="#">Renovation</a></h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit Integer adipiscing erat</p>
-                    </div>
-                </div><!-- Service 5 end -->
-
-                <div class="ts-service-box d-flex">
-                    <div class="ts-service-box-img">
-                        <img loading="lazy" src="/images/icon-image/service-icon6.png" alt="service-icon">
-                    </div>
-                    <div class="ts-service-box-info">
-                        <h3 class="service-box-title"><a href="#">Safety Management</a></h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit Integer adipiscing erat</p>
-                    </div>
-                </div><!-- Service 6 end -->
-            </div><!-- Col end -->
-        </div><!-- Content row end -->
-
-    </div>
-    <!--/ Container end -->
-</section><!-- Service end -->
-
-<section id="project-area" class="project-area solid-bg">
+<section style="width: 80%; margin: 20px auto; background-color: #fff; padding: 20px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); border-radius: 8px;" id="project-area" class="project-area solid-bg">
     <div class="container">
         <div class="row text-center">
             <div class="col-lg-12">
                 <h2 class="section-title">Dự án</h2>
-                <h3 class="section-sub-title">Dự án giành cho bạn</h3>
+                <h3 class="section-sub-title">Được quan tâm nhiều</h3>
             </div>
         </div>
         <!--/ Title row end -->
 
         <div class="row">
             <div class="col-12">
-                <div class="shuffle-btn-group">
-                    <label class="active" for="all">
-                        <input type="radio" name="shuffle-filter" id="all" value="all" checked="checked">Show All
-                    </label>
-                    <label for="commercial">
-                        <input type="radio" name="shuffle-filter" id="commercial" value="commercial">Commercial
-                    </label>
-                    <label for="education">
-                        <input type="radio" name="shuffle-filter" id="education" value="education">Education
-                    </label>
-                    <label for="government">
-                        <input type="radio" name="shuffle-filter" id="government" value="government">Government
-                    </label>
-                    <label for="infrastructure">
-                        <input type="radio" name="shuffle-filter" id="infrastructure" value="infrastructure">Infrastructure
-                    </label>
-                    <label for="residential">
-                        <input type="radio" name="shuffle-filter" id="residential" value="residential">Residential
-                    </label>
-                        <input type="radio" name="shuffle-filter" id="healthcare" value="healthcare">Healthcare
-                    </label>
-                </div><!-- project filter end -->
 
 
-                <div class="row shuffle-wrapper">
-                    <div class="col-1 shuffle-sizer"></div>
+                <div class="row">
+                    <div style="width: 100%; max-height: 1000px; overflow-y: auto;" id="freelancer-list">
+                        @{
+                            foreach (var i in Model.RecentViews)
+                            {
+                                <div data-job-type="@i.JobType" data-salary-type="@i.SalaryType" data-keyword="@(i.Name))" data-min-salary="@i.MinDeal" data-max-salary="@i.MaxDeal" class="freelancer-item" data-skill="@string.Join(",", i.Skills.Select(x => x.Id).ToList())" data-category="@i.Category.Id" style="display: flex; justify-content: space-between; border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 5px; background-color: #fff; position: relative;">
+                                    <div style="display: flex; flex: 1;">
 
-                    <div class="col-lg-4 col-md-6 shuffle-item" data-groups="[&quot;government&quot;,&quot;healthcare&quot;]">
-                        <div class="project-img-container">
-                            <a class="gallery-popup" href="/images/projects/project1.jpg" aria-label="project-img">
-                                <img class="img-fluid" src="/images/projects/project1.jpg" alt="project-img">
-                                <span class="gallery-icon"><i class="fa fa-plus"></i></span>
-                            </a>
-                            <div class="project-item-info">
-                                <div class="project-item-info-content">
-                                    <h3 class="project-item-title">
-                                        <a href="projects-single.html">Capital Teltway Building</a>
-                                    </h3>
-                                    <p class="project-cat">Commercial, Interiors</p>
+                                        <div style="max-width: 600px; position: relative;">
+                                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                                <div>
+                                                    <div style="display: flex; align-items: center;">
+                                                        <h4 style="margin: 0; font-size: 16px;">@i.Name</h4>
+                                                        <span style="font-size: 12px; color: gray; margin-left: 10px;">  @((int)((DateTime.Now - i.CreateDay)).TotalDays) ngày trước</span>
+                                                    </div>
+                                                    <div style="font-size: 12px; display: inline-block; margin-left: 10px;">@i.Category.Name</div>
+                                                    <div style="font-size: 12px; display: inline-block; margin-left: 10px;">| <i class="fa fa-calendar"></i> @(i.JobType == 1 ? "Ngắn hạn" : "Hằng ngày")</div>
+                                                    <div style="font-size: 12px; display: inline-block; margin-left: 10px;">| <i class="fa fa-money-bill"></i> @(i.SalaryType == 1 ? "Lương theo giờ" : "Lương một lần")</div>
+
+
+                                                </div>
+                                            </div>
+                                            <p style="font-size: 16px; margin: 10px 0;">@(Helper.CutString(HttpUtility.HtmlDecode(Regex.Replace(i.Description, "<.*?>", string.Empty))))</p>
+                                            <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+
+                                                @{
+                                                    foreach (var j in i.Skills)
+                                                    {
+                                                        <span style="border-radius: 15px; padding: 5px 10px; background-color: #0078D4; color: #fff; font-size: 12px;">@j.Name</span>
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @{
+                                        if (i.MaxDeal > 0)
+                                        {
+                                            <div style="position: absolute; top: 15px; right: 15px; font-size: 20px; color: #555;">
+                                                @($"{i.MinDeal:N0} - {i.MaxDeal:N0}")
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div style="position: absolute; top: 15px; right: 15px; font-size: 20px; color: #555;">
+                                                @($"{i.MinDeal:N0}")
+                                            </div>
+                                        }
+                                    }
+
+
+                                    <div style="display: flex; flex-direction: row; gap: 10px; position: absolute; bottom: 15px; right: 15px;">
+                                        <button style="padding: 8px 15px; background-color: #fff; color: #0078D4; border: solid;  border-width: 1px; border-radius: 5px; border-color: #0078D4; cursor: pointer;">Liên hệ</button>
+                                        <button style="padding: 8px 15px; background-color: #0078D4; color: #fff; border: none; border-radius: 5px; cursor: pointer;"><a href="~/chi-tiet-du-an/@i.Id">Chi tiết</a></button>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div><!-- shuffle item 1 end -->
 
-                    <div class="col-lg-4 col-md-6 shuffle-item" data-groups="[&quot;healthcare&quot;]">
-                        <div class="project-img-container">
-                            <a class="gallery-popup" href="/images/projects/project2.jpg" aria-label="project-img">
-                                <img class="img-fluid" src="/images/projects/project2.jpg" alt="project-img">
-                                <span class="gallery-icon"><i class="fa fa-plus"></i></span>
-                            </a>
-                            <div class="project-item-info">
-                                <div class="project-item-info-content">
-                                    <h3 class="project-item-title">
-                                        <a href="projects-single.html">Ghum Touch Hospital</a>
-                                    </h3>
-                                    <p class="project-cat">Healthcare</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- shuffle item 2 end -->
-
-                    <div class="col-lg-4 col-md-6 shuffle-item" data-groups="[&quot;infrastructure&quot;,&quot;commercial&quot;]">
-                        <div class="project-img-container">
-                            <a class="gallery-popup" href="/images/projects/project3.jpg" aria-label="project-img">
-                                <img class="img-fluid" src="/images/projects/project3.jpg" alt="project-img">
-                                <span class="gallery-icon"><i class="fa fa-plus"></i></span>
-                            </a>
-                            <div class="project-item-info">
-                                <div class="project-item-info-content">
-                                    <h3 class="project-item-title">
-                                        <a href="projects-single.html">TNT East Facility</a>
-                                    </h3>
-                                    <p class="project-cat">Government</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- shuffle item 3 end -->
-
-                    <div class="col-lg-4 col-md-6 shuffle-item" data-groups="[&quot;education&quot;,&quot;infrastructure&quot;]">
-                        <div class="project-img-container">
-                            <a class="gallery-popup" href="/images/projects/project4.jpg" aria-label="project-img">
-                                <img class="img-fluid" src="/images/projects/project4.jpg" alt="project-img">
-                                <span class="gallery-icon"><i class="fa fa-plus"></i></span>
-                            </a>
-                            <div class="project-item-info">
-                                <div class="project-item-info-content">
-                                    <h3 class="project-item-title">
-                                        <a href="projects-single.html">Narriot Headquarters</a>
-                                    </h3>
-                                    <p class="project-cat">Infrastructure</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- shuffle item 4 end -->
-
-                    <div class="col-lg-4 col-md-6 shuffle-item" data-groups="[&quot;infrastructure&quot;,&quot;education&quot;]">
-                        <div class="project-img-container">
-                            <a class="gallery-popup" href="/images/projects/project5.jpg" aria-label="project-img">
-                                <img class="img-fluid" src="/images/projects/project5.jpg" alt="project-img">
-                                <span class="gallery-icon"><i class="fa fa-plus"></i></span>
-                            </a>
-                            <div class="project-item-info">
-                                <div class="project-item-info-content">
-                                    <h3 class="project-item-title">
-                                        <a href="projects-single.html">Kalas Metrorail</a>
-                                    </h3>
-                                    <p class="project-cat">Infrastructure</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- shuffle item 5 end -->
-
-                    <div class="col-lg-4 col-md-6 shuffle-item" data-groups="[&quot;residential&quot;]">
-                        <div class="project-img-container">
-                            <a class="gallery-popup" href="/images/projects/project6.jpg" aria-label="project-img">
-                                <img class="img-fluid" src="/images/projects/project6.jpg" alt="project-img">
-                                <span class="gallery-icon"><i class="fa fa-plus"></i></span>
-                            </a>
-                            <div class="project-item-info">
-                                <div class="project-item-info-content">
-                                    <h3 class="project-item-title">
-                                        <a href="projects-single.html">Ancraft Avenue House</a>
-                                    </h3>
-                                    <p class="project-cat">Residential</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- shuffle item 6 end -->
+                            }
+                        }
+                    </div>
                 </div><!-- shuffle end -->
             </div>
 
             <div class="col-12">
                 <div class="general-btn text-center">
-                    <a class="btn btn-primary" href="projects.html">Xem nhiều hơn</a>
+                    <a class="btn btn-primary" href="~/tim-du-an">Xem nhiều hơn</a>
                 </div>
             </div>
 
@@ -392,70 +335,38 @@
         <!--/ Title row end -->
 
         <div class="row">
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="latest-post">
-                    <div class="latest-post-media">
-                        <a href="news-single.html" class="latest-post-img">
-                            <img loading="lazy" class="img-fluid" src="/images/news/news1.jpg" alt="img">
-                        </a>
+            @{
+                foreach(var i in Model.TopFreelancer)
+                {
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div style="text-align: center" class="latest-post">
+                            <div class="latest-post-media">
+                                <a href="news-single.html" class="latest-post-img">
+                                    <img style="width: 350px; height: 250px" loading="lazy" class="img-fluid" src=@(i.ImageUrl != null && i.ImageUrl != ""? $"/Image/{i.ImageUrl}" : "/images/default-avatar.jpg") alt="img">
+                                </a>
+                            </div>
+                            <div class="post-body">
+                                <h4 class="post-title">
+                                    <a href="~/chi-tiet-freelancer/@i.Id" class="d-inline-block">@($"{i.LastName} {i.FirstName}") | @i.ReviewQuanlity <i class="fa fa-pen"></i> | @i.ContractQuanlity <i class="fa fa-file"></i></a>
+                                </h4>
+                                <div class="latest-post-meta">
+                                    <span class="post-item-date">
+                                        <i class="fa fa-clock-o"></i> @i.CreateDay.ToString("dd/MM/yyyy")
+                                    </span>
+                                </div>
+                            </div>
+                        </div><!-- Latest post end -->
                     </div>
-                    <div class="post-body">
-                        <h4 class="post-title">
-                            <a href="news-single.html" class="d-inline-block">We Just Completes $17.6 million Medical Clinic in Mid-Missouri</a>
-                        </h4>
-                        <div class="latest-post-meta">
-                            <span class="post-item-date">
-                                <i class="fa fa-clock-o"></i> July 20, 2017
-                            </span>
-                        </div>
-                    </div>
-                </div><!-- Latest post end -->
-            </div><!-- 1st post col end -->
 
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="latest-post">
-                    <div class="latest-post-media">
-                        <a href="news-single.html" class="latest-post-img">
-                            <img loading="lazy" class="img-fluid" src="/images/news/news2.jpg" alt="img">
-                        </a>
-                    </div>
-                    <div class="post-body">
-                        <h4 class="post-title">
-                            <a href="news-single.html" class="d-inline-block">Thandler Airport Water Reclamation Facility Expansion Project Named</a>
-                        </h4>
-                        <div class="latest-post-meta">
-                            <span class="post-item-date">
-                                <i class="fa fa-clock-o"></i> June 17, 2017
-                            </span>
-                        </div>
-                    </div>
-                </div><!-- Latest post end -->
-            </div><!-- 2nd post col end -->
+                    <!-- 1st post col end -->
+                }
+            }
 
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="latest-post">
-                    <div class="latest-post-media">
-                        <a href="news-single.html" class="latest-post-img">
-                            <img loading="lazy" class="img-fluid" src="/images/news/news3.jpg" alt="img">
-                        </a>
-                    </div>
-                    <div class="post-body">
-                        <h4 class="post-title">
-                            <a href="news-single.html" class="d-inline-block">Silicon Bench and Cornike Begin Construction Solar Facilities</a>
-                        </h4>
-                        <div class="latest-post-meta">
-                            <span class="post-item-date">
-                                <i class="fa fa-clock-o"></i> Aug 13, 2017
-                            </span>
-                        </div>
-                    </div>
-                </div><!-- Latest post end -->
-            </div><!-- 3rd post col end -->
         </div>
         <!--/ Content row end -->
 
         <div class="general-btn text-center mt-4">
-            <a class="btn btn-primary" href="news-left-sidebar.html">Xem nhiều hơn</a>
+            <a class="btn btn-primary" href="~/freelancer">Xem nhiều hơn</a>
         </div>
 
     </div>

@@ -225,28 +225,33 @@
                 </ul>
             </div>
 
-            <div class="authentication-info" style="margin-bottom: 20px; margin-left: 15px; border: 1px solid #ddd; padding: 10px; border-radius: 8px;">
-                <h2 style="font-size: 22px; margin-bottom: 10px;">Công việc liên quan</h2>
-                <ul style="list-style-type: none; padding: 0;">
-                    @{
-                        foreach(var i in ViewBag.RelatedJob)
-                        {
-                                            <li style="margin: 5px 0;">
-                                                <a href="~/chi-tiet-du-an/@i.Id">
-                                                    <i class="fa fa-circle" style="color: #0078D4;"></i>
-                                                    <span>@i.Name</span>
-                                                </a>
-                                            </li>
-                        }
-                    }
-                   
-                </ul>
-            </div>
+            @{
+                if(ViewBag.RelatedJob.Count > 0)
+                {
+                    <div class="authentication-info" style="margin-bottom: 20px; margin-left: 15px; border: 1px solid #ddd; padding: 10px; border-radius: 8px;">
+                        <h2 style="font-size: 22px; margin-bottom: 10px;">Công việc gợi ý</h2>
+                        <ul style="list-style-type: none; padding: 0;">
+                            @{
+                                foreach (var i in ViewBag.RelatedJob)
+                                {
+                                    <li style="margin: 5px 0;">
+                                        <a href="~/chi-tiet-du-an/@i.Id">
+                                            <i class="fa fa-circle" style="color: #0078D4;"></i>
+                                            <span>@i.Name</span>
+                                        </a>
+                                    </li>
+                                }
+                            }
+
+                        </ul>
+                    </div>
+                }
+            }
 
         </div>
 
     </div>
-
+    
     @{
         if (User.Identity.IsAuthenticated && Model.FreelancerId == User.GetUserId())
         {

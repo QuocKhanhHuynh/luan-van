@@ -3,56 +3,28 @@
   "WorkspaceRootPath": "D:\\Luan van\\src1\\FreelancerPlatform\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3E011CC3-C12D-4C6B-B0B9-014DFA2AD2FF}|FreelancerPlatform.ApiService\\FreelancerPlatform.ApiService.csproj|d:\\luan van\\src1\\freelancerplatform\\freelancerplatform.apiservice\\systemrecommendationapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3E011CC3-C12D-4C6B-B0B9-014DFA2AD2FF}|FreelancerPlatform.ApiService\\FreelancerPlatform.ApiService.csproj|solutionrelative:freelancerplatform.apiservice\\systemrecommendationapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3E011CC3-C12D-4C6B-B0B9-014DFA2AD2FF}|FreelancerPlatform.ApiService\\FreelancerPlatform.ApiService.csproj|d:\\luan van\\src1\\freelancerplatform\\freelancerplatform.apiservice\\configurationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3E011CC3-C12D-4C6B-B0B9-014DFA2AD2FF}|FreelancerPlatform.ApiService\\FreelancerPlatform.ApiService.csproj|solutionrelative:freelancerplatform.apiservice\\configurationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CC79282D-78B8-4B51-8C82-F515544DCBCF}|FreelancerPlatform.Client\\FreelancerPlatform.Client.csproj|d:\\luan van\\src1\\freelancerplatform\\freelancerplatform.client\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{CC79282D-78B8-4B51-8C82-F515544DCBCF}|FreelancerPlatform.Client\\FreelancerPlatform.Client.csproj|solutionrelative:freelancerplatform.client\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CC79282D-78B8-4B51-8C82-F515544DCBCF}|FreelancerPlatform.Client\\FreelancerPlatform.Client.csproj|d:\\luan van\\src1\\freelancerplatform\\freelancerplatform.client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CC79282D-78B8-4B51-8C82-F515544DCBCF}|FreelancerPlatform.Client\\FreelancerPlatform.Client.csproj|solutionrelative:freelancerplatform.client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3E011CC3-C12D-4C6B-B0B9-014DFA2AD2FF}|FreelancerPlatform.ApiService\\FreelancerPlatform.ApiService.csproj|d:\\luan van\\src1\\freelancerplatform\\freelancerplatform.apiservice\\isystemrecommendationapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3E011CC3-C12D-4C6B-B0B9-014DFA2AD2FF}|FreelancerPlatform.ApiService\\FreelancerPlatform.ApiService.csproj|solutionrelative:freelancerplatform.apiservice\\isystemrecommendationapiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{CC79282D-78B8-4B51-8C82-F515544DCBCF}|FreelancerPlatform.Client\\FreelancerPlatform.Client.csproj|d:\\luan van\\src1\\freelancerplatform\\freelancerplatform.client\\controllers\\jobcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CC79282D-78B8-4B51-8C82-F515544DCBCF}|FreelancerPlatform.Client\\FreelancerPlatform.Client.csproj|solutionrelative:freelancerplatform.client\\controllers\\jobcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC79282D-78B8-4B51-8C82-F515544DCBCF}|FreelancerPlatform.Client\\FreelancerPlatform.Client.csproj|d:\\luan van\\src1\\freelancerplatform\\freelancerplatform.client\\views\\job\\getjobdetail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CC79282D-78B8-4B51-8C82-F515544DCBCF}|FreelancerPlatform.Client\\FreelancerPlatform.Client.csproj|solutionrelative:freelancerplatform.client\\views\\job\\getjobdetail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{58FA8317-98AE-4124-B3D7-195026BC46F1}|FreelancerPlatform.Application\\FreelancerPlatform.Application.csproj|d:\\luan van\\src1\\freelancerplatform\\freelancerplatform.application\\serviceimplementions\\jobservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{58FA8317-98AE-4124-B3D7-195026BC46F1}|FreelancerPlatform.Application\\FreelancerPlatform.Application.csproj|solutionrelative:freelancerplatform.application\\serviceimplementions\\jobservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{56B7F83C-EF6B-4D90-A7CD-A1056AF6E6CF}|FreelancerPlatform.Infratructure.Entityframework\\FreelancerPlatform.Infratructure.Entityframework.csproj|d:\\luan van\\src1\\freelancerplatform\\freelancerplatform.infratructure.entityframework\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{56B7F83C-EF6B-4D90-A7CD-A1056AF6E6CF}|FreelancerPlatform.Infratructure.Entityframework\\FreelancerPlatform.Infratructure.Entityframework.csproj|solutionrelative:freelancerplatform.infratructure.entityframework\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{52C9A9D6-0E3B-4109-8304-2471D391070D}|FreelancerPlatform.Domain\\FreelancerPlatform.Domain.csproj|d:\\luan van\\src1\\freelancerplatform\\freelancerplatform.domain\\entity\\freelancer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{52C9A9D6-0E3B-4109-8304-2471D391070D}|FreelancerPlatform.Domain\\FreelancerPlatform.Domain.csproj|solutionrelative:freelancerplatform.domain\\entity\\freelancer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CC79282D-78B8-4B51-8C82-F515544DCBCF}|FreelancerPlatform.Client\\FreelancerPlatform.Client.csproj|d:\\luan van\\src1\\freelancerplatform\\freelancerplatform.client\\views\\job\\editjob.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CC79282D-78B8-4B51-8C82-F515544DCBCF}|FreelancerPlatform.Client\\FreelancerPlatform.Client.csproj|solutionrelative:freelancerplatform.client\\views\\job\\editjob.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CC79282D-78B8-4B51-8C82-F515544DCBCF}|FreelancerPlatform.Client\\FreelancerPlatform.Client.csproj|d:\\luan van\\src1\\freelancerplatform\\freelancerplatform.client\\views\\job\\postjob.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{CC79282D-78B8-4B51-8C82-F515544DCBCF}|FreelancerPlatform.Client\\FreelancerPlatform.Client.csproj|solutionrelative:freelancerplatform.client\\views\\job\\postjob.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{58FA8317-98AE-4124-B3D7-195026BC46F1}|FreelancerPlatform.Application\\FreelancerPlatform.Application.csproj|d:\\luan van\\src1\\freelancerplatform\\freelancerplatform.application\\dtos\\job\\jobcreaterequestvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{58FA8317-98AE-4124-B3D7-195026BC46F1}|FreelancerPlatform.Application\\FreelancerPlatform.Application.csproj|solutionrelative:freelancerplatform.application\\dtos\\job\\jobcreaterequestvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CC79282D-78B8-4B51-8C82-F515544DCBCF}|FreelancerPlatform.Client\\FreelancerPlatform.Client.csproj|d:\\luan van\\src1\\freelancerplatform\\freelancerplatform.client\\views\\job\\editjob.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{CC79282D-78B8-4B51-8C82-F515544DCBCF}|FreelancerPlatform.Client\\FreelancerPlatform.Client.csproj|solutionrelative:freelancerplatform.client\\views\\job\\editjob.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{58FA8317-98AE-4124-B3D7-195026BC46F1}|FreelancerPlatform.Application\\FreelancerPlatform.Application.csproj|d:\\luan van\\src1\\freelancerplatform\\freelancerplatform.application\\dtos\\job\\jobcreaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{58FA8317-98AE-4124-B3D7-195026BC46F1}|FreelancerPlatform.Application\\FreelancerPlatform.Application.csproj|solutionrelative:freelancerplatform.application\\dtos\\job\\jobcreaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CC79282D-78B8-4B51-8C82-F515544DCBCF}|FreelancerPlatform.Client\\FreelancerPlatform.Client.csproj|d:\\luan van\\src1\\freelancerplatform\\freelancerplatform.client\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC79282D-78B8-4B51-8C82-F515544DCBCF}|FreelancerPlatform.Client\\FreelancerPlatform.Client.csproj|solutionrelative:freelancerplatform.client\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -62,175 +34,84 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\Program.cs",
-              "RelativeDocumentMoniker": "FreelancerPlatform.Client\\Program.cs",
-              "ToolTip": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\Program.cs",
-              "RelativeToolTip": "FreelancerPlatform.Client\\Program.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAAAB8AAAAhAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T02:41:37.169Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ConfigurationService.cs",
-              "DocumentMoniker": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.ApiService\\ConfigurationService.cs",
-              "RelativeDocumentMoniker": "FreelancerPlatform.ApiService\\ConfigurationService.cs",
-              "ToolTip": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.ApiService\\ConfigurationService.cs",
-              "RelativeToolTip": "FreelancerPlatform.ApiService\\ConfigurationService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAkwA0AAABlAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T02:26:09.26Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "SystemRecommendationApiService.cs",
-              "DocumentMoniker": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.ApiService\\SystemRecommendationApiService.cs",
-              "RelativeDocumentMoniker": "FreelancerPlatform.ApiService\\SystemRecommendationApiService.cs",
-              "ToolTip": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.ApiService\\SystemRecommendationApiService.cs",
-              "RelativeToolTip": "FreelancerPlatform.ApiService\\SystemRecommendationApiService.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAiwBcAAAA1AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T02:24:54.558Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "appsettings.Development.json",
-              "DocumentMoniker": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\appsettings.Development.json",
-              "RelativeDocumentMoniker": "FreelancerPlatform.Client\\appsettings.Development.json",
-              "ToolTip": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\appsettings.Development.json",
-              "RelativeToolTip": "FreelancerPlatform.Client\\appsettings.Development.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-10-30T15:23:27.706Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ISystemRecommendationApiService.cs",
-              "DocumentMoniker": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.ApiService\\ISystemRecommendationApiService.cs",
-              "RelativeDocumentMoniker": "FreelancerPlatform.ApiService\\ISystemRecommendationApiService.cs",
-              "ToolTip": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.ApiService\\ISystemRecommendationApiService.cs",
-              "RelativeToolTip": "FreelancerPlatform.ApiService\\ISystemRecommendationApiService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAzAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T02:21:55.334Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Infratructure.Entityframework\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "FreelancerPlatform.Infratructure.Entityframework\\ApplicationDbContext.cs",
-              "ToolTip": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Infratructure.Entityframework\\ApplicationDbContext.cs",
-              "RelativeToolTip": "FreelancerPlatform.Infratructure.Entityframework\\ApplicationDbContext.cs",
-              "ViewState": "AQIAAD8AAAAAAAAAAAAYwFQAAABUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T01:00:04.476Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Freelancer.cs",
-              "DocumentMoniker": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Domain\\Entity\\Freelancer.cs",
-              "RelativeDocumentMoniker": "FreelancerPlatform.Domain\\Entity\\Freelancer.cs",
-              "ToolTip": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Domain\\Entity\\Freelancer.cs",
-              "RelativeToolTip": "FreelancerPlatform.Domain\\Entity\\Freelancer.cs",
-              "ViewState": "AQIAAEcAAAAAAAAAAAA3wFUAAAA5AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T00:59:45.085Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
               "Title": "JobService.cs",
               "DocumentMoniker": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Application\\ServiceImplementions\\JobService.cs",
               "RelativeDocumentMoniker": "FreelancerPlatform.Application\\ServiceImplementions\\JobService.cs",
               "ToolTip": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Application\\ServiceImplementions\\JobService.cs",
               "RelativeToolTip": "FreelancerPlatform.Application\\ServiceImplementions\\JobService.cs",
-              "ViewState": "AQIAAFYAAAAAAAAAAAAmwGUAAAAJAAAA",
+              "ViewState": "AQIAAHkBAAAAAAAAAAAAwJkBAAA2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T14:17:17.347Z",
+              "WhenOpened": "2024-11-01T16:58:17.671Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "JobController.cs",
-              "DocumentMoniker": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\Controllers\\JobController.cs",
-              "RelativeDocumentMoniker": "FreelancerPlatform.Client\\Controllers\\JobController.cs",
-              "ToolTip": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\Controllers\\JobController.cs",
-              "RelativeToolTip": "FreelancerPlatform.Client\\Controllers\\JobController.cs",
-              "ViewState": "AQIAAOEAAAAAAAAAAAAUwPMAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T14:31:12.766Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "JobCreateRequestValidator.cs",
-              "DocumentMoniker": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Application\\Dtos\\Job\\JobCreateRequestValidator.cs",
-              "RelativeDocumentMoniker": "FreelancerPlatform.Application\\Dtos\\Job\\JobCreateRequestValidator.cs",
-              "ToolTip": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Application\\Dtos\\Job\\JobCreateRequestValidator.cs",
-              "RelativeToolTip": "FreelancerPlatform.Application\\Dtos\\Job\\JobCreateRequestValidator.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAQwBkAAABQAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T15:42:28.23Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "EditJob.cshtml",
-              "DocumentMoniker": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\Views\\Job\\EditJob.cshtml",
-              "RelativeDocumentMoniker": "FreelancerPlatform.Client\\Views\\Job\\EditJob.cshtml",
-              "ToolTip": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\Views\\Job\\EditJob.cshtml",
-              "RelativeToolTip": "FreelancerPlatform.Client\\Views\\Job\\EditJob.cshtml",
-              "ViewState": "AQIAAJMAAAAAAAAAAIBJwKoAAAA9AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-29T14:48:17.763Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 4,
               "Title": "PostJob.cshtml",
               "DocumentMoniker": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\Views\\Job\\PostJob.cshtml",
               "RelativeDocumentMoniker": "FreelancerPlatform.Client\\Views\\Job\\PostJob.cshtml",
               "ToolTip": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\Views\\Job\\PostJob.cshtml",
               "RelativeToolTip": "FreelancerPlatform.Client\\Views\\Job\\PostJob.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAOQAAAATAAAA",
+              "ViewState": "AQIAAPEAAAAAAAAAAAAYwP0AAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-29T14:21:44.625Z",
+              "WhenOpened": "2024-11-01T16:15:51.701Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "JobCreateRequest.cs",
-              "DocumentMoniker": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Application\\Dtos\\Job\\JobCreateRequest.cs",
-              "RelativeDocumentMoniker": "FreelancerPlatform.Application\\Dtos\\Job\\JobCreateRequest.cs",
-              "ToolTip": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Application\\Dtos\\Job\\JobCreateRequest.cs",
-              "RelativeToolTip": "FreelancerPlatform.Application\\Dtos\\Job\\JobCreateRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAABAAAA",
+              "DocumentIndex": 3,
+              "Title": "EditJob.cshtml",
+              "DocumentMoniker": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\Views\\Job\\EditJob.cshtml",
+              "RelativeDocumentMoniker": "FreelancerPlatform.Client\\Views\\Job\\EditJob.cshtml",
+              "ToolTip": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\Views\\Job\\EditJob.cshtml",
+              "RelativeToolTip": "FreelancerPlatform.Client\\Views\\Job\\EditJob.cshtml",
+              "ViewState": "AQIAAAwBAAAAAAAAAAAYwBoBAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-01T16:00:23.405Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GetJobDetail.cshtml",
+              "DocumentMoniker": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\Views\\Job\\GetJobDetail.cshtml",
+              "RelativeDocumentMoniker": "FreelancerPlatform.Client\\Views\\Job\\GetJobDetail.cshtml",
+              "ToolTip": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\Views\\Job\\GetJobDetail.cshtml",
+              "RelativeToolTip": "FreelancerPlatform.Client\\Views\\Job\\GetJobDetail.cshtml",
+              "ViewState": "AQIAANcAAAAAAAAAAAAAAPYAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-01T15:16:28.406Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "JobController.cs",
+              "DocumentMoniker": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\Controllers\\JobController.cs",
+              "RelativeDocumentMoniker": "FreelancerPlatform.Client\\Controllers\\JobController.cs",
+              "ToolTip": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\Controllers\\JobController.cs",
+              "RelativeToolTip": "FreelancerPlatform.Client\\Controllers\\JobController.cs",
+              "ViewState": "AQIAANIAAAAAAAAAAAAIwN4AAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T15:18:27.617Z",
+              "WhenOpened": "2024-11-01T15:07:08.074Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "FreelancerPlatform.Client\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "FreelancerPlatform.Client\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAAAYwC8AAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-01T14:17:38.01Z",
               "EditorCaption": ""
             }
           ]

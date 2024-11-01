@@ -164,14 +164,18 @@
                 if (salaryType == 1 && jobType == 1) {
                     $('#estimated-completion').show();
                     $('#hour-per-day').hide();
+                    $('#job-hour-per-day').val(null);
                 }
                 else if (salaryType == 1 && jobType == 2) {
                     $('#estimated-completion').hide();
                     $('#hour-per-day').show();
+                    $('#job-estimated-completion').val(null);
                 }
                 else {
                     $('#estimated-completion').hide();
                     $('#hour-per-day').hide();
+                    $('#job-estimated-completion').val(null);
+                    $('#job-hour-per-day').val(null);
                 }
             });
 
@@ -230,7 +234,7 @@
                     newEstimatedCompletion = $('#job-estimated-completion').val();
                 }
                 else if (newJobType == 2 && newJobSalaryType == 1) {
-                    newHourPerDay = $('#hour-per-day').val();
+                    newHourPerDay = $('#job-hour-per-day').val();
                 }
 
                 $.ajax({

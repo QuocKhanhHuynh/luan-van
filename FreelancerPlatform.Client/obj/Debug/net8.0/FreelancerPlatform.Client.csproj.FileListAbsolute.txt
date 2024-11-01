@@ -551,3 +551,10 @@ D:\Luan van\src1\FreelancerPlatform\FreelancerPlatform.Client\bin\Debug\net8.0\l
 D:\Luan van\src1\FreelancerPlatform\FreelancerPlatform.Client\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll
 D:\Luan van\src1\FreelancerPlatform\FreelancerPlatform.Client\obj\Debug\net8.0\FreelancerPlatform.Client.sourcelink.json
 D:\Luan van\src1\FreelancerPlatform\FreelancerPlatform.Client\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+D:\Luan van\src1\FreelancerPlatform\FreelancerPlatform.Client\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.dll
+D:\Luan van\src1\FreelancerPlatform\FreelancerPlatform.Client\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+D:\Luan van\src1\FreelancerPlatform\FreelancerPlatform.Client\bin\Debug\net8.0\Microsoft.Extensions.Http.dll
+D:\Luan van\src1\FreelancerPlatform\FreelancerPlatform.Client\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+D:\Luan van\src1\FreelancerPlatform\FreelancerPlatform.Client\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+D:\Luan van\src1\FreelancerPlatform\FreelancerPlatform.Client\bin\Debug\net8.0\FreelancerPlatform.ApiService.dll
+D:\Luan van\src1\FreelancerPlatform\FreelancerPlatform.Client\bin\Debug\net8.0\FreelancerPlatform.ApiService.pdb

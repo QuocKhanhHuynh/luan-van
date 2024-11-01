@@ -16,6 +16,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -271,7 +272,68 @@ namespace FreelancerPlatform.Application.ServiceImplementions
                     Name = y.s.Name
                 }).ToList(),
                 IsHiden = job.IsHiden,
+                EstimatedCompletion = job.EstimatedCompletion,
+                HourPerDay = job.HourPerDay,
+                Requirement = job.Requirement,
             };
+        }
+
+        public async Task<List<int>> GetJobIdRecentViewOfFreelancer(int freelancerId)
+        {
+            var recentViewJob = (await _recentViewRepository.GetAllAsync()).Where(x => x.FreelancerId == freelancerId).Select(x => x.JobId).ToList();
+            return recentViewJob;
+        }
+
+        public async Task<List<JobQuickViewModel>> GetRecentView()
+        {
+            var recentViewJob = (await _recentViewRepository.GetAllAsync()).GroupBy(x => x.JobId);
+            var jobRecentView = new Dictionary<int, int>();
+            foreach(var i in recentViewJob)
+            {
+                var key = i.Key;
+                jobRecentView[i.Key] = i.Count();
+            }
+            var recentViewJobId = (jobRecentView.OrderByDescending(x => x.Value)).Take(10).Select(x => x.Key).ToList();
+
+            var jobs = (await _jobRepository.GetAllAsync());
+            var categories = (await _categoryRepository.GetAllAsync());
+            var jobSkills = await _jobSkillRepository.GetAllAsync();
+            var skills = await _skillRepository.GetAllAsync();
+
+            var contracts = await _contractRepository.GetAllAsync();
+            var jobContract = contracts.Select(x => x.ProjectId).ToList();
+
+            var query = from j in jobs
+                        join c in categories on j.CategoryId equals c.Id
+                        where recentViewJobId.Contains(j.Id)
+                        select new { j, c };
+
+            var queryJobSkill = from j in jobSkills
+                                join s in skills on j.SkillId equals s.Id
+                                select new { j, s };
+
+            return query.Select(x => new JobQuickViewModel
+            {
+                Id = x.j.Id,
+                Category = new CategoryQuickViewModel() { Id = x.c.Id, Name = x.c.Name },
+
+                CreateDay = x.j.CreateDay,
+                FreelancerId = x.j.FreelancerId,
+                MaxDeal = x.j.MaxDeal.GetValueOrDefault(),
+                MinDeal = x.j.MinDeal,
+                Name = x.j.Name,
+                Priority = x.j.Priority,
+                Description = x.j.Description,
+                JobType = x.j.JobType,
+                SalaryType = x.j.SalaryType,
+                IsHiden = x.j.IsHiden,
+                InContract = jobContract.Contains(x.j.Id) ? true : false,
+                Skills = queryJobSkill.Where(y => y.j.JobId == x.j.Id).Select(y => new SkillQuickViewModel()
+                {
+                    Id = y.s.Id,
+                    Name = y.s.Name
+                }).ToList()
+            }).ToList();
         }
 
         public async Task<ServiceResult> HidenJobAsync(int id)
@@ -335,13 +397,17 @@ namespace FreelancerPlatform.Application.ServiceImplementions
                 entity.JobType = request.JobType;
                 entity.Requirement = request.Requirement;
                 entity.CreateUpdate = DateTime.Now;
+                entity.HourPerDay = request.HourPerDay;
+               
                 if (request.EstimatedCompletion.HasValue && request.EstimatedCompletion > 0)
                 {
                     entity.EstimatedCompletion = request.EstimatedCompletion.Value;
+                    entity.HourPerDay = null;
                 }
                 if (request.HourPerDay.HasValue && request.HourPerDay > 0)
                 {
                     entity.HourPerDay = request.HourPerDay.Value;
+                    entity.EstimatedCompletion = null;
                 }
                 _jobRepository.Update(entity);
 
