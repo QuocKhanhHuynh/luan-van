@@ -25,8 +25,9 @@ namespace FreelancerPlatform.Client.Controllers
             {
                 return BadRequest();
             }
-            var freelancer = await _freelancerService.GetFreelancerAsync(request.FreelancerId);
-            return Ok(freelancer.ImageUrl);
+            //var freelancer = await _freelancerService.GetFreelancerAsync(request.FreelancerId);
+            var result = (ServiceResultObject<CommentCreateSuccessResult>) response;
+            return Ok(result.Object);
         }
         [HttpPost]
         public async Task<IActionResult> GetCommentOfPost(int postId)

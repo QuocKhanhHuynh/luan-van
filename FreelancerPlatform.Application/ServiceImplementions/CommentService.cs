@@ -4,6 +4,7 @@ using FreelancerPlatform.Application.Abstraction.Service;
 using FreelancerPlatform.Application.Abstraction.UnitOfWork;
 using FreelancerPlatform.Application.Dtos.Comment;
 using FreelancerPlatform.Application.Dtos.Common;
+using FreelancerPlatform.Application.Dtos.Freelancer;
 using FreelancerPlatform.Application.ServiceImplementions.Base;
 using FreelancerPlatform.Domain.Entity;
 using Microsoft.Extensions.Logging;
@@ -50,10 +51,20 @@ namespace FreelancerPlatform.Application.ServiceImplementions
                 await _commentRepository.CreateAsync(newComment);
                 await _unitOfWork.SaveChangeAsync();
 
-                return new ServiceResult()
+                var freelancer = await _freelancerRepository.GetByIdAsync(request.FreelancerId);
+
+                return new ServiceResultObject<CommentCreateSuccessResult>()
                 {
                     Message = "Tạo thông tin thành công",
-                    Status = StatusResult.Success
+                    Status = StatusResult.Success,
+                    Object = new CommentCreateSuccessResult()
+                    {
+                        ImageUrl = freelancer.ImageUrl,
+                        FirstName = freelancer.FirstName,
+                        LastName = freelancer.LastName,
+                        CommendId = newComment.Id,
+                        PostId = newComment.PostId,
+                    }
                 };
             }
             catch (Exception ex)
@@ -92,7 +103,8 @@ namespace FreelancerPlatform.Application.ServiceImplementions
                 Parent = x.c.Parent,
                 PostId = postId,
                 Reply = x.c.Reply,
-                ReplyNumber = commentRaw.Where(y => y.Parent == x.c.Id).Count() 
+                ReplyNumber = commentRaw.Where(y => y.Parent == x.c.Id).Count(),
+                CreateDay = x.c.CreateDay,
             }).ToList();
         }
 
@@ -119,7 +131,8 @@ namespace FreelancerPlatform.Application.ServiceImplementions
                 LikeNumber = likeComments.Where(y => y.CommentId == x.c.Id).Count(),
                 Parent = x.c.Parent,
                 PostId = commentParent.PostId,
-                Reply = x.c.Reply
+                Reply = x.c.Reply,
+                CreateDay = x.c.CreateDay,
             }).ToList();
         }
 

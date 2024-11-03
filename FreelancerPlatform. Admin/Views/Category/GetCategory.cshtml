@@ -1,4 +1,6 @@
 ﻿@model List<FreelancerPlatform.Application.Dtos.Category.CategoryQuickViewModel>
+@using Microsoft.Extensions.Configuration;
+@inject IConfiguration _configuration
 
 @{
     ViewData["Title"] = "Tài khoản admin";
@@ -9,8 +11,7 @@
     <div class="card mb-4">
         <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
             <h5 style="margin: 0;">Danh sách lĩnh vực</h5>
-            <!-- Nút thêm tài khoản nằm ở góc phải phía trên bảng -->
-            <a href="~/them-tai-khoan" style="padding: 8px 12px; text-decoration: none; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px;">
+            <a href="~/them-linh-vuc" style="padding: 8px 12px; text-decoration: none; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px;">
                 Thêm lĩnh vực
             </a>
         </div>
@@ -18,6 +19,7 @@
             <table style="width: 100%; border-collapse: collapse; text-align: center;">
                 <thead>
                     <tr>
+                        <th style="padding: 12px; border-bottom: 1px solid #ddd; background-color: #f2f2f2;">Ảnh</th>
                         <th style="padding: 12px; border-bottom: 1px solid #ddd; background-color: #f2f2f2;">Mã lĩnh vực</th>
                         <th style="padding: 12px; border-bottom: 1px solid #ddd; background-color: #f2f2f2;">Tên lĩnh vực</th>
                         <th style="padding: 12px; border-bottom: 1px solid #ddd; background-color: #f2f2f2;">Hoạt động</th>
@@ -26,17 +28,19 @@
                 <tbody>
                     @foreach (var i in Model)
                     {
-                        <tr id="container-catefory-@i.Id">
+                        <tr id="container-category-@i.Id">
+                            <td style="padding: 12px;">
+                                <img src=@($"{_configuration["ImageCloud"]}/Image/{i.ImageUrl}") alt="Ảnh lĩnh vực" style="width: 100px; height: 70px; object-fit: cover; border-radius: 5px;">
+                            </td>
                             <td style="padding: 12px;">@i.Id</td>
                             <td style="padding: 12px;">@i.Name</td>
-                            <td  style="padding: 12px;">
+                            <td style="padding: 12px;">
                                 <button class="update-category" data-category="@i.Id" style="padding: 5px 20px; width: 80px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px;">
                                     Sửa
                                 </button>
-                                <button class="detele-category" data-category="@i.Id" style="padding: 5px 20px; width: 80px; background-color: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px;">
+                                <button class="delete-category" data-category="@i.Id" style="padding: 5px 20px; width: 80px; background-color: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px;">
                                     Xóa
                                 </button>
-
                             </td>
                         </tr>
                     }
@@ -47,95 +51,39 @@
 </div>
 @section script {
     <script>
-     /*   lockAcount();
-        unLockAcount();
-        function lockAcount() {
-            $('body').on('click', '.lock', function (e) { // Thay đổi ở đây
-                e.preventDefault(); // Ngăn chặn hành vi mặc định của nút (nếu có)
+        $(document).ready(function () {
 
-                var newAdmin = $(this).data("acount");
-
-                $.ajax({
-                    url: '/acount/lock', // Đảm bảo đường dẫn này là đúng
-                    type: 'POST',
-                    data: {
-                        adminId: newAdmin,
-                    },
-                    success: function (response) {
-                        showSuccess("Khóa tài khoản thành công");
-                        var container = document.getElementById(`container-btn-lock-${newAdmin}`);
-                        var html = `
-                                                             <button class="unlock" data-acount="${newAdmin}" style="padding: 5px 20px; width: 80px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px;">
-                                                    Mở
-                                                </button>
-                                `;
-                        container.innerHTML = html;
-                        lockAcount();
-                        unLockAcount();
-                    },
-                    error: function (xhr) {
-                        var errors = xhr.responseJSON.errors;
-
-                        if (errors) {
-                            var error = errors[0]; // Nếu có ít nhất một lỗi
-
-                            var messages = error.errors;
-
-                            if (messages.length > 1) {
-                                showError(messages[1]);
-                            } else {
-                                showError(messages[0]);
-                            }
-                        } else {
-                            showError('Đã xảy ra lỗi không xác định.'); // Xử lý lỗi không có phản hồi từ máy chủ
-                        }
-                    }
-                });
+            $('body').on('click', '.update-category', function (e) {
+                var id = $(this).data('category');
+                window.location.replace(`sua-linh-vuc/${id}`);
             });
-        }
-        function unLockAcount() {
-            $('body').on('click', '.unlock', function (e) { // Thay đổi ở đây
-                e.preventDefault(); // Ngăn chặn hành vi mặc định của nút (nếu có)
 
-                var newAdmin = $(this).data("acount");
+            $('body').on('click', '.detele-category', function (e) {
+               // alert('ok');
+                e.preventDefault();
+                const newId = $(this).data("category");
 
-                $.ajax({
-                    url: '/acount/lock', // Đảm bảo đường dẫn này là đúng
-                    type: 'POST',
-                    data: {
-                        adminId: newAdmin,
-                    },
-                    success: function (response) {
-                        showSuccess("Khóa tài khoản thành công");
-                        var container = document.getElementById(`container-btn-lock-${newAdmin}`);
-                        var html = `
-                                                                             <button class="lock" data-acount="${newAdmin}" style="padding: 5px 20px; width: 80px; background-color: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px;">
-                                                            Khóa
-                                                        </button>
-                                        `;
-                        container.innerHTML = html;
-                        lockAcount();
-                        unLockAcount();
-                    },
-                    error: function (xhr) {
-                        var errors = xhr.responseJSON.errors;
+                const confirmDelete = confirm("Bạn có chắc chắn muốn xóa kỹ năng này không?");
 
-                        if (errors) {
-                            var error = errors[0]; // Nếu có ít nhất một lỗi
+                if (confirmDelete) {
 
-                            var messages = error.errors;
-
-                            if (messages.length > 1) {
-                                showError(messages[1]);
-                            } else {
-                                showError(messages[0]);
-                            }
-                        } else {
-                            showError('Đã xảy ra lỗi không xác định.'); // Xử lý lỗi không có phản hồi từ máy chủ
+                    $.ajax({
+                        type: "POST",
+                        url: '/category/deletecategory', // Đường dẫn tới API xóa
+                        data: {
+                            id: newId
+                        },
+                        success: function (res) {
+                            showSuccess("Xóa kỹ năng thành công.");
+                            $(`#container-category-${newId}`).remove();
+                        },
+                        error: function (err) {
+                            showError('Đã xảy ra lỗi không xác định.');
                         }
-                    }
-                });
+                    });
+                }
             });
-        }*/
+        });
+            
     </script>
 }

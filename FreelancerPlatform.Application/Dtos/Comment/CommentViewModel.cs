@@ -21,5 +21,6 @@ namespace FreelancerPlatform.Application.Dtos.Comment
         public string FirstName { get; set; }
         public string ImageUrl { get; set; }
         public int ReplyNumber { get; set; }
+        public DateTime CreateDay { get; set; }
     }
 }

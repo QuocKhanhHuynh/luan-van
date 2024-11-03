@@ -26,6 +26,15 @@ namespace FreelancerPlatform.Application.ServiceImplementions
 
             try
             {
+                var entity = (await _likeCommentRepository.GetAllAsync()).FirstOrDefault(x => x.FreelancerId == freelancerId && x.CommentId == commentId);
+                if (entity != null)
+                {
+                    return new ServiceResult()
+                    {
+                        Message = "Tạo thông tin thành công",
+                        Status = StatusResult.Success,
+                    };
+                }
                 var newSavePist = new LikeComment()
                 {
                     FreelancerId = freelancerId,
@@ -58,7 +67,7 @@ namespace FreelancerPlatform.Application.ServiceImplementions
         {
             try
             {
-                var savePost = (await _likeCommentRepository.GetAllAsync()).FirstOrDefault(x => x.FreelancerId == freelancerId && x.CommentId == freelancerId);
+                var savePost = (await _likeCommentRepository.GetAllAsync()).FirstOrDefault(x => x.FreelancerId == freelancerId && x.CommentId == commentId);
                 if (savePost == null)
                 {
                     return new ServiceResult()

@@ -37,10 +37,6 @@
       "PackagePath": "staticwebassets\\Image\\finance.jpg"
     },
     {
-      "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\Image\\forward.png",
-      "PackagePath": "staticwebassets\\Image\\forward.png"
-    },
-    {
       "Id": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\Image\\glue.png",
       "PackagePath": "staticwebassets\\Image\\glue.png"
     },

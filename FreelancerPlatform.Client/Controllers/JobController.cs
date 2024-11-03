@@ -119,7 +119,7 @@ namespace FreelancerPlatform.Client.Controllers
 
                 return BadRequest(new { Errors = errors });
             }
-            await _systemRecommendationApiService.BuildSystemRecommendation();
+         //   await _systemRecommendationApiService.BuildSystemRecommendation();
             return Ok(response.Message);
 
         }

@@ -77,6 +77,19 @@ app.MapControllerRoute(
 );
 
 app.MapControllerRoute(
+    name: "createCategory",
+    pattern: "them-linh-vuc",
+    defaults: new { controller = "Category", action = "CreateCategory" }
+);
+
+app.MapControllerRoute(
+    name: "createCategory",
+    pattern: "sua-linh-vuc/{id}",
+    defaults: new { controller = "Category", action = "UpdateCategory" }
+);
+
+
+app.MapControllerRoute(
     name: "skill",
     pattern: "ky-nang",
     defaults: new { controller = "Category", action = "GetSkill" }

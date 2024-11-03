@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "SYQaeERWEDVLa9TvWMAHmx/2DTBVwG/w5QUnzZD4cRw=",
+  "Hash": "/Slhwy/f88WK0IYs1T4Aysl4ovFpIc8OJQPL5bfI6QM=",
   "Source": "FreelancerPlatform.Client",
   "BasePath": "_content/FreelancerPlatform.Client",
   "Mode": "Default",
@@ -6513,25 +6513,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Image\\finance.jpg"
-    },
-    {
-      "Identity": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\Image\\forward.png",
-      "SourceId": "FreelancerPlatform.Client",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\",
-      "BasePath": "_content/FreelancerPlatform.Client",
-      "RelativePath": "Image/forward.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Image\\forward.png"
     },
     {
       "Identity": "D:\\Luan van\\src1\\FreelancerPlatform\\FreelancerPlatform.Client\\wwwroot\\Image\\glue.png",

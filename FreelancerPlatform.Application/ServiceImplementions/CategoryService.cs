@@ -28,8 +28,12 @@ namespace FreelancerPlatform.Application.ServiceImplementions
         {
             try
             {
-                var entity = _mapper.Map<Category>(request);
-                await _categoryRepository.CreateAsync(entity);
+                var category = new Category()
+                {
+                    Name = request.Name,
+                    ImageUrl = request.ImageUrl
+                };
+                await _categoryRepository.CreateAsync(category);
                 await _unitOfWork.SaveChangeAsync();
 
                 return new ServiceResult()
@@ -130,9 +134,10 @@ namespace FreelancerPlatform.Application.ServiceImplementions
                         Status = StatusResult.ClientError
                     };
                 }
-                var updateEntity = _mapper.Map<Category>(request);
+                entity.Name = request.Name;
+                entity.ImageUrl = request.ImageUrl != null ? request.ImageUrl : entity.ImageUrl;
                 entity.CreateUpdate = DateTime.Now;
-                _categoryRepository.Update(updateEntity);
+                _categoryRepository.Update(entity);
                 await _unitOfWork.SaveChangeAsync();
 
                 return new ServiceResult()

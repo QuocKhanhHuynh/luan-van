@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace FreelancerPlatform.Application.Dtos.Category
 {
-    public class CategoryCreateRequest : CategoryInfor
+    public class CategoryCreateRequest
     {
-
+        public string Name { get; set; }
+        public string ImageUrl { get; set; }
     }
 }
